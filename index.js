@@ -572,6 +572,22 @@ try {
     console.log('Canvas found:', !!canvas);
     if (canvas) {
         console.log('Canvas dimensions:', canvas.width, 'x', canvas.height);
+
+        // Mobile canvas sizing fix
+        function resizeCanvas() {
+            const isMobile = window.innerWidth <= 768;
+            const maxSize = isMobile ? Math.min(window.innerWidth - 40, 400) : 400;
+            canvas.width = maxSize;
+            canvas.height = maxSize;
+            canvas.style.width = maxSize + 'px';
+            canvas.style.height = maxSize + 'px';
+            console.log('Canvas resized for mobile:', isMobile, maxSize);
+        }
+
+        // Initial resize and add resize listener
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
         const ctx = canvas.getContext('2d');
         const scoreSpan = document.getElementById('score');
         const timerSpan = document.getElementById('timer');
@@ -796,9 +812,57 @@ try {
     // Keyboard controls
     window.addEventListener('keydown',(e)=>{if(!gameActive) return; const key=e.key; if(key.startsWith('Arrow')||['w','W','a','A','s','S','d','D'].includes(key)) e.preventDefault(); switch(key){case 'ArrowUp': case 'w': case 'W': if(direction.y===0) nextDirection={x:0,y:-1}; break; case 'ArrowDown': case 's': case 'S': if(direction.y===0) nextDirection={x:0,y:1}; break; case 'ArrowLeft': case 'a': case 'A': if(direction.x===0) nextDirection={x:-1,y:0}; break; case 'ArrowRight': case 'd': case 'D': if(direction.x===0) nextDirection={x:1,y:0}; break;}});
 
-    // Touch controls
-    canvas.addEventListener('touchstart',e=>{const t=e.touches[0];touchStartX=t.clientX;touchStartY=t.clientY;});
-    canvas.addEventListener('touchend',e=>{const t=e.changedTouches[0]; const dx=t.clientX-touchStartX; const dy=t.clientY-touchStartY; if(Math.abs(dx)<MIN_SWIPE_DISTANCE && Math.abs(dy)<MIN_SWIPE_DISTANCE) return; if(Math.abs(dx)>Math.abs(dy)){if(dx>0 && direction.x===0) nextDirection={x:1,y:0}; else if(dx<0 && direction.x===0) nextDirection={x:-1,y:0};}else{if(dy>0 && direction.y===0) nextDirection={x:0,y:1}; else if(dy<0 && direction.y===0) nextDirection={x:0,y:-1};}});
+    // Touch controls - improved for mobile
+    if ('ontouchstart' in window) {
+        console.log('Touch controls enabled for mobile');
+        
+        // Prevent default touch behavior on canvas
+        canvas.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const t = e.touches[0];
+            if (t) {
+                const rect = canvas.getBoundingClientRect();
+                touchStartX = t.clientX - rect.left;
+                touchStartY = t.clientY - rect.top;
+                console.log('Touch start:', touchStartX, touchStartY);
+            }
+        }, { passive: false });
+        
+        canvas.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+        
+        canvas.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            const t = e.changedTouches[0];
+            if (t) {
+                const rect = canvas.getBoundingClientRect();
+                const dx = t.clientX - rect.left - touchStartX;
+                const dy = t.clientY - rect.top - touchStartY;
+                console.log('Touch end:', dx, dy);
+                
+                if (Math.abs(dx) < MIN_SWIPE_DISTANCE && Math.abs(dy) < MIN_SWIPE_DISTANCE) return;
+                
+                if (Math.abs(dx) > Math.abs(dy)) {
+                    if (dx > 0 && direction.x === 0) {
+                        nextDirection = {x:1,y:0};
+                        console.log('Swipe right');
+                    } else if (dx < 0 && direction.x === 0) {
+                        nextDirection = {x:-1,y:0};
+                        console.log('Swipe left');
+                    }
+                } else {
+                    if (dy > 0 && direction.y === 0) {
+                        nextDirection = {x:0,y:1};
+                        console.log('Swipe down');
+                    } else if (dy < 0 && direction.y === 0) {
+                        nextDirection = {x:0,y:-1};
+                        console.log('Swipe up');
+                    }
+                }
+            }
+        }, { passive: false });
+    }
     }
 } catch (error) {
     console.error('Snake game initialization error:', error);
