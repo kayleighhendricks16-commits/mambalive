@@ -1942,23 +1942,23 @@ input:checked + .slider:before { transform: translateX(26px); }
     .whatsapp-desktop { display: none; }
     .whatsapp-mobile { display: flex; }
     .game-float {
-        left: 20px;
-        bottom: 20px;
-        padding: 12px 16px;
-        font-size: 0.95rem;
-        min-height: 70px;
+        left: 10px;
+        bottom: 80px;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        min-height: 50px;
     }
     .game-float i {
         font-size: 1.1rem;
     }
     .whatsapp-float {
         padding: 0;
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         min-width: auto;
-        right: 20px;
-        bottom: 20px;
+        right: 10px;
+        bottom: 80px;
     }
 }
 
@@ -1979,11 +1979,142 @@ input:checked + .slider:before { transform: translateX(26px); }
     .footer-links { flex-direction: column; gap: 8px; }
     .security-features { grid-template-columns: 1fr; }
 
-    /* Game container stacks on mobile */
-    .game-container { flex-direction: column; align-items: center; gap: 15px; }
-    .game-info-panel { width: 100%; max-width: 400px; flex: none; overflow: visible; }
-    .stat-value { font-size: 1.4rem; }
-    .leaderboard-list { max-height: 150px; }
+    /* Game section - full height and centered */
+    .snake-game-section {
+        padding: 20px 0 250px 0;
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .snake-game-section > .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Game container - perfectly centered */
+    .game-container { 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        gap: 20px; 
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .game-info-panel { 
+        width: 100%; 
+        max-width: 500px; 
+        flex: none; 
+        overflow: visible; 
+        padding: 15px;
+        margin: 0 auto;
+    }
+    .game-canvas-wrapper { 
+        width: min(350px, 95vw); 
+        max-width: 350px;
+        aspect-ratio: 1 / 1;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0 auto;
+    }
+    #snakeCanvas {
+        width: 100%;
+        height: 100%;
+        min-width: 300px;
+        min-height: 300px;
+        max-width: 350px;
+        max-height: 350px;
+        box-sizing: border-box;
+        border: 3px solid var(--mamba-green);
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;
+    }
+    .stat-value { font-size: 1.3rem; }
+    .stats {
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+    .stat-item {
+        padding: 10px 8px;
+    }
+    .leaderboard-list { 
+        max-height: 200px; 
+        overflow-y: auto;
+        width: 100%;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Ensure full game info panel is visible */
+    .game-info-panel {
+        min-height: auto;
+        margin-bottom: 10px;
+        display: block;
+        visibility: visible;
+    }
+    
+    /* Force leaderboard visibility on mobile */
+    .leaderboard {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .leaderboard-list {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        max-height: 150px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Fix leaderboard display on mobile */
+    .leaderboard {
+        margin-top: 10px;
+    }
+    
+    .leaderboard h3 {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+    
+    .leaderboard-item {
+        padding: 6px 4px;
+        font-size: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .leaderboard-item .rank {
+        flex: 0 0 20px;
+    }
+    
+    .leaderboard-item .name {
+        flex: 1;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .leaderboard-item .score {
+        flex: 0 0 40px;
+        text-align: right;
+    }
 }
 
 @media (max-width: 767px) {
