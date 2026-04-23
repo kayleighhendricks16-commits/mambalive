@@ -1174,9 +1174,13 @@ body.menu-open {
     text-align: center;
     padding: 20px;
     width: 90%;
-    max-width: 320px;
-    max-height: 90%;
+    max-width: 400px;
+    max-height: 80vh;
     overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .overlay-content h3 {
     color: var(--mamba-green);
@@ -2126,16 +2130,26 @@ body.menu-open {
 @media (max-width: 768px) {
     .overlay-content {
         padding: 15px;
-        max-width: 280px;
+        max-width: 320px;
+        max-height: 45vh;
     }
     .overlay-content h3 {
         font-size: 1.1rem;
         margin-bottom: 15px;
     }
+    .overlay-input-group {
+        margin-bottom: 20px;
+    }
     .overlay-input-group input {
         padding: 8px 10px;
         font-size: 0.9rem;
     }
+    .canvas-btn {
+        padding: 10px;
+        font-size: 1rem;
+        margin-top: 15px;
+    }
+}
     .canvas-btn {
         padding: 10px;
         font-size: 1rem;
