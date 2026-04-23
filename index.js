@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
             repArea: "who covers",
             repContact: "Your dedicated sales consultant will contact you within 2 hours during business hours.",
             thankYou: "Thank you for choosing Mamba Security!",
-            bookAssessment: "Talk to Sales Consultant",
+            bookAssessment: "Talk to our Sales coordinator",
             startOver: "Start Over",
             typing: "Typing...",
             online: "Online",
