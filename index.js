@@ -512,9 +512,83 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 2000);
 
+    // Use event delegation to ensure clicks are captured
+    document.addEventListener('click', function(e) {
+        // Accept All button
+        if (e.target && e.target.id === 'cookieAcceptAll') {
+            console.log('Accept All clicked via delegation');
+            e.preventDefault();
+            e.stopPropagation();
+            localStorage.setItem('cookiesAccepted', 'all'); 
+            localStorage.setItem('analyticsCookies', 'true'); 
+            localStorage.setItem('marketingCookies', 'true'); 
+            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
+            return;
+        }
+
+        // Customize button
+        if (e.target && e.target.id === 'cookieCustomize') {
+            console.log('Customize clicked via delegation');
+            e.preventDefault();
+            e.stopPropagation();
+            if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); 
+            return;
+        }
+
+        // Decline button
+        if (e.target && e.target.id === 'cookieDecline') {
+            console.log('Decline clicked via delegation');
+            e.preventDefault();
+            e.stopPropagation();
+            localStorage.setItem('cookiesAccepted', 'none'); 
+            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
+            return;
+        }
+
+        // Settings close button
+        if (e.target && e.target.id === 'cookieSettingsClose') {
+            console.log('Settings close clicked via delegation');
+            e.preventDefault();
+            e.stopPropagation();
+            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active'); 
+            return;
+        }
+
+        // Save Settings button
+        if (e.target && e.target.id === 'cookieSaveSettings') {
+            console.log('Save Settings clicked via delegation');
+            e.preventDefault();
+            e.stopPropagation();
+            const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
+            const marketing = document.getElementById('marketingCookies')?.checked ?? true;
+            localStorage.setItem('cookiesAccepted', 'custom');
+            localStorage.setItem('analyticsCookies', analytics);
+            localStorage.setItem('marketingCookies', marketing);
+            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
+            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+            return;
+        }
+
+        // Accept All Settings button
+        if (e.target && e.target.classList.contains('cookie-accept-all-settings')) {
+            console.log('Accept All Settings clicked via delegation');
+            e.preventDefault();
+            e.stopPropagation();
+            localStorage.setItem('cookiesAccepted', 'all');
+            localStorage.setItem('analyticsCookies', 'true');
+            localStorage.setItem('marketingCookies', 'true');
+            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
+            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+            return;
+        }
+    });
+
+    // Also try direct event listeners as backup
     if (cookieAcceptAll) {
-        cookieAcceptAll.addEventListener('click', () => { 
-            console.log('Accept All clicked');
+        cookieAcceptAll.addEventListener('click', function(e) {
+            console.log('Accept All clicked via direct listener');
+            e.preventDefault();
+            e.stopPropagation();
             localStorage.setItem('cookiesAccepted', 'all'); 
             localStorage.setItem('analyticsCookies', 'true'); 
             localStorage.setItem('marketingCookies', 'true'); 
@@ -523,48 +597,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (cookieCustomize) {
-        cookieCustomize.addEventListener('click', () => { 
-            console.log('Customize clicked');
+        cookieCustomize.addEventListener('click', function(e) {
+            console.log('Customize clicked via direct listener');
+            e.preventDefault();
+            e.stopPropagation();
             if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); 
         });
     }
 
     if (cookieDecline) {
-        cookieDecline.addEventListener('click', () => { 
-            console.log('Decline clicked');
+        cookieDecline.addEventListener('click', function(e) {
+            console.log('Decline clicked via direct listener');
+            e.preventDefault();
+            e.stopPropagation();
             localStorage.setItem('cookiesAccepted', 'none'); 
             if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
-        });
-    }
-
-    if (cookieSettingsClose) {
-        cookieSettingsClose.addEventListener('click', () => { 
-            console.log('Settings close clicked');
-            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active'); 
-        });
-    }
-
-    if (cookieSaveSettings) {
-        cookieSaveSettings.addEventListener('click', () => {
-            console.log('Save Settings clicked');
-            const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
-            const marketing = document.getElementById('marketingCookies')?.checked ?? true;
-            localStorage.setItem('cookiesAccepted', 'custom');
-            localStorage.setItem('analyticsCookies', analytics);
-            localStorage.setItem('marketingCookies', marketing);
-            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
-            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
-        });
-    }
-
-    if (cookieAcceptAllSettings) {
-        cookieAcceptAllSettings.addEventListener('click', () => {
-            console.log('Accept All Settings clicked');
-            localStorage.setItem('cookiesAccepted', 'all');
-            localStorage.setItem('analyticsCookies', 'true');
-            localStorage.setItem('marketingCookies', 'true');
-            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
-            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
         });
     }
 });
