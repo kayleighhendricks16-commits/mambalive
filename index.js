@@ -833,53 +833,75 @@ try {
     console.error('Snake game initialization error:', error);
 }
 
-// Leaderboard functions
+// Leaderboard functions - JSONBin.io
+const BIN_ID = '69c2e944c3097a1dd5577e7c';
+const MASTER_KEY = '$2a$10$CnF8SgRpw0auXpU.ClZEXeu5paSFjD95FZ1m0MhOOE5hRUJuxxX4e';
+const JSONBIN_BASE = 'https://api.jsonbin.io/v3/b';
+
+async function getLeaderboardData() {
+    try {
+        const response = await fetch(`${JSONBIN_BASE}/${BIN_ID}/latest`, {
+            headers: { 'X-Master-Key': MASTER_KEY }
+        });
+        if (!response.ok) return [];
+        const data = await response.json();
+        return Array.isArray(data.record) ? data.record : [];
+    } catch (error) {
+        console.error('Error fetching leaderboard:', error);
+        return [];
+    }
+}
+
 async function updateScore(name, phone, score) {
     try {
-        const response = await fetch('https://api.formizee.com/v1/f/enp_4G9vqbcbx5YbWediE7zUTDCECAKJ', {
-            method: 'POST',
-            body: new FormData(Object.entries({
-                name: name,
-                phone: phone,
-                score: score,
-                game: 'mamba_chase',
-                timestamp: new Date().toISOString()
-            }).reduce((formData, [key, value]) => {
-                formData.append(key, value);
-                return formData;
-            }, new FormData()))
+        const existing = await getLeaderboardData();
+        const entry = {
+            name: name,
+            phone: phone,
+            score: score,
+            game: 'mamba_chase',
+            timestamp: new Date().toISOString()
+        };
+        const updated = [...existing, entry];
+        await fetch(`${JSONBIN_BASE}/${BIN_ID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': MASTER_KEY
+            },
+            body: JSON.stringify(updated)
         });
-        return response;
+        renderLeaderboard(updated);
     } catch (error) {
         console.error('Error updating score:', error);
     }
 }
 
-async function fetchAndRenderLeaderboard() {
-    try {
-        const response = await fetch('https://api.formizee.com/v1/f/enp_4G9vqbcbx5YbWediE7zUTDCECAKJ/data');
-        if (response.ok) {
-            const data = await response.json();
-            const leaderboardList = document.getElementById('leaderboardList');
-            if (leaderboardList && data && data.length > 0) {
-                const sortedData = data.sort((a, b) => parseInt(b.score) - parseInt(a.score)).slice(0, 5);
-                leaderboardList.innerHTML = sortedData.map((entry, index) => `
-                    <div class="leaderboard-entry">
-                        <span class="rank">#${index + 1}</span>
-                        <span class="name">${entry.name}</span>
-                        <span class="score">${entry.score}</span>
-                    </div>
-                `).join('');
-            }
-        }
-    } catch (error) {
-        console.error('Error fetching leaderboard:', error);
+function renderLeaderboard(entries) {
+    const leaderboardList = document.getElementById('leaderboardList');
+    if (!leaderboardList) return;
+    if (entries && entries.length > 0) {
+        const sortedData = entries.sort((a, b) => parseInt(b.score) - parseInt(a.score)).slice(0, 5);
+        leaderboardList.innerHTML = sortedData.map((entry, index) => `
+            <div class="leaderboard-entry">
+                <span class="rank">#${index + 1}</span>
+                <span class="name">${entry.name || 'Anonymous'}</span>
+                <span class="score">${entry.score || 0}</span>
+            </div>
+        `).join('');
+    } else {
+        leaderboardList.innerHTML = '<div class="leaderboard-empty">No scores yet. Be the first!</div>';
     }
+}
+
+async function fetchAndRenderLeaderboard() {
+    const data = await getLeaderboardData();
+    renderLeaderboard(data);
 }
 
 // Initialize leaderboard
 fetchAndRenderLeaderboard();
-setInterval(fetchAndRenderLeaderboard, 5000);
+setInterval(fetchAndRenderLeaderboard, 10000);
 
 // ==================== SCROLL ANIMATIONS ====================
 const floatElements = document.querySelectorAll('.float-up');
