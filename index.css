@@ -1249,7 +1249,7 @@ body.menu-open {
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid var(--mamba-green);
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     color: var(--mamba-text);
     backdrop-filter: blur(4px);
 }
@@ -1257,7 +1257,7 @@ body.menu-open {
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 .stat-item {
     background: rgba(153, 255, 0, 0.1);
