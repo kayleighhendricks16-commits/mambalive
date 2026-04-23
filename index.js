@@ -480,7 +480,13 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(msg)}`, '_blank');
     });
 
-    setTimeout(() => { showChatbot(); initChat(); }, 7500);
+    // Only show chatbot once per session
+    setTimeout(() => { 
+        if (!sessionStorage.getItem('chatbotShown')) {
+            showChatbot(); 
+            initChat(); 
+        }
+    }, 7500);
 });
 
 // Cookie consent - GitHub Pages compatible version with global functions
