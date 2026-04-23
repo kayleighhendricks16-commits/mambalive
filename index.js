@@ -762,7 +762,7 @@ try {
         clearInterval(gameLoopInterval); clearInterval(timerInterval);
 
         if(score>0 && savedName && savedPhone){
-            updateScore(savedName,savedPhone,score).then(()=>{fetchAndRenderLeaderboard();}).catch(err=>console.error(err));
+            updateScore(savedName,savedPhone,score).catch(err=>console.error(err));
         }
 
         if(savedName && savedPhone) showPlayAgainButton();
@@ -878,7 +878,17 @@ async function fetchLeaderboard() {
         } else if (Array.isArray(data)) {
             leaderboard = data;
         }
-        return leaderboard;
+        
+        // Deduplicate: keep only highest score per player
+        const playerMap = new Map();
+        leaderboard.forEach(entry => {
+            const id = entry.playerId || getPlayerId(entry.name, entry.phone);
+            if (!playerMap.has(id) || playerMap.get(id).score < entry.score) {
+                playerMap.set(id, { ...entry, playerId: id });
+            }
+        });
+        
+        return Array.from(playerMap.values());
     } catch (error) {
         console.error('fetchLeaderboard error:', error);
         return [];
@@ -953,16 +963,17 @@ async function updateScore(name, phone, score) {
     const saved = await saveLeaderboard(leaderboard);
     if (!saved) return false;
     await sendToFormizee(name, phone, score);
+    // Update scoreboard immediately with local data
+    renderLeaderboard(leaderboard);
     return true;
 }
 
-// Render leaderboard
-async function fetchAndRenderLeaderboard(containerId='leaderboardList') {
+// Render leaderboard with provided data
+function renderLeaderboard(leaderboard, containerId='leaderboardList') {
     const container = document.getElementById(containerId);
     if (!container) return;
     try {
-        const leaderboard = await fetchLeaderboard();
-        if (!leaderboard.length) {
+        if (!leaderboard || !leaderboard.length) {
             container.innerHTML = '<div class="leaderboard-empty">No scores yet. Be the first!</div>';
             return;
         }
@@ -982,6 +993,12 @@ async function fetchAndRenderLeaderboard(containerId='leaderboardList') {
     } catch (error) {
         container.innerHTML = '<div class="leaderboard-error">Unable to load leaderboard. Try again later.</div>';
     }
+}
+
+// Fetch and render leaderboard
+async function fetchAndRenderLeaderboard(containerId='leaderboardList') {
+    const leaderboard = await fetchLeaderboard();
+    renderLeaderboard(leaderboard, containerId);
 }
 fetchAndRenderLeaderboard();
 setInterval(fetchAndRenderLeaderboard,5000);
