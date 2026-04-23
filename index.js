@@ -484,35 +484,89 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Cookie consent
-const cookieConsentOverlay = document.getElementById('cookieConsentOverlay');
-const cookieAcceptAll = document.getElementById('cookieAcceptAll');
-const cookieCustomize = document.getElementById('cookieCustomize');
-const cookieDecline = document.getElementById('cookieDecline');
-const cookieSettingsModal = document.getElementById('cookieSettingsModal');
-const cookieSettingsClose = document.getElementById('cookieSettingsClose');
-const cookieSaveSettings = document.getElementById('cookieSaveSettings');
-const cookieAcceptAllSettings = document.querySelector('.cookie-accept-all-settings');
+document.addEventListener('DOMContentLoaded', function() {
+    const cookieConsentOverlay = document.getElementById('cookieConsentOverlay');
+    const cookieAcceptAll = document.getElementById('cookieAcceptAll');
+    const cookieCustomize = document.getElementById('cookieCustomize');
+    const cookieDecline = document.getElementById('cookieDecline');
+    const cookieSettingsModal = document.getElementById('cookieSettingsModal');
+    const cookieSettingsClose = document.getElementById('cookieSettingsClose');
+    const cookieSaveSettings = document.getElementById('cookieSaveSettings');
+    const cookieAcceptAllSettings = document.querySelector('.cookie-accept-all-settings');
 
-setTimeout(() => { if (!localStorage.getItem('cookiesAccepted') && cookieConsentOverlay) cookieConsentOverlay.classList.add('active'); }, 2000);
-if (cookieAcceptAll) cookieAcceptAll.addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'all'); localStorage.setItem('analyticsCookies', 'true'); localStorage.setItem('marketingCookies', 'true'); if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); });
-if (cookieCustomize) cookieCustomize.addEventListener('click', () => { if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); });
-if (cookieDecline) cookieDecline.addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'none'); if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); });
-if (cookieSettingsClose) cookieSettingsClose.addEventListener('click', () => { if (cookieSettingsModal) cookieSettingsModal.classList.remove('active'); });
-if (cookieSaveSettings) cookieSaveSettings.addEventListener('click', () => {
-    const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
-    const marketing = document.getElementById('marketingCookies')?.checked ?? true;
-    localStorage.setItem('cookiesAccepted', 'custom');
-    localStorage.setItem('analyticsCookies', analytics);
-    localStorage.setItem('marketingCookies', marketing);
-    if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
-    if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
-});
-if (cookieAcceptAllSettings) cookieAcceptAllSettings.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'all');
-    localStorage.setItem('analyticsCookies', 'true');
-    localStorage.setItem('marketingCookies', 'true');
-    if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
-    if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+    console.log('Cookie consent elements found:', {
+        cookieConsentOverlay: !!cookieConsentOverlay,
+        cookieAcceptAll: !!cookieAcceptAll,
+        cookieCustomize: !!cookieCustomize,
+        cookieDecline: !!cookieDecline,
+        cookieSettingsModal: !!cookieSettingsModal,
+        cookieSettingsClose: !!cookieSettingsClose,
+        cookieSaveSettings: !!cookieSaveSettings,
+        cookieAcceptAllSettings: !!cookieAcceptAllSettings
+    });
+
+    setTimeout(() => { 
+        if (!localStorage.getItem('cookiesAccepted') && cookieConsentOverlay) {
+            cookieConsentOverlay.classList.add('active');
+            console.log('Cookie consent popup shown');
+        }
+    }, 2000);
+
+    if (cookieAcceptAll) {
+        cookieAcceptAll.addEventListener('click', () => { 
+            console.log('Accept All clicked');
+            localStorage.setItem('cookiesAccepted', 'all'); 
+            localStorage.setItem('analyticsCookies', 'true'); 
+            localStorage.setItem('marketingCookies', 'true'); 
+            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
+        });
+    }
+
+    if (cookieCustomize) {
+        cookieCustomize.addEventListener('click', () => { 
+            console.log('Customize clicked');
+            if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); 
+        });
+    }
+
+    if (cookieDecline) {
+        cookieDecline.addEventListener('click', () => { 
+            console.log('Decline clicked');
+            localStorage.setItem('cookiesAccepted', 'none'); 
+            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
+        });
+    }
+
+    if (cookieSettingsClose) {
+        cookieSettingsClose.addEventListener('click', () => { 
+            console.log('Settings close clicked');
+            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active'); 
+        });
+    }
+
+    if (cookieSaveSettings) {
+        cookieSaveSettings.addEventListener('click', () => {
+            console.log('Save Settings clicked');
+            const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
+            const marketing = document.getElementById('marketingCookies')?.checked ?? true;
+            localStorage.setItem('cookiesAccepted', 'custom');
+            localStorage.setItem('analyticsCookies', analytics);
+            localStorage.setItem('marketingCookies', marketing);
+            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
+            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+        });
+    }
+
+    if (cookieAcceptAllSettings) {
+        cookieAcceptAllSettings.addEventListener('click', () => {
+            console.log('Accept All Settings clicked');
+            localStorage.setItem('cookiesAccepted', 'all');
+            localStorage.setItem('analyticsCookies', 'true');
+            localStorage.setItem('marketingCookies', 'true');
+            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
+            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+        });
+    }
 });
 
 // ==================== SCROLL ANIMATIONS ====================
