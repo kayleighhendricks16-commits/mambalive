@@ -1176,11 +1176,11 @@ body.menu-open {
     width: 90%;
     max-width: 400px;
     max-height: 80vh;
-    overflow-y: auto;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 8px;
 }
 .overlay-content h3 {
     color: var(--mamba-green);
@@ -1212,10 +1212,17 @@ body.menu-open {
     margin: 10px 0;
 }
 .canvas-btn {
-    margin-top: 10px;
+    margin-top: 15px;
     width: 100%;
-    padding: 12px;
-    font-size: 1.1rem;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--mamba-green);
+    color: var(--mamba-dark);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(153, 255, 0, 0.3);
 }
 .start-game-saved {
     position: absolute;
@@ -1253,15 +1260,17 @@ body.menu-open {
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid var(--mamba-green);
     border-radius: 10px;
-    padding: 25px;
+    padding: 20px;
     color: var(--mamba-text);
     backdrop-filter: blur(4px);
+    overflow: visible;
+    max-height: none;
 }
 .stats {
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .stat-item {
     background: rgba(153, 255, 0, 0.1);
@@ -1345,6 +1354,9 @@ body.menu-open {
     margin-top: 20px;
     padding-top: 12px;
     border-top: 1px dashed rgba(153, 255, 0, 0.4);
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 .how-to-play h4 {
     color: var(--mamba-green);
@@ -1969,7 +1981,7 @@ input:checked + .slider:before { transform: translateX(26px); }
 
     /* Game container stacks on mobile */
     .game-container { flex-direction: column; align-items: center; gap: 15px; }
-    .game-info-panel { width: 100%; max-width: 400px; }
+    .game-info-panel { width: 100%; max-width: 400px; flex: none; overflow: visible; }
     .stat-value { font-size: 1.4rem; }
     .leaderboard-list { max-height: 150px; }
 }
@@ -2019,8 +2031,7 @@ body.page-ready .hero-buttons {
 
 .image-overlay-container,
 .testimonial-image-wrapper,
-.game-canvas-wrapper,
-.game-info-panel {
+.game-canvas-wrapper {
     overflow: hidden;
 }
 .image-overlay-container img,
@@ -2129,33 +2140,54 @@ body.menu-open {
 /* ===== ADDITIONAL RESPONSIVE OVERLAY STYLES ===== */
 @media (max-width: 768px) {
     .overlay-content {
-        padding: 15px;
+        padding: 12px 15px;
         max-width: 320px;
-        max-height: 45vh;
+        max-height: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
     }
     .overlay-content h3 {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
+        font-size: 1rem;
+        margin-bottom: 8px;
     }
     .overlay-input-group {
-        margin-bottom: 20px;
+        margin-bottom: 8px;
+    }
+    .overlay-input-group label {
+        font-size: 0.8rem;
+        margin-bottom: 3px;
     }
     .overlay-input-group input {
-        padding: 8px 10px;
-        font-size: 0.9rem;
-    }
-    .canvas-btn {
-        padding: 10px;
-        font-size: 1rem;
-        margin-top: 15px;
-    }
-}
-    .canvas-btn {
-        padding: 10px;
-        font-size: 1rem;
+        padding: 6px 8px;
+        font-size: 0.85rem;
     }
     .contact-note {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+        margin: 4px 0;
+    }
+    .canvas-btn {
+        padding: 8px 10px;
+        font-size: 0.95rem;
+        margin-top: 6px;
+    }
+    .how-to-play {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin-top: 10px;
+        padding-top: 8px;
+        border-top: 1px dashed rgba(153, 255, 0, 0.4);
+    }
+    .how-to-play h4 {
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+    }
+    .how-to-play li {
+        font-size: 0.8rem;
+        margin-bottom: 3px;
+        padding-left: 14px;
     }
 }
 
