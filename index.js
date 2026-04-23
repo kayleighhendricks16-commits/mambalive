@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(msg)}`, '_blank');
     });
 
-    setTimeout(() => { showChatbot(); initChat(); }, 3000);
+    setTimeout(() => { showChatbot(); initChat(); }, 6000);
 });
 
 // Cookie consent
