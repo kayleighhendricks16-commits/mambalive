@@ -566,13 +566,25 @@ window.addEventListener('load', function() {
 });
 
 // ==================== SNAKE GAME ====================
+console.log('Initializing snake game...');
+console.log('User agent:', navigator.userAgent);
+console.log('Touch support:', 'ontouchstart' in window);
+console.log('Screen size:', window.innerWidth, 'x', window.innerHeight);
+
 try {
-    console.log('Initializing snake game...');
     const canvas = document.getElementById('snakeCanvas');
     console.log('Canvas found:', !!canvas);
+    console.log('Canvas element:', canvas);
+    
     if (canvas) {
         console.log('Canvas dimensions:', canvas.width, 'x', canvas.height);
-
+        console.log('Canvas style:', canvas.style.cssText);
+        
+        // Force canvas to be visible and interactive
+        canvas.style.display = 'block';
+        canvas.style.touchAction = 'none';
+        canvas.style.userSelect = 'none';
+        
         // Mobile canvas sizing fix
         function resizeCanvas() {
             const isMobile = window.innerWidth <= 768;
@@ -583,12 +595,13 @@ try {
             canvas.style.height = maxSize + 'px';
             console.log('Canvas resized for mobile:', isMobile, maxSize);
         }
-
+        
         // Initial resize and add resize listener
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
-
+        
         const ctx = canvas.getContext('2d');
+        console.log('Canvas context:', !!ctx);
         const scoreSpan = document.getElementById('score');
         const timerSpan = document.getElementById('timer');
         const levelSpan = document.getElementById('level');
@@ -812,57 +825,67 @@ try {
     // Keyboard controls
     window.addEventListener('keydown',(e)=>{if(!gameActive) return; const key=e.key; if(key.startsWith('Arrow')||['w','W','a','A','s','S','d','D'].includes(key)) e.preventDefault(); switch(key){case 'ArrowUp': case 'w': case 'W': if(direction.y===0) nextDirection={x:0,y:-1}; break; case 'ArrowDown': case 's': case 'S': if(direction.y===0) nextDirection={x:0,y:1}; break; case 'ArrowLeft': case 'a': case 'A': if(direction.x===0) nextDirection={x:-1,y:0}; break; case 'ArrowRight': case 'd': case 'D': if(direction.x===0) nextDirection={x:1,y:0}; break;}});
 
-    // Touch controls - improved for mobile
-    if ('ontouchstart' in window) {
-        console.log('Touch controls enabled for mobile');
-        
-        // Prevent default touch behavior on canvas
-        canvas.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            const t = e.touches[0];
-            if (t) {
-                const rect = canvas.getBoundingClientRect();
-                touchStartX = t.clientX - rect.left;
-                touchStartY = t.clientY - rect.top;
-                console.log('Touch start:', touchStartX, touchStartY);
-            }
-        }, { passive: false });
-        
-        canvas.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, { passive: false });
-        
-        canvas.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            const t = e.changedTouches[0];
-            if (t) {
-                const rect = canvas.getBoundingClientRect();
-                const dx = t.clientX - rect.left - touchStartX;
-                const dy = t.clientY - rect.top - touchStartY;
-                console.log('Touch end:', dx, dy);
-                
-                if (Math.abs(dx) < MIN_SWIPE_DISTANCE && Math.abs(dy) < MIN_SWIPE_DISTANCE) return;
-                
-                if (Math.abs(dx) > Math.abs(dy)) {
-                    if (dx > 0 && direction.x === 0) {
-                        nextDirection = {x:1,y:0};
-                        console.log('Swipe right');
-                    } else if (dx < 0 && direction.x === 0) {
-                        nextDirection = {x:-1,y:0};
-                        console.log('Swipe left');
-                    }
+    // Touch controls - simplified mobile approach
+    console.log('Setting up touch controls...');
+    
+    canvas.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        if (touch) {
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            console.log('Touch start at:', touchStartX, touchStartY);
+        }
+    });
+    
+    canvas.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        const touch = e.changedTouches[0];
+        if (touch) {
+            const touchEndX = touch.clientX;
+            const touchEndY = touch.clientY;
+            const dx = touchEndX - touchStartX;
+            const dy = touchEndY - touchStartY;
+            
+            console.log('Touch end - dx:', dx, 'dy:', dy);
+            
+            // Simple swipe detection
+            if (Math.abs(dx) > 30) {
+                if (dx > 0) {
+                    nextDirection = {x:1,y:0};
+                    console.log('Swipe right');
                 } else {
-                    if (dy > 0 && direction.y === 0) {
-                        nextDirection = {x:0,y:1};
-                        console.log('Swipe down');
-                    } else if (dy < 0 && direction.y === 0) {
-                        nextDirection = {x:0,y:-1};
-                        console.log('Swipe up');
-                    }
+                    nextDirection = {x:-1,y:0};
+                    console.log('Swipe left');
+                }
+            } else if (Math.abs(dy) > 30) {
+                if (dy > 0) {
+                    nextDirection = {x:0,y:1};
+                    console.log('Swipe down');
+                } else {
+                    nextDirection = {x:0,y:-1};
+                    console.log('Swipe up');
                 }
             }
-        }, { passive: false });
-    }
+        }
+    });
+    
+    // Also add keyboard controls as backup
+    document.addEventListener('keydown', function(e) {
+        if (!gameActive) return;
+        const key = e.key;
+        console.log('Key pressed:', key);
+        
+        if (key === 'ArrowUp' || key === 'w' || key === 'W') {
+            if (direction.y === 0) nextDirection = {x:0,y:-1};
+        } else if (key === 'ArrowDown' || key === 's' || key === 'S') {
+            if (direction.y === 0) nextDirection = {x:0,y:1};
+        } else if (key === 'ArrowLeft' || key === 'a' || key === 'A') {
+            if (direction.x === 0) nextDirection = {x:-1,y:0};
+        } else if (key === 'ArrowRight' || key === 'd' || key === 'D') {
+            if (direction.x === 0) nextDirection = {x:1,y:0};
+        }
+    });
     }
 } catch (error) {
     console.error('Snake game initialization error:', error);
