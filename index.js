@@ -486,8 +486,34 @@ document.addEventListener('DOMContentLoaded', function() {
 // Cookie consent
 const cookieConsentOverlay = document.getElementById('cookieConsentOverlay');
 const cookieAcceptAll = document.getElementById('cookieAcceptAll');
+const cookieCustomize = document.getElementById('cookieCustomize');
+const cookieDecline = document.getElementById('cookieDecline');
+const cookieSettingsModal = document.getElementById('cookieSettingsModal');
+const cookieSettingsClose = document.getElementById('cookieSettingsClose');
+const cookieSaveSettings = document.getElementById('cookieSaveSettings');
+const cookieAcceptAllSettings = document.querySelector('.cookie-accept-all-settings');
+
 setTimeout(() => { if (!localStorage.getItem('cookiesAccepted') && cookieConsentOverlay) cookieConsentOverlay.classList.add('active'); }, 2000);
-if (cookieAcceptAll) cookieAcceptAll.addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'all'); if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); });
+if (cookieAcceptAll) cookieAcceptAll.addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'all'); localStorage.setItem('analyticsCookies', 'true'); localStorage.setItem('marketingCookies', 'true'); if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); });
+if (cookieCustomize) cookieCustomize.addEventListener('click', () => { if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); });
+if (cookieDecline) cookieDecline.addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'none'); if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); });
+if (cookieSettingsClose) cookieSettingsClose.addEventListener('click', () => { if (cookieSettingsModal) cookieSettingsModal.classList.remove('active'); });
+if (cookieSaveSettings) cookieSaveSettings.addEventListener('click', () => {
+    const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
+    const marketing = document.getElementById('marketingCookies')?.checked ?? true;
+    localStorage.setItem('cookiesAccepted', 'custom');
+    localStorage.setItem('analyticsCookies', analytics);
+    localStorage.setItem('marketingCookies', marketing);
+    if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
+    if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+});
+if (cookieAcceptAllSettings) cookieAcceptAllSettings.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'all');
+    localStorage.setItem('analyticsCookies', 'true');
+    localStorage.setItem('marketingCookies', 'true');
+    if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
+    if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+});
 
 // ==================== SCROLL ANIMATIONS ====================
 const floatElements = document.querySelectorAll('.float-up');
