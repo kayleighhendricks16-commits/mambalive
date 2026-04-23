@@ -833,75 +833,156 @@ try {
     console.error('Snake game initialization error:', error);
 }
 
-// Leaderboard functions - JSONBin.io
-const BIN_ID = '69c2e944c3097a1dd5577e7c';
-const MASTER_KEY = '$2a$10$CnF8SgRpw0auXpU.ClZEXeu5paSFjD95FZ1m0MhOOE5hRUJuxxX4e';
-const JSONBIN_BASE = 'https://api.jsonbin.io/v3/b';
+// ==================== LEADERBOARD SYSTEM (JSONBin + Formizee) ====================
 
-async function getLeaderboardData() {
+// Configuration
+const JSONBIN_BIN_ID = '69c2e944c3097a1dd5577e7c';
+const JSONBIN_MASTER_KEY = '$2a$10$CnF8SgRpw0auXpU.ClZEXeu5paSFjD95FZ1m0MhOOE5hRUJuxxX4e';
+const JSONBIN_GET_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`;
+const JSONBIN_PUT_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+const FORMIZEE_ENDPOINT = 'https://api.formizee.com/v1/f/enp_3NtcVMMF45eL2BnQVQkV1FYs7Dbz';
+
+// Helper: escape HTML to prevent XSS
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    });
+}
+
+// Generate a unique player ID from name and phone
+function getPlayerId(name, phone) {
+    return `${name.trim().toLowerCase()}_${phone.trim()}`;
+}
+
+// Fetch leaderboard from JSONBin
+async function fetchLeaderboard() {
     try {
-        const response = await fetch(`${JSONBIN_BASE}/${BIN_ID}/latest`, {
-            headers: { 'X-Master-Key': MASTER_KEY }
+        const response = await fetch(JSONBIN_GET_URL, {
+            headers: { 'X-Master-Key': JSONBIN_MASTER_KEY }
         });
-        if (!response.ok) return [];
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        return Array.isArray(data.record) ? data.record : [];
+
+        let leaderboard = [];
+        if (data.record) {
+            if (Array.isArray(data.record)) leaderboard = data.record;
+            else if (Array.isArray(data.record.leaderboard)) leaderboard = data.record.leaderboard;
+        } else if (Array.isArray(data.leaderboard)) {
+            leaderboard = data.leaderboard;
+        } else if (Array.isArray(data)) {
+            leaderboard = data;
+        }
+        return leaderboard;
     } catch (error) {
-        console.error('Error fetching leaderboard:', error);
+        console.error('fetchLeaderboard error:', error);
         return [];
     }
 }
 
-async function updateScore(name, phone, score) {
+// Save leaderboard to JSONBin
+async function saveLeaderboard(leaderboard) {
     try {
-        const existing = await getLeaderboardData();
-        const entry = {
-            name: name,
-            phone: phone,
-            score: score,
-            game: 'mamba_chase',
-            timestamp: new Date().toISOString()
-        };
-        const updated = [...existing, entry];
-        await fetch(`${JSONBIN_BASE}/${BIN_ID}`, {
+        const response = await fetch(JSONBIN_PUT_URL, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'X-Master-Key': MASTER_KEY
+                'X-Master-Key': JSONBIN_MASTER_KEY
             },
-            body: JSON.stringify(updated)
+            body: JSON.stringify({ leaderboard })
         });
-        renderLeaderboard(updated);
+        if (!response.ok) throw new Error(`PUT failed: ${response.status}`);
+        console.log('Leaderboard saved to JSONBin');
+        return true;
     } catch (error) {
-        console.error('Error updating score:', error);
+        console.error('saveLeaderboard error:', error);
+        return false;
     }
 }
 
-function renderLeaderboard(entries) {
-    const leaderboardList = document.getElementById('leaderboardList');
-    if (!leaderboardList) return;
-    if (entries && entries.length > 0) {
-        const sortedData = entries.sort((a, b) => parseInt(b.score) - parseInt(a.score)).slice(0, 5);
-        leaderboardList.innerHTML = sortedData.map((entry, index) => `
-            <div class="leaderboard-entry">
-                <span class="rank">#${index + 1}</span>
-                <span class="name">${entry.name || 'Anonymous'}</span>
-                <span class="score">${entry.score || 0}</span>
-            </div>
-        `).join('');
+// Backup to Formizee (only for new players)
+async function sendToFormizee(name, phone, score) {
+    try {
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('phone', phone);
+        formData.append('score', score);
+        formData.append('timestamp', new Date().toISOString());
+
+        const response = await fetch(FORMIZEE_ENDPOINT, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) console.log('Backup sent to Formizee');
+        else console.warn('Formizee backup failed:', response.status);
+    } catch (error) {
+        console.error('sendToFormizee error:', error);
+    }
+}
+
+// Update or insert player score
+async function updateScore(name, phone, score) {
+    if (!name || !phone || score === undefined) return false;
+    let leaderboard = await fetchLeaderboard();
+    const playerId = getPlayerId(name, phone);
+    const existingIndex = leaderboard.findIndex(p => p.playerId === playerId);
+    let updated = false;
+    let isNewPlayer = false;
+
+    if (existingIndex !== -1) {
+        if (leaderboard[existingIndex].score < score) {
+            leaderboard[existingIndex].score = score;
+            leaderboard[existingIndex].timestamp = new Date().toISOString();
+            updated = true;
+        } else return false;
     } else {
-        leaderboardList.innerHTML = '<div class="leaderboard-empty">No scores yet. Be the first!</div>';
+        leaderboard.push({ playerId, name, phone, score, timestamp: new Date().toISOString() });
+        updated = true;
+        isNewPlayer = true;
+    }
+
+    if (!updated) return false;
+    leaderboard.sort((a,b)=>b.score-a.score);
+    if (leaderboard.length>10) leaderboard = leaderboard.slice(0,10);
+    const saved = await saveLeaderboard(leaderboard);
+    if (!saved) return false;
+    await sendToFormizee(name, phone, score);
+    return true;
+}
+
+// Render leaderboard
+async function fetchAndRenderLeaderboard(containerId='leaderboardList') {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    try {
+        const leaderboard = await fetchLeaderboard();
+        if (!leaderboard.length) {
+            container.innerHTML = '<div class="leaderboard-empty">No scores yet. Be the first!</div>';
+            return;
+        }
+        leaderboard.sort((a,b)=>b.score-a.score);
+        const top10 = leaderboard.slice(0,10);
+        let html = '';
+        top10.forEach((entry,idx)=>{
+            html += `
+                <div class="leaderboard-item">
+                    <span class="rank">${idx+1}</span>
+                    <span class="name">${escapeHtml(entry.name)}</span>
+                    <span class="score">${entry.score}</span>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    } catch (error) {
+        container.innerHTML = '<div class="leaderboard-error">Unable to load leaderboard. Try again later.</div>';
     }
 }
-
-async function fetchAndRenderLeaderboard() {
-    const data = await getLeaderboardData();
-    renderLeaderboard(data);
-}
-
-// Initialize leaderboard
 fetchAndRenderLeaderboard();
-setInterval(fetchAndRenderLeaderboard, 10000);
+setInterval(fetchAndRenderLeaderboard,5000);
 
 // ==================== SCROLL ANIMATIONS ====================
 const floatElements = document.querySelectorAll('.float-up');
