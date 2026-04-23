@@ -566,16 +566,31 @@ window.addEventListener('load', function() {
 });
 
 // ==================== SNAKE GAME ====================
-const canvas = document.getElementById('snakeCanvas');
-if (canvas) {
-    const ctx = canvas.getContext('2d');
-    const scoreSpan = document.getElementById('score');
-    const timerSpan = document.getElementById('timer');
-    const levelSpan = document.getElementById('level');
-    const overlayDiv = document.getElementById('canvasOverlay');
-    const overlayContent = document.getElementById('overlayContent');
-    const savedStartButtonDiv = document.getElementById('savedStartButton');
-    const savedStartBtn = document.getElementById('savedStartGameBtn');
+try {
+    console.log('Initializing snake game...');
+    const canvas = document.getElementById('snakeCanvas');
+    console.log('Canvas found:', !!canvas);
+    if (canvas) {
+        console.log('Canvas dimensions:', canvas.width, 'x', canvas.height);
+        const ctx = canvas.getContext('2d');
+        const scoreSpan = document.getElementById('score');
+        const timerSpan = document.getElementById('timer');
+        const levelSpan = document.getElementById('level');
+        const overlayDiv = document.getElementById('canvasOverlay');
+        const overlayContent = document.getElementById('overlayContent');
+        const savedStartButtonDiv = document.getElementById('savedStartButton');
+        const savedStartBtn = document.getElementById('savedStartGameBtn');
+
+        console.log('Game elements found:', {
+            ctx: !!ctx,
+            scoreSpan: !!scoreSpan,
+            timerSpan: !!timerSpan,
+            levelSpan: !!levelSpan,
+            overlayDiv: !!overlayDiv,
+            overlayContent: !!overlayContent,
+            savedStartButtonDiv: !!savedStartButtonDiv,
+            savedStartBtn: !!savedStartBtn
+        });
 
     const GRID_SIZE = 20;
     const CELL_SIZE = canvas.width/GRID_SIZE;
@@ -784,6 +799,9 @@ if (canvas) {
     // Touch controls
     canvas.addEventListener('touchstart',e=>{const t=e.touches[0];touchStartX=t.clientX;touchStartY=t.clientY;});
     canvas.addEventListener('touchend',e=>{const t=e.changedTouches[0]; const dx=t.clientX-touchStartX; const dy=t.clientY-touchStartY; if(Math.abs(dx)<MIN_SWIPE_DISTANCE && Math.abs(dy)<MIN_SWIPE_DISTANCE) return; if(Math.abs(dx)>Math.abs(dy)){if(dx>0 && direction.x===0) nextDirection={x:1,y:0}; else if(dx<0 && direction.x===0) nextDirection={x:-1,y:0};}else{if(dy>0 && direction.y===0) nextDirection={x:0,y:1}; else if(dy<0 && direction.y===0) nextDirection={x:0,y:-1};}});
+    }
+} catch (error) {
+    console.error('Snake game initialization error:', error);
 }
 
 // Leaderboard functions
