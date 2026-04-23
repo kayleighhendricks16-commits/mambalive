@@ -565,6 +565,275 @@ window.addEventListener('load', function() {
     setTimeout(initCookieConsent, 500);
 });
 
+// ==================== SNAKE GAME ====================
+const canvas = document.getElementById('snakeCanvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    const scoreSpan = document.getElementById('score');
+    const timerSpan = document.getElementById('timer');
+    const levelSpan = document.getElementById('level');
+    const overlayDiv = document.getElementById('canvasOverlay');
+    const overlayContent = document.getElementById('overlayContent');
+    const savedStartButtonDiv = document.getElementById('savedStartButton');
+    const savedStartBtn = document.getElementById('savedStartGameBtn');
+
+    const GRID_SIZE = 20;
+    const CELL_SIZE = canvas.width/GRID_SIZE;
+    const TARGET_SCORE = 10000;
+    const BASE_SPEED = 200;
+    const SPEED_DECREMENT = 15;
+    const TIME_PER_CATCH = 5;
+    const START_TIME = 60;
+
+    let snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+    let direction={x:1,y:0};
+    let nextDirection={x:1,y:0};
+    let food={x:15,y:10};
+    let score=0,level=1,timeLeft=START_TIME;
+    let gameActive=false,gameLoopInterval=null,timerInterval=null,gameOverFlag=false;
+
+    let touchStartX=0,touchStartY=0;
+    const MIN_SWIPE_DISTANCE=30;
+
+    // Robber image (absolute path)
+    const robberImg = new Image();
+    robberImg.src = 'robber.png';
+    let robberLoaded=false;
+    robberImg.onload=()=>{robberLoaded=true;};
+
+    // Player details
+    let savedName='',savedPhone='';
+    const savedPlayer = localStorage.getItem('mambaPlayer');
+    if(savedPlayer){
+        try{
+            const parsed=JSON.parse(savedPlayer);
+            savedName=parsed.name||'';
+            savedPhone=parsed.phone||'';
+        }catch(e){}
+    }
+
+    // ================= UI Helpers =================
+    function showInputForm(){
+        overlayContent.innerHTML=`
+            <h3><i class="fas fa-trophy"></i> Enter Your Details</h3>
+            <div class="overlay-input-group">
+                <label for="playerName"><i class="fas fa-user"></i> Full Name:</label>
+                <input type="text" id="playerName" placeholder="Enter your full name" maxlength="50" required>
+            </div>
+            <div class="overlay-input-group">
+                <label for="playerPhone"><i class="fas fa-phone-alt"></i> Phone Number:</label>
+                <input type="tel" id="playerPhone" placeholder="e.g. 083 123 4567" maxlength="20" required>
+            </div>
+            <p class="contact-note">* We'll contact the winner using this number. Must be valid to qualify.</p>
+            <button id="startGameBtn" class="btn btn-primary canvas-btn">Start The Chase</button>
+        `;
+        const startBtn = document.getElementById('startGameBtn');
+        if(startBtn) startBtn.addEventListener('click',startWithNewDetails);
+        overlayDiv.classList.remove('hidden');
+        savedStartButtonDiv.style.display='none';
+    }
+
+    function showPlayAgainButton(){
+        overlayContent.innerHTML=`
+            <h3><i class="fas fa-gamepad"></i> Game Over!</h3>
+            <p>Your score: ${score}</p>
+            <button id="playAgainBtn" class="btn btn-primary canvas-btn">Play Again</button>
+        `;
+        const playAgainBtn=document.getElementById('playAgainBtn');
+        if(playAgainBtn) playAgainBtn.addEventListener('click',()=>resetGame());
+        overlayDiv.classList.remove('hidden');
+        savedStartButtonDiv.style.display='none';
+    }
+
+    function showStartButton(){
+        overlayDiv.classList.add('hidden');
+        savedStartButtonDiv.style.display='block';
+    }
+
+    function generateFood(){
+        for(let i=0;i<1000;i++){
+            const x=Math.floor(Math.random()*GRID_SIZE);
+            const y=Math.floor(Math.random()*GRID_SIZE);
+            if(!snake.some(seg=>seg.x===x&&seg.y===y)) return {x,y};
+        }
+        return null;
+    }
+
+    function updateStats(){
+        if(scoreSpan) scoreSpan.textContent=score;
+        if(levelSpan) levelSpan.textContent=level;
+        if(timerSpan) timerSpan.textContent=timeLeft+'s';
+    }
+
+    function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.strokeStyle='#222'; ctx.lineWidth=0.5;
+        for(let i=0;i<=GRID_SIZE;i++){
+            ctx.beginPath();
+            ctx.moveTo(i*CELL_SIZE,0); ctx.lineTo(i*CELL_SIZE,canvas.height); ctx.stroke();
+            ctx.moveTo(0,i*CELL_SIZE); ctx.lineTo(canvas.width,i*CELL_SIZE); ctx.stroke();
+        }
+
+        snake.forEach((seg,i)=>{
+            if(i===0){
+                ctx.fillStyle='#ccff66'; ctx.shadowColor='#99ff00'; ctx.shadowBlur=15;
+                ctx.fillRect(seg.x*CELL_SIZE,seg.y*CELL_SIZE,CELL_SIZE-1,CELL_SIZE-1);
+                ctx.shadowBlur=0;
+                ctx.fillStyle='white';
+                const headX=seg.x*CELL_SIZE,headY=seg.y*CELL_SIZE;
+                let eye1X,eye1Y,eye2X,eye2Y;
+                if(direction.x===1){eye1X=headX+CELL_SIZE-8;eye1Y=headY+6;eye2X=headX+CELL_SIZE-8;eye2Y=headY+CELL_SIZE-12;}
+                else if(direction.x===-1){eye1X=headX+5;eye1Y=headY+6;eye2X=headX+5;eye2Y=headY+CELL_SIZE-12;}
+                else if(direction.y===-1){eye1X=headX+6;eye1Y=headY+5;eye2X=headX+CELL_SIZE-12;eye2Y=headY+5;}
+                else{eye1X=headX+6;eye1Y=headY+CELL_SIZE-8;eye2X=headX+CELL_SIZE-12;eye2Y=headY+CELL_SIZE-8;}
+                ctx.beginPath(); ctx.arc(eye1X,eye1Y,3,0,2*Math.PI); ctx.fill();
+                ctx.beginPath(); ctx.arc(eye2X,eye2Y,3,0,2*Math.PI); ctx.fill();
+                ctx.fillStyle='black';
+                ctx.beginPath(); ctx.arc(eye1X+1,eye1Y-1,1.5,0,2*Math.PI); ctx.fill();
+                ctx.beginPath(); ctx.arc(eye2X+1,eye2Y-1,1.5,0,2*Math.PI); ctx.fill();
+            }else{
+                ctx.fillStyle='#99ff00'; ctx.shadowColor='#99ff00'; ctx.shadowBlur=10;
+                ctx.fillRect(seg.x*CELL_SIZE,seg.y*CELL_SIZE,CELL_SIZE-1,CELL_SIZE-1);
+                if(i===snake.length-1){ctx.fillStyle='#66cc00';ctx.fillRect(seg.x*CELL_SIZE+2,seg.y*CELL_SIZE+2,CELL_SIZE-5,CELL_SIZE-5);}
+            }
+        });
+        ctx.shadowBlur=0;
+
+        if(food){
+            const cellCenterX=food.x*CELL_SIZE+CELL_SIZE/2;
+            const cellCenterY=food.y*CELL_SIZE+CELL_SIZE/2;
+            const size=CELL_SIZE*1.5;
+            const drawX=cellCenterX-size/2;
+            const drawY=cellCenterY-size/2;
+            if(robberLoaded) ctx.drawImage(robberImg,drawX,drawY,size,size);
+            else { ctx.fillStyle='#ff3b30'; ctx.shadowColor='#ff3b30'; ctx.shadowBlur=15; ctx.fillRect(drawX,drawY,size,size); ctx.shadowBlur=0; }
+        }
+    }
+
+    function gameOver(win=false){
+        if(gameOverFlag) return;
+        gameOverFlag=true; gameActive=false;
+        clearInterval(gameLoopInterval); clearInterval(timerInterval);
+
+        if(score>0 && savedName && savedPhone){
+            updateScore(savedName,savedPhone,score).then(()=>{fetchAndRenderLeaderboard();}).catch(err=>console.error(err));
+        }
+
+        if(savedName && savedPhone) showPlayAgainButton();
+        else showInputForm();
+    }
+
+    function updateGame(){
+        if(!gameActive) return;
+        const newDir={...nextDirection};
+        const isOpposite=(direction.x===-newDir.x && direction.y===-newDir.y);
+        if(!isOpposite) direction=newDir;
+        const head=snake[0];
+        const newHead={x:head.x+direction.x,y:head.y+direction.y};
+
+        if(newHead.x<0||newHead.x>=GRID_SIZE||newHead.y<0||newHead.y>=GRID_SIZE){gameOver(false);return;}
+        if(snake.some(seg=>seg.x===newHead.x&&seg.y===newHead.y)){gameOver(false);return;}
+
+        snake.unshift(newHead);
+        if(newHead.x===food.x&&newHead.y===food.y){
+            score++; timeLeft+=TIME_PER_CATCH; updateStats();
+            if(score%5===0){level++; updateStats(); if(gameLoopInterval){clearInterval(gameLoopInterval); const speed=Math.max(50,BASE_SPEED-(level-1)*SPEED_DECREMENT); gameLoopInterval=setInterval(updateGame,speed);}}
+            if(score>=TARGET_SCORE){gameOver(true);return;}
+            const newFood=generateFood();
+            if(newFood) food=newFood; else gameOver(true);
+        }else snake.pop();
+        draw();
+    }
+
+    function resetGame(){
+        if(gameLoopInterval) clearInterval(gameLoopInterval);
+        if(timerInterval) clearInterval(timerInterval);
+        gameOverFlag=false;
+        snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+        direction={x:1,y:0}; nextDirection={x:1,y:0};
+        score=0; level=1; timeLeft=START_TIME;
+        food=generateFood()||{x:15,y:10};
+        gameActive=true;
+        updateStats(); draw();
+        overlayDiv.classList.add('hidden'); savedStartButtonDiv.style.display='none';
+        gameLoopInterval=setInterval(updateGame,BASE_SPEED);
+        timerInterval=setInterval(()=>{if(!gameActive) return; timeLeft--; updateStats(); if(timeLeft<=0){timeLeft=0; updateStats(); gameOver(false);}},1000);
+    }
+
+    function startWithNewDetails(){
+        const name=document.getElementById('playerName').value.trim();
+        const phone=document.getElementById('playerPhone').value.trim();
+        if(!name){alert("Please enter your full name.");return;}
+        if(!phone){alert("Please enter your phone number.");return;}
+        const phoneRegex=/^[\d\s\+\-\(\)]{10,20}$/;
+        if(!phoneRegex.test(phone)){alert("Please enter a valid phone number.");return;}
+        localStorage.setItem('mambaPlayer',JSON.stringify({name,phone}));
+        savedName=name; savedPhone=phone; resetGame();
+    }
+
+    function startWithSavedDetails(){if(savedName && savedPhone) resetGame();}
+    function changePlayer(){localStorage.removeItem('mambaPlayer'); savedName=''; savedPhone=''; if(gameLoopInterval) clearInterval(gameLoopInterval); if(timerInterval) clearInterval(timerInterval); gameActive=false; gameOverFlag=false; showInputForm();}
+
+    if(savedName && savedPhone){showStartButton(); savedStartBtn.addEventListener('click',startWithSavedDetails);} else showInputForm();
+    const changePlayerBtn=document.getElementById('changePlayerBtn');
+    if(changePlayerBtn) changePlayerBtn.addEventListener('click',changePlayer);
+
+    // Keyboard controls
+    window.addEventListener('keydown',(e)=>{if(!gameActive) return; const key=e.key; if(key.startsWith('Arrow')||['w','W','a','A','s','S','d','D'].includes(key)) e.preventDefault(); switch(key){case 'ArrowUp': case 'w': case 'W': if(direction.y===0) nextDirection={x:0,y:-1}; break; case 'ArrowDown': case 's': case 'S': if(direction.y===0) nextDirection={x:0,y:1}; break; case 'ArrowLeft': case 'a': case 'A': if(direction.x===0) nextDirection={x:-1,y:0}; break; case 'ArrowRight': case 'd': case 'D': if(direction.x===0) nextDirection={x:1,y:0}; break;}});
+
+    // Touch controls
+    canvas.addEventListener('touchstart',e=>{const t=e.touches[0];touchStartX=t.clientX;touchStartY=t.clientY;});
+    canvas.addEventListener('touchend',e=>{const t=e.changedTouches[0]; const dx=t.clientX-touchStartX; const dy=t.clientY-touchStartY; if(Math.abs(dx)<MIN_SWIPE_DISTANCE && Math.abs(dy)<MIN_SWIPE_DISTANCE) return; if(Math.abs(dx)>Math.abs(dy)){if(dx>0 && direction.x===0) nextDirection={x:1,y:0}; else if(dx<0 && direction.x===0) nextDirection={x:-1,y:0};}else{if(dy>0 && direction.y===0) nextDirection={x:0,y:1}; else if(dy<0 && direction.y===0) nextDirection={x:0,y:-1};}});
+}
+
+// Leaderboard functions
+async function updateScore(name, phone, score) {
+    try {
+        const response = await fetch('https://api.formizee.com/v1/f/enp_4G9vqbcbx5YbWediE7zUTDCECAKJ', {
+            method: 'POST',
+            body: new FormData(Object.entries({
+                name: name,
+                phone: phone,
+                score: score,
+                game: 'mamba_chase',
+                timestamp: new Date().toISOString()
+            }).reduce((formData, [key, value]) => {
+                formData.append(key, value);
+                return formData;
+            }, new FormData()))
+        });
+        return response;
+    } catch (error) {
+        console.error('Error updating score:', error);
+    }
+}
+
+async function fetchAndRenderLeaderboard() {
+    try {
+        const response = await fetch('https://api.formizee.com/v1/f/enp_4G9vqbcbx5YbWediE7zUTDCECAKJ/data');
+        if (response.ok) {
+            const data = await response.json();
+            const leaderboardList = document.getElementById('leaderboardList');
+            if (leaderboardList && data && data.length > 0) {
+                const sortedData = data.sort((a, b) => parseInt(b.score) - parseInt(a.score)).slice(0, 5);
+                leaderboardList.innerHTML = sortedData.map((entry, index) => `
+                    <div class="leaderboard-entry">
+                        <span class="rank">#${index + 1}</span>
+                        <span class="name">${entry.name}</span>
+                        <span class="score">${entry.score}</span>
+                    </div>
+                `).join('');
+            }
+        }
+    } catch (error) {
+        console.error('Error fetching leaderboard:', error);
+    }
+}
+
+// Initialize leaderboard
+fetchAndRenderLeaderboard();
+setInterval(fetchAndRenderLeaderboard, 5000);
+
 // ==================== SCROLL ANIMATIONS ====================
 const floatElements = document.querySelectorAll('.float-up');
 if (floatElements.length && 'IntersectionObserver' in window) {
