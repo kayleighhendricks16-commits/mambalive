@@ -480,11 +480,13 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(msg)}`, '_blank');
     });
 
-    // Only show chatbot once per session
+    // Show chatbot twice (first and second visit), hide on third+
     setTimeout(() => { 
-        if (!sessionStorage.getItem('chatbotShown')) {
+        let chatbotCount = parseInt(sessionStorage.getItem('chatbotCount') || '0');
+        if (chatbotCount < 2) {
             showChatbot(); 
             initChat(); 
+            sessionStorage.setItem('chatbotCount', (chatbotCount + 1).toString());
         }
     }, 7500);
 });
