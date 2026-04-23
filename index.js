@@ -483,230 +483,72 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => { showChatbot(); initChat(); }, 7500);
 });
 
-// Cookie consent - GitHub Pages compatible version
+// Cookie consent - GitHub Pages compatible version with global functions
+// Global functions for inline onclick handlers
+window.cookieAcceptAll = function() {
+    console.log('Accept All clicked via global function');
+    localStorage.setItem('cookiesAccepted', 'all'); 
+    localStorage.setItem('analyticsCookies', 'true'); 
+    localStorage.setItem('marketingCookies', 'true'); 
+    const overlay = document.getElementById('cookieConsentOverlay');
+    if (overlay) overlay.classList.remove('active'); 
+};
+
+window.cookieCustomize = function() {
+    console.log('Customize clicked via global function');
+    const modal = document.getElementById('cookieSettingsModal');
+    if (modal) modal.classList.add('active'); 
+};
+
+window.cookieDecline = function() {
+    console.log('Decline clicked via global function');
+    localStorage.setItem('cookiesAccepted', 'none'); 
+    const overlay = document.getElementById('cookieConsentOverlay');
+    if (overlay) overlay.classList.remove('active'); 
+};
+
+window.cookieCloseSettings = function() {
+    console.log('Settings close clicked via global function');
+    const modal = document.getElementById('cookieSettingsModal');
+    if (modal) modal.classList.remove('active'); 
+};
+
+window.cookieSaveSettings = function() {
+    console.log('Save Settings clicked via global function');
+    const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
+    const marketing = document.getElementById('marketingCookies')?.checked ?? true;
+    localStorage.setItem('cookiesAccepted', 'custom');
+    localStorage.setItem('analyticsCookies', analytics);
+    localStorage.setItem('marketingCookies', marketing);
+    const settingsModal = document.getElementById('cookieSettingsModal');
+    const overlay = document.getElementById('cookieConsentOverlay');
+    if (settingsModal) settingsModal.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+};
+
+window.cookieAcceptAllSettings = function() {
+    console.log('Accept All Settings clicked via global function');
+    localStorage.setItem('cookiesAccepted', 'all');
+    localStorage.setItem('analyticsCookies', 'true');
+    localStorage.setItem('marketingCookies', 'true');
+    const settingsModal = document.getElementById('cookieSettingsModal');
+    const overlay = document.getElementById('cookieConsentOverlay');
+    if (settingsModal) settingsModal.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+};
+
+// Initialize cookie consent popup
 function initCookieConsent() {
-    console.log('Initializing cookie consent for GitHub Pages...');
+    console.log('Initializing cookie consent popup...');
     
-    // Check if we're on GitHub Pages
-    const isGitHubPages = window.location.hostname.includes('github.io');
-    console.log('Running on GitHub Pages:', isGitHubPages);
-    
-    const cookieConsentOverlay = document.getElementById('cookieConsentOverlay');
-    const cookieAcceptAll = document.getElementById('cookieAcceptAll');
-    const cookieCustomize = document.getElementById('cookieCustomize');
-    const cookieDecline = document.getElementById('cookieDecline');
-    const cookieSettingsModal = document.getElementById('cookieSettingsModal');
-    const cookieSettingsClose = document.getElementById('cookieSettingsClose');
-    const cookieSaveSettings = document.getElementById('cookieSaveSettings');
-    const cookieAcceptAllSettings = document.querySelector('.cookie-accept-all-settings');
-
-    console.log('Cookie consent elements found:', {
-        cookieConsentOverlay: !!cookieConsentOverlay,
-        cookieAcceptAll: !!cookieAcceptAll,
-        cookieCustomize: !!cookieCustomize,
-        cookieDecline: !!cookieDecline,
-        cookieSettingsModal: !!cookieSettingsModal,
-        cookieSettingsClose: !!cookieSettingsClose,
-        cookieSaveSettings: !!cookieSaveSettings,
-        cookieAcceptAllSettings: !!cookieAcceptAllSettings
-    });
-
-    // Function to handle cookie actions
-    function handleCookieAction(action) {
-        console.log('Cookie action:', action);
-        
-        switch(action) {
-            case 'acceptAll':
-                localStorage.setItem('cookiesAccepted', 'all'); 
-                localStorage.setItem('analyticsCookies', 'true'); 
-                localStorage.setItem('marketingCookies', 'true'); 
-                if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
-                break;
-            case 'customize':
-                if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); 
-                break;
-            case 'decline':
-                localStorage.setItem('cookiesAccepted', 'none'); 
-                if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
-                break;
-            case 'closeSettings':
-                if (cookieSettingsModal) cookieSettingsModal.classList.remove('active'); 
-                break;
-            case 'saveSettings':
-                const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
-                const marketing = document.getElementById('marketingCookies')?.checked ?? true;
-                localStorage.setItem('cookiesAccepted', 'custom');
-                localStorage.setItem('analyticsCookies', analytics);
-                localStorage.setItem('marketingCookies', marketing);
-                if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
-                if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
-                break;
-            case 'acceptAllSettings':
-                localStorage.setItem('cookiesAccepted', 'all');
-                localStorage.setItem('analyticsCookies', 'true');
-                localStorage.setItem('marketingCookies', 'true');
-                if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
-                if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
-                break;
-        }
-    }
-
-    // Method 1: Direct event listeners
-    function attachDirectListeners() {
-        console.log('Attaching direct event listeners...');
-        
-        if (cookieAcceptAll) {
-            cookieAcceptAll.onclick = function(e) {
-                console.log('Accept All clicked via onclick');
-                if (e) e.preventDefault();
-                handleCookieAction('acceptAll');
-            };
-        }
-
-        if (cookieCustomize) {
-            cookieCustomize.onclick = function(e) {
-                console.log('Customize clicked via onclick');
-                if (e) e.preventDefault();
-                handleCookieAction('customize');
-            };
-        }
-
-        if (cookieDecline) {
-            cookieDecline.onclick = function(e) {
-                console.log('Decline clicked via onclick');
-                if (e) e.preventDefault();
-                handleCookieAction('decline');
-            };
-        }
-
-        if (cookieSettingsClose) {
-            cookieSettingsClose.onclick = function(e) {
-                console.log('Settings close clicked via onclick');
-                if (e) e.preventDefault();
-                handleCookieAction('closeSettings');
-            };
-        }
-
-        if (cookieSaveSettings) {
-            cookieSaveSettings.onclick = function(e) {
-                console.log('Save Settings clicked via onclick');
-                if (e) e.preventDefault();
-                handleCookieAction('saveSettings');
-            };
-        }
-
-        if (cookieAcceptAllSettings) {
-            cookieAcceptAllSettings.onclick = function(e) {
-                console.log('Accept All Settings clicked via onclick');
-                if (e) e.preventDefault();
-                handleCookieAction('acceptAllSettings');
-            };
-        }
-    }
-
-    // Method 2: Event delegation
-    function attachEventDelegation() {
-        console.log('Attaching event delegation...');
-        
-        document.addEventListener('click', function(e) {
-            const target = e.target;
-            
-            if (target && target.id === 'cookieAcceptAll') {
-                console.log('Accept All clicked via delegation');
-                e.preventDefault();
-                e.stopPropagation();
-                handleCookieAction('acceptAll');
-                return;
-            }
-
-            if (target && target.id === 'cookieCustomize') {
-                console.log('Customize clicked via delegation');
-                e.preventDefault();
-                e.stopPropagation();
-                handleCookieAction('customize');
-                return;
-            }
-
-            if (target && target.id === 'cookieDecline') {
-                console.log('Decline clicked via delegation');
-                e.preventDefault();
-                e.stopPropagation();
-                handleCookieAction('decline');
-                return;
-            }
-
-            if (target && target.id === 'cookieSettingsClose') {
-                console.log('Settings close clicked via delegation');
-                e.preventDefault();
-                e.stopPropagation();
-                handleCookieAction('closeSettings');
-                return;
-            }
-
-            if (target && target.id === 'cookieSaveSettings') {
-                console.log('Save Settings clicked via delegation');
-                e.preventDefault();
-                e.stopPropagation();
-                handleCookieAction('saveSettings');
-                return;
-            }
-
-            if (target && target.classList.contains('cookie-accept-all-settings')) {
-                console.log('Accept All Settings clicked via delegation');
-                e.preventDefault();
-                e.stopPropagation();
-                handleCookieAction('acceptAllSettings');
-                return;
-            }
-        });
-    }
-
-    // Method 3: GitHub Pages specific approach
-    function attachGitHubPagesListeners() {
-        console.log('Attaching GitHub Pages specific listeners...');
-        
-        // Use setTimeout to ensure DOM is fully ready
-        setTimeout(function() {
-            const buttons = document.querySelectorAll('.cookie-btn');
-            console.log('Found cookie buttons:', buttons.length);
-            
-            buttons.forEach((button, index) => {
-                console.log(`Button ${index}:`, button.id, button.className);
-                
-                // Multiple attachment methods for maximum compatibility
-                button.onclick = function(e) {
-                    console.log('Button clicked via onclick:', button.id);
-                    if (e) e.preventDefault();
-                    
-                    if (button.id === 'cookieAcceptAll') handleCookieAction('acceptAll');
-                    else if (button.id === 'cookieCustomize') handleCookieAction('customize');
-                    else if (button.id === 'cookieDecline') handleCookieAction('decline');
-                };
-                
-                button.addEventListener('click', function(e) {
-                    console.log('Button clicked via addEventListener:', button.id);
-                    if (e) e.preventDefault();
-                    
-                    if (button.id === 'cookieAcceptAll') handleCookieAction('acceptAll');
-                    else if (button.id === 'cookieCustomize') handleCookieAction('customize');
-                    else if (button.id === 'cookieDecline') handleCookieAction('decline');
-                });
-            });
-        }, 100);
-    }
-
-    // Initialize all methods
-    attachDirectListeners();
-    attachEventDelegation();
-    if (isGitHubPages) {
-        attachGitHubPagesListeners();
-    }
-
     // Show cookie consent popup
     setTimeout(() => { 
-        if (!localStorage.getItem('cookiesAccepted') && cookieConsentOverlay) {
-            cookieConsentOverlay.classList.add('active');
-            console.log('Cookie consent popup shown');
+        if (!localStorage.getItem('cookiesAccepted')) {
+            const overlay = document.getElementById('cookieConsentOverlay');
+            if (overlay) {
+                overlay.classList.add('active');
+                console.log('Cookie consent popup shown');
+            }
         }
     }, 2000);
 }

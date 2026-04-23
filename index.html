@@ -672,14 +672,14 @@
                 <p class="cookie-policy-link">For more information, see our <a href="cookie-policy.html">Cookie Policy</a>.</p>
             </div>
             <div class="cookie-consent-buttons">
-                <button class="cookie-btn cookie-accept-all" id="cookieAcceptAll">Accept All</button>
-                <button class="cookie-btn cookie-customize" id="cookieCustomize">Customize Settings</button>
-                <button class="cookie-btn cookie-decline" id="cookieDecline">Decline</button>
+                <button class="cookie-btn cookie-accept-all" id="cookieAcceptAll" onclick="window.cookieAcceptAll()">Accept All</button>
+                <button class="cookie-btn cookie-customize" id="cookieCustomize" onclick="window.cookieCustomize()">Customize Settings</button>
+                <button class="cookie-btn cookie-decline" id="cookieDecline" onclick="window.cookieDecline()">Decline</button>
             </div>
         </div>
         <div class="cookie-settings-modal" id="cookieSettingsModal">
             <div class="cookie-settings-content">
-                <button class="cookie-settings-close" id="cookieSettingsClose">×</button>
+                <button class="cookie-settings-close" id="cookieSettingsClose" onclick="window.cookieCloseSettings()">×</button>
                 <h3>Cookie Settings</h3>
                 <p>You can set your cookie preferences below. We use cookies to provide basic site functionality and to improve your experience.</p>
                 <div class="cookie-category">
@@ -700,8 +700,8 @@
                     </div>
                 </div>
                 <div class="cookie-settings-buttons">
-                    <button class="cookie-btn cookie-save" id="cookieSaveSettings">Save Settings</button>
-                    <button class="cookie-btn cookie-accept-all-settings">Accept All</button>
+                    <button class="cookie-btn cookie-save" id="cookieSaveSettings" onclick="window.cookieSaveSettings()">Save Settings</button>
+                    <button class="cookie-btn cookie-accept-all-settings" onclick="window.cookieAcceptAllSettings()">Accept All</button>
                 </div>
             </div>
         </div>
