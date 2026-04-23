@@ -825,67 +825,9 @@ try {
     // Keyboard controls
     window.addEventListener('keydown',(e)=>{if(!gameActive) return; const key=e.key; if(key.startsWith('Arrow')||['w','W','a','A','s','S','d','D'].includes(key)) e.preventDefault(); switch(key){case 'ArrowUp': case 'w': case 'W': if(direction.y===0) nextDirection={x:0,y:-1}; break; case 'ArrowDown': case 's': case 'S': if(direction.y===0) nextDirection={x:0,y:1}; break; case 'ArrowLeft': case 'a': case 'A': if(direction.x===0) nextDirection={x:-1,y:0}; break; case 'ArrowRight': case 'd': case 'D': if(direction.x===0) nextDirection={x:1,y:0}; break;}});
 
-    // Touch controls - simplified mobile approach
-    console.log('Setting up touch controls...');
-    
-    canvas.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        if (touch) {
-            touchStartX = touch.clientX;
-            touchStartY = touch.clientY;
-            console.log('Touch start at:', touchStartX, touchStartY);
-        }
-    });
-    
-    canvas.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        const touch = e.changedTouches[0];
-        if (touch) {
-            const touchEndX = touch.clientX;
-            const touchEndY = touch.clientY;
-            const dx = touchEndX - touchStartX;
-            const dy = touchEndY - touchStartY;
-            
-            console.log('Touch end - dx:', dx, 'dy:', dy);
-            
-            // Simple swipe detection
-            if (Math.abs(dx) > 30) {
-                if (dx > 0) {
-                    nextDirection = {x:1,y:0};
-                    console.log('Swipe right');
-                } else {
-                    nextDirection = {x:-1,y:0};
-                    console.log('Swipe left');
-                }
-            } else if (Math.abs(dy) > 30) {
-                if (dy > 0) {
-                    nextDirection = {x:0,y:1};
-                    console.log('Swipe down');
-                } else {
-                    nextDirection = {x:0,y:-1};
-                    console.log('Swipe up');
-                }
-            }
-        }
-    });
-    
-    // Also add keyboard controls as backup
-    document.addEventListener('keydown', function(e) {
-        if (!gameActive) return;
-        const key = e.key;
-        console.log('Key pressed:', key);
-        
-        if (key === 'ArrowUp' || key === 'w' || key === 'W') {
-            if (direction.y === 0) nextDirection = {x:0,y:-1};
-        } else if (key === 'ArrowDown' || key === 's' || key === 'S') {
-            if (direction.y === 0) nextDirection = {x:0,y:1};
-        } else if (key === 'ArrowLeft' || key === 'a' || key === 'A') {
-            if (direction.x === 0) nextDirection = {x:-1,y:0};
-        } else if (key === 'ArrowRight' || key === 'd' || key === 'D') {
-            if (direction.x === 0) nextDirection = {x:1,y:0};
-        }
-    });
+    // Touch controls - simple working version from backup
+    canvas.addEventListener('touchstart',e=>{const t=e.touches[0];touchStartX=t.clientX;touchStartY=t.clientY;});
+    canvas.addEventListener('touchend',e=>{const t=e.changedTouches[0]; const dx=t.clientX-touchStartX; const dy=t.clientY-touchStartY; if(Math.abs(dx)<MIN_SWIPE_DISTANCE && Math.abs(dy)<MIN_SWIPE_DISTANCE) return; if(Math.abs(dx)>Math.abs(dy)){if(dx>0 && direction.x===0) nextDirection={x:1,y:0}; else if(dx<0 && direction.x===0) nextDirection={x:-1,y:0};}else{if(dy>0 && direction.y===0) nextDirection={x:0,y:1}; else if(dy<0 && direction.y===0) nextDirection={x:0,y:-1};}});
     }
 } catch (error) {
     console.error('Snake game initialization error:', error);
