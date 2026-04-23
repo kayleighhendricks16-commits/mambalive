@@ -1979,10 +1979,10 @@ input:checked + .slider:before { transform: translateX(26px); }
     .footer-links { flex-direction: column; gap: 8px; }
     .security-features { grid-template-columns: 1fr; }
 
-    /* Game section - full height and centered */
+    /* Game section - reduce bottom padding to close gap with FAQ */
     .snake-game-section {
-        padding: 20px 0 250px 0;
-        min-height: 100vh;
+        padding: 20px 0 40px 0;
+        min-height: auto;
         height: auto;
         overflow: visible;
         display: flex;
@@ -2319,6 +2319,14 @@ body.menu-open {
         font-size: 0.8rem;
         margin-bottom: 3px;
         padding-left: 14px;
+    }
+    
+    /* Reduce gap between How to Play and FAQ on mobile */
+    .faq-section {
+        padding: 30px 0 40px 0;
+    }
+    .faq-section h2 {
+        margin-bottom: 20px;
     }
 }
 
