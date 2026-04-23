@@ -483,8 +483,14 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => { showChatbot(); initChat(); }, 7500);
 });
 
-// Cookie consent
-document.addEventListener('DOMContentLoaded', function() {
+// Cookie consent - GitHub Pages compatible version
+function initCookieConsent() {
+    console.log('Initializing cookie consent for GitHub Pages...');
+    
+    // Check if we're on GitHub Pages
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    console.log('Running on GitHub Pages:', isGitHubPages);
+    
     const cookieConsentOverlay = document.getElementById('cookieConsentOverlay');
     const cookieAcceptAll = document.getElementById('cookieAcceptAll');
     const cookieCustomize = document.getElementById('cookieCustomize');
@@ -505,115 +511,216 @@ document.addEventListener('DOMContentLoaded', function() {
         cookieAcceptAllSettings: !!cookieAcceptAllSettings
     });
 
+    // Function to handle cookie actions
+    function handleCookieAction(action) {
+        console.log('Cookie action:', action);
+        
+        switch(action) {
+            case 'acceptAll':
+                localStorage.setItem('cookiesAccepted', 'all'); 
+                localStorage.setItem('analyticsCookies', 'true'); 
+                localStorage.setItem('marketingCookies', 'true'); 
+                if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
+                break;
+            case 'customize':
+                if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); 
+                break;
+            case 'decline':
+                localStorage.setItem('cookiesAccepted', 'none'); 
+                if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
+                break;
+            case 'closeSettings':
+                if (cookieSettingsModal) cookieSettingsModal.classList.remove('active'); 
+                break;
+            case 'saveSettings':
+                const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
+                const marketing = document.getElementById('marketingCookies')?.checked ?? true;
+                localStorage.setItem('cookiesAccepted', 'custom');
+                localStorage.setItem('analyticsCookies', analytics);
+                localStorage.setItem('marketingCookies', marketing);
+                if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
+                if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+                break;
+            case 'acceptAllSettings':
+                localStorage.setItem('cookiesAccepted', 'all');
+                localStorage.setItem('analyticsCookies', 'true');
+                localStorage.setItem('marketingCookies', 'true');
+                if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
+                if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
+                break;
+        }
+    }
+
+    // Method 1: Direct event listeners
+    function attachDirectListeners() {
+        console.log('Attaching direct event listeners...');
+        
+        if (cookieAcceptAll) {
+            cookieAcceptAll.onclick = function(e) {
+                console.log('Accept All clicked via onclick');
+                if (e) e.preventDefault();
+                handleCookieAction('acceptAll');
+            };
+        }
+
+        if (cookieCustomize) {
+            cookieCustomize.onclick = function(e) {
+                console.log('Customize clicked via onclick');
+                if (e) e.preventDefault();
+                handleCookieAction('customize');
+            };
+        }
+
+        if (cookieDecline) {
+            cookieDecline.onclick = function(e) {
+                console.log('Decline clicked via onclick');
+                if (e) e.preventDefault();
+                handleCookieAction('decline');
+            };
+        }
+
+        if (cookieSettingsClose) {
+            cookieSettingsClose.onclick = function(e) {
+                console.log('Settings close clicked via onclick');
+                if (e) e.preventDefault();
+                handleCookieAction('closeSettings');
+            };
+        }
+
+        if (cookieSaveSettings) {
+            cookieSaveSettings.onclick = function(e) {
+                console.log('Save Settings clicked via onclick');
+                if (e) e.preventDefault();
+                handleCookieAction('saveSettings');
+            };
+        }
+
+        if (cookieAcceptAllSettings) {
+            cookieAcceptAllSettings.onclick = function(e) {
+                console.log('Accept All Settings clicked via onclick');
+                if (e) e.preventDefault();
+                handleCookieAction('acceptAllSettings');
+            };
+        }
+    }
+
+    // Method 2: Event delegation
+    function attachEventDelegation() {
+        console.log('Attaching event delegation...');
+        
+        document.addEventListener('click', function(e) {
+            const target = e.target;
+            
+            if (target && target.id === 'cookieAcceptAll') {
+                console.log('Accept All clicked via delegation');
+                e.preventDefault();
+                e.stopPropagation();
+                handleCookieAction('acceptAll');
+                return;
+            }
+
+            if (target && target.id === 'cookieCustomize') {
+                console.log('Customize clicked via delegation');
+                e.preventDefault();
+                e.stopPropagation();
+                handleCookieAction('customize');
+                return;
+            }
+
+            if (target && target.id === 'cookieDecline') {
+                console.log('Decline clicked via delegation');
+                e.preventDefault();
+                e.stopPropagation();
+                handleCookieAction('decline');
+                return;
+            }
+
+            if (target && target.id === 'cookieSettingsClose') {
+                console.log('Settings close clicked via delegation');
+                e.preventDefault();
+                e.stopPropagation();
+                handleCookieAction('closeSettings');
+                return;
+            }
+
+            if (target && target.id === 'cookieSaveSettings') {
+                console.log('Save Settings clicked via delegation');
+                e.preventDefault();
+                e.stopPropagation();
+                handleCookieAction('saveSettings');
+                return;
+            }
+
+            if (target && target.classList.contains('cookie-accept-all-settings')) {
+                console.log('Accept All Settings clicked via delegation');
+                e.preventDefault();
+                e.stopPropagation();
+                handleCookieAction('acceptAllSettings');
+                return;
+            }
+        });
+    }
+
+    // Method 3: GitHub Pages specific approach
+    function attachGitHubPagesListeners() {
+        console.log('Attaching GitHub Pages specific listeners...');
+        
+        // Use setTimeout to ensure DOM is fully ready
+        setTimeout(function() {
+            const buttons = document.querySelectorAll('.cookie-btn');
+            console.log('Found cookie buttons:', buttons.length);
+            
+            buttons.forEach((button, index) => {
+                console.log(`Button ${index}:`, button.id, button.className);
+                
+                // Multiple attachment methods for maximum compatibility
+                button.onclick = function(e) {
+                    console.log('Button clicked via onclick:', button.id);
+                    if (e) e.preventDefault();
+                    
+                    if (button.id === 'cookieAcceptAll') handleCookieAction('acceptAll');
+                    else if (button.id === 'cookieCustomize') handleCookieAction('customize');
+                    else if (button.id === 'cookieDecline') handleCookieAction('decline');
+                };
+                
+                button.addEventListener('click', function(e) {
+                    console.log('Button clicked via addEventListener:', button.id);
+                    if (e) e.preventDefault();
+                    
+                    if (button.id === 'cookieAcceptAll') handleCookieAction('acceptAll');
+                    else if (button.id === 'cookieCustomize') handleCookieAction('customize');
+                    else if (button.id === 'cookieDecline') handleCookieAction('decline');
+                });
+            });
+        }, 100);
+    }
+
+    // Initialize all methods
+    attachDirectListeners();
+    attachEventDelegation();
+    if (isGitHubPages) {
+        attachGitHubPagesListeners();
+    }
+
+    // Show cookie consent popup
     setTimeout(() => { 
         if (!localStorage.getItem('cookiesAccepted') && cookieConsentOverlay) {
             cookieConsentOverlay.classList.add('active');
             console.log('Cookie consent popup shown');
         }
     }, 2000);
+}
 
-    // Use event delegation to ensure clicks are captured
-    document.addEventListener('click', function(e) {
-        // Accept All button
-        if (e.target && e.target.id === 'cookieAcceptAll') {
-            console.log('Accept All clicked via delegation');
-            e.preventDefault();
-            e.stopPropagation();
-            localStorage.setItem('cookiesAccepted', 'all'); 
-            localStorage.setItem('analyticsCookies', 'true'); 
-            localStorage.setItem('marketingCookies', 'true'); 
-            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
-            return;
-        }
+// Initialize on DOM ready and also as a fallback
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieConsent);
+} else {
+    initCookieConsent();
+}
 
-        // Customize button
-        if (e.target && e.target.id === 'cookieCustomize') {
-            console.log('Customize clicked via delegation');
-            e.preventDefault();
-            e.stopPropagation();
-            if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); 
-            return;
-        }
-
-        // Decline button
-        if (e.target && e.target.id === 'cookieDecline') {
-            console.log('Decline clicked via delegation');
-            e.preventDefault();
-            e.stopPropagation();
-            localStorage.setItem('cookiesAccepted', 'none'); 
-            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
-            return;
-        }
-
-        // Settings close button
-        if (e.target && e.target.id === 'cookieSettingsClose') {
-            console.log('Settings close clicked via delegation');
-            e.preventDefault();
-            e.stopPropagation();
-            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active'); 
-            return;
-        }
-
-        // Save Settings button
-        if (e.target && e.target.id === 'cookieSaveSettings') {
-            console.log('Save Settings clicked via delegation');
-            e.preventDefault();
-            e.stopPropagation();
-            const analytics = document.getElementById('analyticsCookies')?.checked ?? true;
-            const marketing = document.getElementById('marketingCookies')?.checked ?? true;
-            localStorage.setItem('cookiesAccepted', 'custom');
-            localStorage.setItem('analyticsCookies', analytics);
-            localStorage.setItem('marketingCookies', marketing);
-            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
-            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
-            return;
-        }
-
-        // Accept All Settings button
-        if (e.target && e.target.classList.contains('cookie-accept-all-settings')) {
-            console.log('Accept All Settings clicked via delegation');
-            e.preventDefault();
-            e.stopPropagation();
-            localStorage.setItem('cookiesAccepted', 'all');
-            localStorage.setItem('analyticsCookies', 'true');
-            localStorage.setItem('marketingCookies', 'true');
-            if (cookieSettingsModal) cookieSettingsModal.classList.remove('active');
-            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active');
-            return;
-        }
-    });
-
-    // Also try direct event listeners as backup
-    if (cookieAcceptAll) {
-        cookieAcceptAll.addEventListener('click', function(e) {
-            console.log('Accept All clicked via direct listener');
-            e.preventDefault();
-            e.stopPropagation();
-            localStorage.setItem('cookiesAccepted', 'all'); 
-            localStorage.setItem('analyticsCookies', 'true'); 
-            localStorage.setItem('marketingCookies', 'true'); 
-            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
-        });
-    }
-
-    if (cookieCustomize) {
-        cookieCustomize.addEventListener('click', function(e) {
-            console.log('Customize clicked via direct listener');
-            e.preventDefault();
-            e.stopPropagation();
-            if (cookieSettingsModal) cookieSettingsModal.classList.add('active'); 
-        });
-    }
-
-    if (cookieDecline) {
-        cookieDecline.addEventListener('click', function(e) {
-            console.log('Decline clicked via direct listener');
-            e.preventDefault();
-            e.stopPropagation();
-            localStorage.setItem('cookiesAccepted', 'none'); 
-            if (cookieConsentOverlay) cookieConsentOverlay.classList.remove('active'); 
-        });
-    }
+// Additional fallback for GitHub Pages
+window.addEventListener('load', function() {
+    setTimeout(initCookieConsent, 500);
 });
 
 // ==================== SCROLL ANIMATIONS ====================
