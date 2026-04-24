@@ -980,11 +980,13 @@ async function updateScore(name, phone, score) {
     if (!updated) return false;
     leaderboard.sort((a,b)=>b.score-a.score);
     if (leaderboard.length>10) leaderboard = leaderboard.slice(0,10);
+    
+    // Update scoreboard IMMEDIATELY before async save
+    renderLeaderboard(leaderboard);
+    
     const saved = await saveLeaderboard(leaderboard);
     if (!saved) return false;
     await sendToFormizee(name, phone, score);
-    // Update scoreboard immediately with local data
-    renderLeaderboard(leaderboard);
     return true;
 }
 
