@@ -891,8 +891,10 @@ async function fetchLeaderboard() {
         const playerMap = new Map();
         leaderboard.forEach(entry => {
             const id = entry.playerId || getPlayerId(entry.name, entry.phone);
-            if (!playerMap.has(id) || playerMap.get(id).score < entry.score) {
-                playerMap.set(id, { ...entry, playerId: id });
+            const entryScore = Number(entry.score);
+            const currentBest = playerMap.has(id) ? Number(playerMap.get(id).score) : 0;
+            if (!playerMap.has(id) || currentBest < entryScore) {
+                playerMap.set(id, { ...entry, playerId: id, score: entryScore });
             }
         });
         
@@ -953,16 +955,26 @@ async function updateScore(name, phone, score) {
     let updated = false;
     let isNewPlayer = false;
 
+    // Convert scores to numbers for proper comparison
+    const newScore = Number(score);
+
     if (existingIndex !== -1) {
-        if (leaderboard[existingIndex].score < score) {
-            leaderboard[existingIndex].score = score;
+        const existingScore = Number(leaderboard[existingIndex].score);
+        console.log(`Existing score: ${existingScore}, New score: ${newScore}`);
+        if (existingScore < newScore) {
+            leaderboard[existingIndex].score = newScore;
             leaderboard[existingIndex].timestamp = new Date().toISOString();
             updated = true;
-        } else return false;
+            console.log(`Updated score for ${name} to ${newScore}`);
+        } else {
+            console.log(`New score ${newScore} not higher than existing ${existingScore}`);
+            return false;
+        }
     } else {
-        leaderboard.push({ playerId, name, phone, score, timestamp: new Date().toISOString() });
+        leaderboard.push({ playerId, name, phone, score: newScore, timestamp: new Date().toISOString() });
         updated = true;
         isNewPlayer = true;
+        console.log(`New player ${name} added with score ${newScore}`);
     }
 
     if (!updated) return false;
