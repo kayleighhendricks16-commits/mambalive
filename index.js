@@ -948,9 +948,19 @@ async function sendToFormizee(name, phone, score) {
 
 // Update or insert player score
 async function updateScore(name, phone, score) {
-    if (!name || !phone || score === undefined) return false;
+    console.log('updateScore called:', { name, phone, score });
+    if (!name || !phone || score === undefined) {
+        console.log('Invalid params, returning false');
+        return false;
+    }
+    if (name === null) {
+        console.log('Name is null, returning false');
+        return false;
+    }
     let leaderboard = await fetchLeaderboard();
+    console.log('Current leaderboard:', leaderboard);
     const playerId = getPlayerId(name, phone);
+    console.log('Player ID:', playerId);
     const existingIndex = leaderboard.findIndex(p => p.playerId === playerId);
     let updated = false;
     let isNewPlayer = false;
@@ -971,7 +981,9 @@ async function updateScore(name, phone, score) {
             return false;
         }
     } else {
-        leaderboard.push({ playerId, name, phone, score: newScore, timestamp: new Date().toISOString() });
+        const newEntry = { playerId, name, phone, score: newScore, timestamp: new Date().toISOString() };
+        console.log('Adding new entry:', newEntry);
+        leaderboard.push(newEntry);
         updated = true;
         isNewPlayer = true;
         console.log(`New player ${name} added with score ${newScore}`);
@@ -992,27 +1004,36 @@ async function updateScore(name, phone, score) {
 
 // Render leaderboard with provided data
 function renderLeaderboard(leaderboard, containerId='leaderboardList') {
+    console.log('Rendering leaderboard:', leaderboard);
     const container = document.getElementById(containerId);
-    if (!container) return;
+    if (!container) {
+        console.error('Leaderboard container not found:', containerId);
+        return;
+    }
     try {
         if (!leaderboard || !leaderboard.length) {
+            console.log('No leaderboard data to render');
             container.innerHTML = '<div class="leaderboard-empty">No scores yet. Be the first!</div>';
             return;
         }
-        leaderboard.sort((a,b)=>b.score-a.score);
-        const top10 = leaderboard.slice(0,10);
+        const sorted = [...leaderboard].sort((a,b)=>Number(b.score)-Number(a.score));
+        const top10 = sorted.slice(0,10);
+        console.log('Rendering top 10:', top10);
         let html = '';
         top10.forEach((entry,idx)=>{
+            const safeName = entry.name ? escapeHtml(entry.name) : 'Unknown';
             html += `
                 <div class="leaderboard-item">
                     <span class="rank">${idx+1}</span>
-                    <span class="name">${escapeHtml(entry.name)}</span>
+                    <span class="name">${safeName}</span>
                     <span class="score">${entry.score}</span>
                 </div>
             `;
         });
         container.innerHTML = html;
+        console.log('Leaderboard rendered successfully');
     } catch (error) {
+        console.error('renderLeaderboard error:', error);
         container.innerHTML = '<div class="leaderboard-error">Unable to load leaderboard. Try again later.</div>';
     }
 }
