@@ -44,7 +44,10 @@ if (hamburger && mobileMenu) {
     });
 }
 
-document.getElementById('currentYear').textContent = new Date().getFullYear();
+const currentYearElement = document.getElementById('currentYear');
+if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+}
 
 // Trigger premium page-load animations
 window.addEventListener('load', () => {
@@ -65,6 +68,12 @@ if (heroSlides.length) {
             slide.classList.toggle('active', i === index);
             slide.style.opacity = i === index ? '1' : '0';
             slide.style.zIndex = i === index ? '2' : '0';
+            
+            // Lazy load slide background image
+            const slideBg = slide.querySelector('.slide-bg');
+            if (slideBg && i === index && slideBg.dataset.bg && (!slideBg.style.backgroundImage || slideBg.style.backgroundImage === 'none')) {
+                slideBg.style.backgroundImage = `url('${slideBg.dataset.bg}')`;
+            }
         });
         heroDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
         heroCurrentSlide = index;
@@ -138,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             repArea: "who covers",
             repContact: "Your dedicated sales consultant will contact you within 2 hours during business hours.",
             thankYou: "Thank you for choosing Mamba Security!",
-            bookAssessment: "Talk to our Sales coordinator",
+            bookAssessment: "Talk to our sales coordinator",
             startOver: "Start Over",
             typing: "Typing...",
             online: "Online",
@@ -164,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
             repArea: "ogcina",
             repContact: "Ummeli wakho wokuthengisa uzokuxhumana nawe kungaphelisane amahora angu-2 ngesikhathi sezimisele.",
             thankYou: "Ngiyabonga ngokukhetha uMamba Security!",
-            bookAssessment: "Xhumana noMmeli",
+            bookAssessment: "Xhumana no-coordinator wokuthengisa",
             startOver: "Qala Futhi",
             typing: "Uyachitha...",
             online: "Ukusebenza",
@@ -190,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
             repArea: "wat dek",
             repContact: "Jou toegewyde verkoopsverteenwoordiger sal binne 2 ure gedurende besigheidsure mit jou kontak maak.",
             thankYou: "Dankie dat jy Mamba Security gekies het!",
-            bookAssessment: "Praat met Verkoopsverteenwoordiger",
+            bookAssessment: "Praat met 'n sales koördinator",
             startOver: "Begin Oor",
             typing: "Tik...",
             online: "Aanlyn",
@@ -219,8 +228,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const bookAssessmentBtn = document.getElementById('bookAssessmentBtn');
     const restartChatBtn = document.getElementById('restartChatBtn');
     const langBtns = document.querySelectorAll('.lang-btn');
-    const chatbotNotification = document.getElementById('chatbotNotification');
-    let chatbotStatus = document.getElementById('chatbotStatus');
 
     function showChatbot() {
         if (!chatbotOverlay || chatbotShown) return;
@@ -228,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
         chatbotShown = true;
         sessionStorage.setItem('chatbotShown', 'true');
-        if (chatbotNotification) chatbotNotification.style.display = 'none';
+        // Notification element removed
     }
 
     function hideChatbot() {
@@ -269,13 +276,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showTyping() {
         typingIndicator.style.display = 'flex';
-        if (chatbotStatus) chatbotStatus.textContent = translations[currentLang].typing;
+        // Status element removed
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
 
     function hideTyping() {
         typingIndicator.style.display = 'none';
-        if (chatbotStatus) chatbotStatus.textContent = translations[currentLang].online;
+        // Status element removed
     }
 
     function botResponse(text, quickReplies = null, delay = 1000) {
@@ -342,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ` Location: ${userAnswers.location}\n` +
                 ` Service: ${userAnswers.serviceRequested}\n` +
                 ` Property: ${userAnswers.propertyType}.\n\n` +
-                ` A Sales coordinator will be in contact soon to assist`;
+                ` A sales coordinator will be in contact soon to assist.`;
             addMessage(summaryText);
             storeLeadData();
         }, 1000);
@@ -395,10 +402,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
             console.log('Sending to Formizee...');
+            
+            // Add timeout to prevent hanging
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+            
             const response = await fetch('https://api.formizee.com/v1/f/enp_4G9vqbcbx5YbWediE7zUTDCECAKJ', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    signal: controller.signal
                 });
+                
+            clearTimeout(timeoutId);
                 
                 console.log('Formizee response status:', response.status);
                 console.log('Formizee response ok:', response.ok);
@@ -769,6 +784,10 @@ try {
         gameOverFlag=true; gameActive=false;
         clearInterval(gameLoopInterval); clearInterval(timerInterval);
 
+        // Restore body scroll when game ends
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+
         if(score>0 && savedName && savedPhone){
             updateScore(savedName,savedPhone,score).catch(err=>console.error(err));
         }
@@ -809,9 +828,18 @@ try {
         food=generateFood()||{x:15,y:10};
         gameActive=true;
         updateStats(); draw();
-        overlayDiv.classList.add('hidden'); savedStartButtonDiv.style.display='none';
-        gameLoopInterval=setInterval(updateGame,BASE_SPEED);
-        timerInterval=setInterval(()=>{if(!gameActive) return; timeLeft--; updateStats(); if(timeLeft<=0){timeLeft=0; updateStats(); gameOver(false);}},1000);
+        
+        // Ensure overlay is properly hidden and game elements are visible
+        if(overlayDiv) overlayDiv.classList.add('hidden');
+        if(savedStartButtonDiv) savedStartButtonDiv.style.display='none';
+        
+        // Start game loops with a small delay to ensure proper initialization
+        setTimeout(() => {
+            if(gameActive) {
+                gameLoopInterval=setInterval(updateGame,BASE_SPEED);
+                timerInterval=setInterval(()=>{if(!gameActive) return; timeLeft--; updateStats(); if(timeLeft<=0){timeLeft=0; updateStats(); gameOver(false);}},1000);
+            }
+        }, 100);
     }
 
     function startWithNewDetails(){
@@ -822,11 +850,20 @@ try {
         const phoneRegex=/^[\d\s\+\-\(\)]{10,20}$/;
         if(!phoneRegex.test(phone)){alert("Please enter a valid phone number.");return;}
         localStorage.setItem('mambaPlayer',JSON.stringify({name,phone}));
-        savedName=name; savedPhone=phone; resetGame();
+        savedName=name; savedPhone=phone;
+        
+        // Send to Formizee only when player first signs up (not every game)
+        sendToFormizee(name, phone, 0).catch(err => console.log('Formizee signup failed:', err));
+        
+        resetGame();
     }
 
     function startWithSavedDetails(){if(savedName && savedPhone) resetGame();}
-    function changePlayer(){localStorage.removeItem('mambaPlayer'); savedName=''; savedPhone=''; if(gameLoopInterval) clearInterval(gameLoopInterval); if(timerInterval) clearInterval(timerInterval); gameActive=false; gameOverFlag=false; showInputForm();}
+    function changePlayer(){localStorage.removeItem('mambaPlayer'); savedName=''; savedPhone=''; if(gameLoopInterval) clearInterval(gameLoopInterval); if(timerInterval) clearInterval(timerInterval); gameActive=false; gameOverFlag=false; 
+        // Restore body scroll when changing player
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        showInputForm();}
 
     if(savedName && savedPhone){showStartButton(); savedStartBtn.addEventListener('click',startWithSavedDetails);} else showInputForm();
     const changePlayerBtn=document.getElementById('changePlayerBtn');
@@ -843,13 +880,40 @@ try {
     console.error('Snake game initialization error:', error);
 }
 
-// ==================== LEADERBOARD SYSTEM (JSONBin + Formizee) ====================
+// ==================== PLAY OUR GAME BUTTON (Simple scroll only) ====================
+(function() {
+    const playOurGameBtn = document.getElementById('playOurGameBtn');
+    
+    if(!playOurGameBtn) return;
+    
+    function handlePlayGame(e) {
+        e.preventDefault();
+        
+        // Simple scroll to game section - let the game handle itself
+        const gameSection = document.getElementById('snake-game');
+        if(gameSection) {
+            gameSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+    
+    // Support both click and touch for mobile
+    playOurGameBtn.addEventListener('click', handlePlayGame);
+    playOurGameBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        handlePlayGame(e);
+    }, { passive: false });
+})();
 
-// Configuration
-const JSONBIN_BIN_ID = '69c2e944c3097a1dd5577e7c';
-const JSONBIN_MASTER_KEY = '$2a$10$CnF8SgRpw0auXpU.ClZEXeu5paSFjD95FZ1m0MhOOE5hRUJuxxX4e';
-const JSONBIN_GET_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`;
-const JSONBIN_PUT_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+// ==================== LEADERBOARD SYSTEM (npoint.io + Formizee) ====================
+
+// Configuration - npoint.io (FREE alternative to JSONBin)
+// Bin URL: https://www.npoint.io/docs/b711e3e67b89f710c885
+const NPOINT_BIN_ID = 'b711e3e67b89f710c885';
+const NPOINT_GET_URL = `https://api.npoint.io/${NPOINT_BIN_ID}`;
+const NPOINT_PUT_URL = `https://api.npoint.io/${NPOINT_BIN_ID}`;
 const FORMIZEE_ENDPOINT = 'https://api.formizee.com/v1/f/enp_3NtcVMMF45eL2BnQVQkV1FYs7Dbz';
 
 // Helper: escape HTML to prevent XSS
@@ -868,24 +932,48 @@ function getPlayerId(name, phone) {
     return `${name.trim().toLowerCase()}_${phone.trim()}`;
 }
 
-// Fetch leaderboard from JSONBin
+// Fetch leaderboard from npoint.io (FREE)
 async function fetchLeaderboard() {
     try {
-        const response = await fetch(JSONBIN_GET_URL, {
-            headers: { 'X-Master-Key': JSONBIN_MASTER_KEY }
+        console.log('Fetching from npoint.io:', NPOINT_GET_URL);
+        
+        // Add timeout to prevent hanging
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+        
+        const response = await fetch(NPOINT_GET_URL, { 
+            signal: controller.signal,
+            headers: { 'Accept': 'application/json' }
         });
+        
+        clearTimeout(timeoutId);
+        
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
+        console.log('Raw response from npoint.io:', JSON.stringify(data, null, 2));
 
         let leaderboard = [];
-        if (data.record) {
-            if (Array.isArray(data.record)) leaderboard = data.record;
-            else if (Array.isArray(data.record.leaderboard)) leaderboard = data.record.leaderboard;
-        } else if (Array.isArray(data.leaderboard)) {
+        if (Array.isArray(data)) {
+            // Check if it's an array containing a leaderboard object
+            if (data.length > 0 && data[0].leaderboard && Array.isArray(data[0].leaderboard)) {
+                leaderboard = data[0].leaderboard;
+                console.log('Data is array with leaderboard object, using nested leaderboard');
+            } else {
+                leaderboard = data;
+                console.log('Data is a direct array, using directly');
+            }
+        } else if (data.leaderboard && Array.isArray(data.leaderboard)) {
             leaderboard = data.leaderboard;
-        } else if (Array.isArray(data)) {
-            leaderboard = data;
+            console.log('Data has leaderboard property, using that');
+        } else if (data.record && Array.isArray(data.record)) {
+            leaderboard = data.record;
+            console.log('Data has record property, using that');
+        } else {
+            console.log('Data structure unknown:', typeof data, data);
         }
+        
+        console.log('Extracted leaderboard:', leaderboard);
+        console.log('Leaderboard length:', leaderboard.length);
         
         // Deduplicate: keep only highest score per player
         const playerMap = new Map();
@@ -905,29 +993,41 @@ async function fetchLeaderboard() {
     }
 }
 
-// Save leaderboard to JSONBin
+// Save leaderboard to npoint.io (FREE) with localStorage backup
 async function saveLeaderboard(leaderboard) {
     try {
-        const response = await fetch(JSONBIN_PUT_URL, {
-            method: 'PUT',
+        // Always save to localStorage as backup
+        localStorage.setItem('mambaLeaderboard', JSON.stringify(leaderboard));
+        console.log('Leaderboard saved to localStorage backup');
+        
+        // npoint.io expects data in format: [{"leaderboard": [...]}]
+        const formattedData = [{ leaderboard: leaderboard }];
+        console.log('Saving formatted data to npoint.io:', formattedData);
+        
+        const response = await fetch(NPOINT_PUT_URL, {
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'X-Master-Key': JSONBIN_MASTER_KEY
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ leaderboard })
+            body: JSON.stringify(formattedData)
         });
-        if (!response.ok) throw new Error(`PUT failed: ${response.status}`);
-        console.log('Leaderboard saved to JSONBin');
+        if (!response.ok) throw new Error(`POST failed: ${response.status}`);
+        console.log('Leaderboard saved to npoint.io');
         return true;
     } catch (error) {
         console.error('saveLeaderboard error:', error);
-        return false;
+        // Still return true since localStorage backup worked
+        return true;
     }
 }
 
-// Backup to Formizee (only for new players)
+// Backup to Formizee (only called once when player signs up)
 async function sendToFormizee(name, phone, score) {
+    console.log('=== FORMIZEE DEBUG START ===');
+    console.log('sendToFormizee called for:', { name, phone, score });
+    
     try {
+        // Send to Formizee
         const formData = new FormData();
         formData.append('name', name);
         formData.append('phone', phone);
@@ -939,16 +1039,24 @@ async function sendToFormizee(name, phone, score) {
             body: formData,
             headers: { 'Accept': 'application/json' }
         });
-        if (response.ok) console.log('Backup sent to Formizee');
-        else console.warn('Formizee backup failed:', response.status);
+        
+        if (response.ok) {
+            console.log('Backup sent to Formizee for:', name);
+        } else {
+            console.warn('Formizee backup failed:', response.status);
+        }
     } catch (error) {
         console.error('sendToFormizee error:', error);
     }
+    
+    console.log('=== FORMIZEE DEBUG END ===');
 }
 
-// Update or insert player score
+// Update or insert player score (localStorage only) with debugging
 async function updateScore(name, phone, score) {
+    console.log('=== UPDATE SCORE DEBUG START ===');
     console.log('updateScore called:', { name, phone, score });
+    
     if (!name || !phone || score === undefined) {
         console.log('Invalid params, returning false');
         return false;
@@ -957,8 +1065,51 @@ async function updateScore(name, phone, score) {
         console.log('Name is null, returning false');
         return false;
     }
-    let leaderboard = await fetchLeaderboard();
-    console.log('Current leaderboard:', leaderboard);
+    
+    // First, try to fetch current leaderboard from npoint.io to prevent data loss
+    let leaderboard = [];
+    try {
+        const npointData = await fetchLeaderboard();
+        if (npointData && Array.isArray(npointData) && npointData.length > 0) {
+            leaderboard = npointData;
+            console.log('Using npoint.io data as base:', leaderboard);
+        }
+    } catch (e) {
+        console.log('Error fetching from npoint.io:', e);
+    }
+    
+    // Then merge with localStorage data (localStorage takes precedence for recent changes)
+    try {
+        const localData = localStorage.getItem('mambaLeaderboard');
+        console.log('Raw localStorage data:', localData);
+        if (localData) {
+            const localLeaderboard = JSON.parse(localData);
+            console.log('Parsed localStorage leaderboard:', localLeaderboard);
+            
+            // Merge: use npoint data as base, add/overwrite with localStorage entries
+            const merged = [...leaderboard];
+            localLeaderboard.forEach(localEntry => {
+                const existingIndex = merged.findIndex(e => e.playerId === localEntry.playerId);
+                if (existingIndex !== -1) {
+                    merged[existingIndex] = localEntry; // Use localStorage version (more recent)
+                } else {
+                    merged.push(localEntry); // Add new entry from localStorage
+                }
+            });
+            leaderboard = merged;
+            console.log('Merged leaderboard:', leaderboard);
+        }
+    } catch (e) {
+        console.log('Error reading localStorage:', e);
+    }
+    
+    // If still empty, start fresh
+    if (!leaderboard || leaderboard.length === 0) {
+        console.log('No data from npoint.io or localStorage, creating new array');
+        leaderboard = [];
+    }
+    
+    console.log('Current leaderboard length:', leaderboard.length);
     const playerId = getPlayerId(name, phone);
     console.log('Player ID:', playerId);
     const existingIndex = leaderboard.findIndex(p => p.playerId === playerId);
@@ -967,7 +1118,12 @@ async function updateScore(name, phone, score) {
 
     // Convert scores to numbers for proper comparison
     const newScore = Number(score);
+    console.log('New score to add:', newScore);
 
+    // Check if this is a real player (not hardcoded)
+    const isHardcodedPlayer = playerId.includes('hardcoded') || playerId.includes('sample');
+    console.log('Is hardcoded player:', isHardcodedPlayer);
+    
     if (existingIndex !== -1) {
         const existingScore = Number(leaderboard[existingIndex].score);
         console.log(`Existing score: ${existingScore}, New score: ${newScore}`);
@@ -989,38 +1145,80 @@ async function updateScore(name, phone, score) {
         console.log(`New player ${name} added with score ${newScore}`);
     }
 
-    if (!updated) return false;
-    leaderboard.sort((a,b)=>b.score-a.score);
-    if (leaderboard.length>10) leaderboard = leaderboard.slice(0,10);
-    
-    // Update scoreboard IMMEDIATELY before async save
-    renderLeaderboard(leaderboard);
-    
-    const saved = await saveLeaderboard(leaderboard);
-    if (!saved) return false;
-    await sendToFormizee(name, phone, score);
-    return true;
+    // Only update if this is a real player (not hardcoded)
+    if (!isHardcodedPlayer) {
+        if (!updated) {
+            console.log('No update made, returning false');
+            return false;
+        }
+        
+        leaderboard.sort((a,b)=>b.score-a.score);
+        if (leaderboard.length>10) leaderboard = leaderboard.slice(0,10);
+        
+        console.log('Final leaderboard before save:', leaderboard);
+        
+        // Save to localStorage with verification
+        try {
+            localStorage.setItem('mambaLeaderboard', JSON.stringify(leaderboard));
+            console.log('Saved to localStorage successfully');
+            
+            // Verify it was saved
+            const verifyData = localStorage.getItem('mambaLeaderboard');
+            console.log('Verification - data in localStorage:', verifyData);
+        } catch (e) {
+            console.error('Failed to save to localStorage:', e);
+            return false;
+        }
+        
+        // Update immediately
+        renderLeaderboard(leaderboard);
+        
+        // Save to npoint.io (async - don't wait)
+        saveLeaderboard(leaderboard).then(() => {
+            console.log('Saved to npoint.io successfully');
+        }).catch(err => {
+            console.log('npoint.io save failed (localStorage backup active):', err);
+        });
+        
+        console.log('=== UPDATE SCORE DEBUG END ===');
+        return true;
+    } else {
+        console.log('Skipping update for hardcoded player:', name);
+        return false;
+    }
 }
 
 // Render leaderboard with provided data
 function renderLeaderboard(leaderboard, containerId='leaderboardList') {
+    console.log('=== RENDER DEBUG START ===');
     console.log('Rendering leaderboard:', leaderboard);
+    console.log('Container ID:', containerId);
+    
     const container = document.getElementById(containerId);
+    console.log('Container found:', !!container);
+    console.log('Container element:', container);
+    
     if (!container) {
         console.error('Leaderboard container not found:', containerId);
         return;
     }
+    
     try {
         if (!leaderboard || !leaderboard.length) {
             console.log('No leaderboard data to render');
             container.innerHTML = '<div class="leaderboard-empty">No scores yet. Be the first!</div>';
+            console.log('Set empty message');
             return;
         }
+        
+        console.log('Leaderboard length:', leaderboard.length);
         const sorted = [...leaderboard].sort((a,b)=>Number(b.score)-Number(a.score));
         const top10 = sorted.slice(0,10);
         console.log('Rendering top 10:', top10);
         let html = '';
+        
         top10.forEach((entry,idx)=>{
+            console.log(`Processing entry ${idx}:`, entry);
             const safeName = entry.name ? escapeHtml(entry.name) : 'Unknown';
             html += `
                 <div class="leaderboard-item">
@@ -1030,21 +1228,339 @@ function renderLeaderboard(leaderboard, containerId='leaderboardList') {
                 </div>
             `;
         });
+        
+        console.log('Final HTML to set:', html);
         container.innerHTML = html;
         console.log('Leaderboard rendered successfully');
+        console.log('Container innerHTML after render:', container.innerHTML);
     } catch (error) {
         console.error('renderLeaderboard error:', error);
         container.innerHTML = '<div class="leaderboard-error">Unable to load leaderboard. Try again later.</div>';
     }
+    console.log('=== RENDER DEBUG END ===');
 }
 
-// Fetch and render leaderboard
+// Fetch and render leaderboard (npoint.io API + localStorage fallback)
 async function fetchAndRenderLeaderboard(containerId='leaderboardList') {
-    const leaderboard = await fetchLeaderboard();
+    console.log('=== LEADERBOARD DEBUG START ===');
+    
+    // Try npoint.io first
+    let leaderboard = await fetchLeaderboard();
+    console.log('Step 1 - Fetched from npoint.io:', leaderboard);
+    
+    // Fallback to localStorage if npoint.io fails or returns empty
+    if (!leaderboard || leaderboard.length === 0) {
+        console.log('Step 2 - npoint.io empty, checking localStorage');
+        try {
+            const localData = localStorage.getItem('mambaLeaderboard');
+            if (localData) {
+                leaderboard = JSON.parse(localData);
+                console.log('Step 3 - Loaded from localStorage:', leaderboard);
+            }
+        } catch (e) {
+            console.log('localStorage error:', e);
+        }
+    }
+    
+    // If still no data, use empty leaderboard
+    if (!leaderboard || leaderboard.length === 0) {
+        console.log('Step 4 - No data found, using empty leaderboard');
+        leaderboard = [];
+    }
+    
+    console.log('Step 5 - Final leaderboard to render:', leaderboard);
+    console.log('Step 6 - Container ID:', containerId);
+    
     renderLeaderboard(leaderboard, containerId);
+    console.log('=== LEADERBOARD DEBUG END ===');
 }
+// Only fetch leaderboard once when page loads
 fetchAndRenderLeaderboard();
-setInterval(fetchAndRenderLeaderboard,5000);
+
+// Manual test function - call from console to test leaderboard (localStorage only)
+window.testLeaderboard = async function() {
+    console.log('=== MANUAL LEADERBOARD TEST ===');
+    const testEntry = {
+        playerId: 'manual_test',
+        name: 'Manual Test',
+        phone: '5551234567',
+        score: 2500,
+        timestamp: new Date().toISOString()
+    };
+    
+    // Save directly to localStorage
+    try {
+        let leaderboard = JSON.parse(localStorage.getItem('mambaLeaderboard') || '[]');
+        leaderboard.push(testEntry);
+        localStorage.setItem('mambaLeaderboard', JSON.stringify(leaderboard));
+        console.log('Test saved to localStorage');
+        
+        // Render directly
+        renderLeaderboard(leaderboard);
+        console.log('=== MANUAL TEST END ===');
+    } catch (e) {
+        console.error('Manual test failed:', e);
+    }
+};
+
+console.log('Leaderboard test function available. Use testLeaderboard() in console');
+
+// Test the leaderboard fetch directly
+window.testFetch = async function() {
+    console.log('=== TESTING FETCH ===');
+    try {
+        const data = await fetchLeaderboard();
+        console.log('Fetch test result:', data);
+        console.log('Data length:', data ? data.length : 'null');
+        console.log('First entry:', data && data.length > 0 ? data[0] : 'none');
+    } catch (error) {
+        console.error('Fetch test failed:', error);
+    }
+};
+
+// Test score update logic for higher scores
+window.testScoreUpdate = async function() {
+    console.log('=== TESTING SCORE UPDATE LOGIC ===');
+    
+    const testPlayer = {
+        name: 'Test Player',
+        phone: '5551234567'
+    };
+    
+    try {
+        // First, add an initial score
+        console.log('1. Adding initial score of 100...');
+        const result1 = await updateScore(testPlayer.name, testPlayer.phone, 100);
+        console.log('Initial score result:', result1);
+        
+        // Wait a moment
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Try adding a lower score (should not update)
+        console.log('2. Trying lower score of 50 (should not update)...');
+        const result2 = await updateScore(testPlayer.name, testPlayer.phone, 50);
+        console.log('Lower score result:', result2);
+        
+        // Wait a moment
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Try adding a higher score (should update)
+        console.log('3. Trying higher score of 200 (should update)...');
+        const result3 = await updateScore(testPlayer.name, testPlayer.phone, 200);
+        console.log('Higher score result:', result3);
+        
+        // Check final leaderboard
+        console.log('4. Checking final leaderboard...');
+        await fetchAndRenderLeaderboard();
+        
+        console.log('=== SCORE UPDATE TEST COMPLETE ===');
+    } catch (error) {
+        console.error('Score update test failed:', error);
+    }
+};
+
+// Migration function to pull existing data from original npoint.io
+window.migrateLeaderboard = async function() {
+    console.log('=== MIGRATING LEADERBOARD DATA ===');
+        // Original npoint.io bin ID
+        const ORIGINAL_BIN_ID = 'b711e3e67b89f710c885';
+        const ORIGINAL_GET_URL = `https://api.npoint.io/${ORIGINAL_BIN_ID}`;
+        
+        try {
+            console.log('Fetching from npoint.io:', ORIGINAL_BIN_ID);
+            const response = await fetch(ORIGINAL_GET_URL);
+        
+        if (!response.ok) {
+            console.log('Failed to fetch from original bin:', response.status);
+            return false;
+        }
+        
+        const data = await response.json();
+        console.log('Original bin data:', data);
+        
+        let existingLeaderboard = [];
+        if (data.record) {
+            if (Array.isArray(data.record)) existingLeaderboard = data.record;
+            else if (Array.isArray(data.record.leaderboard)) existingLeaderboard = data.record.leaderboard;
+        } else if (Array.isArray(data.leaderboard)) {
+            existingLeaderboard = data.leaderboard;
+        } else if (Array.isArray(data)) {
+            existingLeaderboard = data;
+        }
+        
+        console.log('Extracted existing leaderboard:', existingLeaderboard);
+        
+        if (existingLeaderboard.length > 0) {
+            // Deduplicate and ensure valid playerId
+            const validEntries = existingLeaderboard.filter(entry => entry.name && entry.phone);
+            console.log('Valid entries:', validEntries.length);
+            
+            // Ensure all entries have playerId
+            validEntries.forEach(entry => {
+                if (!entry.playerId) {
+                    entry.playerId = getPlayerId(entry.name, entry.phone);
+                }
+            });
+            
+            // Merge with any existing localStorage data
+            let mergedData = [];
+            try {
+                const localData = localStorage.getItem('mambaLeaderboard');
+                if (localData) {
+                    const localLeaderboard = JSON.parse(localData);
+                    if (Array.isArray(localLeaderboard)) {
+                        mergedData = [...localLeaderboard];
+                    }
+                }
+            } catch (e) {
+                console.log('No existing localStorage data to merge');
+            }
+            
+            // Add valid entries from JSONBin
+            validEntries.forEach(entry => {
+                const existingIndex = mergedData.findIndex(p => p.playerId === entry.playerId);
+                if (existingIndex !== -1) {
+                    // Update if new score is higher
+                    if (Number(entry.score) > Number(mergedData[existingIndex].score)) {
+                        mergedData[existingIndex].score = entry.score;
+                        mergedData[existingIndex].timestamp = entry.timestamp || new Date().toISOString();
+                    }
+                } else {
+                    mergedData.push(entry);
+                }
+            });
+            
+            // Sort and limit
+            mergedData.sort((a, b) => Number(b.score) - Number(a.score));
+            if (mergedData.length > 10) mergedData = mergedData.slice(0, 10);
+            
+            // Save to localStorage
+            localStorage.setItem('mambaLeaderboard', JSON.stringify(mergedData));
+            console.log('Migrated', validEntries.length, 'entries to localStorage');
+            console.log('Total leaderboard entries:', mergedData.length);
+            
+            // Re-render
+            renderLeaderboard(mergedData);
+            console.log('Leaderboard updated with migrated data');
+            return true;
+        } else {
+            console.log('No existing data found in original bin');
+            return false;
+        }
+        
+    } catch (error) {
+        console.error('Migration failed:', error);
+        return false;
+    }
+};
+
+console.log('Migration function available. Use migrateLeaderboard() in console to import existing data');
+
+// Manual import function for JSONBin data (use when API is blocked)
+window.importLeaderboardData = function(jsonData) {
+    console.log('=== MANUAL IMPORT START ===');
+    try {
+        let data;
+        if (typeof jsonData === 'string') {
+            data = JSON.parse(jsonData);
+        } else {
+            data = jsonData;
+        }
+        
+        let leaderboard = [];
+        if (Array.isArray(data)) {
+            leaderboard = data;
+        } else if (data.record && Array.isArray(data.record)) {
+            leaderboard = data.record;
+        } else if (data.record && data.record.leaderboard) {
+            leaderboard = data.record.leaderboard;
+        } else if (data.leaderboard) {
+            leaderboard = data.leaderboard;
+        }
+        
+        console.log('Imported', leaderboard.length, 'entries');
+        
+        if (leaderboard.length > 0) {
+            // Ensure all entries have playerId
+            leaderboard.forEach(entry => {
+                if (!entry.playerId && entry.name && entry.phone) {
+                    entry.playerId = getPlayerId(entry.name, entry.phone);
+                }
+            });
+            
+            // Merge with existing local data
+            let existingData = [];
+            try {
+                const localData = localStorage.getItem('mambaLeaderboard');
+                if (localData) {
+                    existingData = JSON.parse(localData);
+                }
+            } catch (e) {
+                console.log('No existing data');
+            }
+            
+            // Add imported entries
+            leaderboard.forEach(entry => {
+                if (entry.playerId) {
+                    const existingIndex = existingData.findIndex(p => p.playerId === entry.playerId);
+                    if (existingIndex === -1) {
+                        existingData.push(entry);
+                    } else if (Number(entry.score) > Number(existingData[existingIndex].score)) {
+                        existingData[existingIndex].score = entry.score;
+                    }
+                }
+            });
+            
+            // Sort and save
+            existingData.sort((a, b) => Number(b.score) - Number(a.score));
+            if (existingData.length > 10) existingData = existingData.slice(0, 10);
+            
+            localStorage.setItem('mambaLeaderboard', JSON.stringify(existingData));
+            renderLeaderboard(existingData);
+            console.log('=== MANUAL IMPORT COMPLETE ===');
+            return true;
+        }
+    } catch (e) {
+        console.error('Import failed:', e);
+        return false;
+    }
+};
+
+// Complete leaderboard system fix
+window.fixLeaderboard = async function() {
+    console.log('=== COMPLETE LEADERBOARD FIX ===');
+    
+    // Clear any existing problematic data
+    localStorage.removeItem('mambaLeaderboard');
+    console.log('Cleared existing localStorage');
+    
+    // Fetch from npoint.io
+    const leaderboard = await fetchLeaderboard();
+    console.log('Fetched from npoint.io:', leaderboard);
+    
+    if (leaderboard && leaderboard.length > 0) {
+        localStorage.setItem('mambaLeaderboard', JSON.stringify(leaderboard));
+        renderLeaderboard(leaderboard);
+        console.log('Leaderboard loaded from npoint.io');
+    } else {
+        console.log('No data in npoint.io, leaderboard will be empty');
+        renderLeaderboard([]);
+    }
+    
+    // Removed forced page reload to prevent infinite refresh loop
+    
+    return true;
+};
+
+// Auto-fix on page load - simplified to prevent conflicts
+window.addEventListener('load', async () => {
+    console.log('Page loaded, initializing leaderboard...');
+    // Only initialize if we have the leaderboard container
+    const container = document.getElementById('leaderboardList');
+    if (container) {
+        fetchAndRenderLeaderboard();
+    }
+});
 
 // ==================== SCROLL ANIMATIONS ====================
 const floatElements = document.querySelectorAll('.float-up');
