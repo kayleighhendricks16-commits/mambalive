@@ -1136,6 +1136,8 @@ body.menu-open {
         display: flex;
         order: 1;
         z-index: 10002;
+        width: 35px;
+        height: 35px;
     }
     
     /* Mobile header text visible and positioned to the right */
@@ -1881,6 +1883,8 @@ body.menu-open {
         margin-right: 10px !important;
         order: 1 !important;
         z-index: 1003 !important;
+        width: 35px !important;
+        height: 35px !important;
     }
 
     /* Move logo – order 2 */
