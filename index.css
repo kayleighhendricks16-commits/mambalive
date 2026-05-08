@@ -1931,7 +1931,7 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-    .hamburger { display: flex; order: 1; z-index: 1002; }
+    .hamburger { display: flex; order: 1; z-index: 1002; width: 35px; height: 35px; }
     .logo { order: 2; margin-left: auto; margin-right: 20px; }
     .nav-menu-container { display: none; }
 
