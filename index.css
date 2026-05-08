@@ -560,6 +560,15 @@ body.popup-open {
 .mobile-menu.active {
     right: 0;
 }
+
+/* Hide game button when mobile menu is open */
+.mobile-menu.active ~ .game-float,
+.mobile-menu.active + .game-float,
+.game-float.mobile-menu-open {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
 .mobile-logo {
     padding: 25px 20px;
     text-align: center;

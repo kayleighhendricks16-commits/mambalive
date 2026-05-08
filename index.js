@@ -3,6 +3,7 @@ const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const body = document.body;
 const whatsappFloat = document.querySelector('.whatsapp-float');
+const gameFloat = document.querySelector('.game-float');
 
 if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', () => {
@@ -11,8 +12,10 @@ if (hamburger && mobileMenu) {
         hamburger.classList.toggle('active');
         if (mobileMenu.classList.contains('active')) {
             if (whatsappFloat) whatsappFloat.style.display = 'none';
+            if (gameFloat) gameFloat.style.display = 'none';
         } else {
             if (whatsappFloat) whatsappFloat.style.display = 'flex';
+            if (gameFloat) gameFloat.style.display = 'inline-flex';
         }
     });
 
@@ -22,6 +25,7 @@ if (hamburger && mobileMenu) {
             body.classList.remove('menu-open');
             hamburger.classList.remove('active');
             if (whatsappFloat) whatsappFloat.style.display = 'flex';
+            if (gameFloat) gameFloat.style.display = 'inline-flex';
         });
     });
 
@@ -31,6 +35,7 @@ if (hamburger && mobileMenu) {
             body.classList.remove('menu-open');
             hamburger.classList.remove('active');
             if (whatsappFloat) whatsappFloat.style.display = 'flex';
+            if (gameFloat) gameFloat.style.display = 'inline-flex';
         }
     });
 
@@ -40,6 +45,7 @@ if (hamburger && mobileMenu) {
             body.classList.remove('menu-open');
             hamburger.classList.remove('active');
             if (whatsappFloat) whatsappFloat.style.display = 'flex';
+            if (gameFloat) gameFloat.style.display = 'inline-flex';
         }
     });
 }
