@@ -1419,13 +1419,15 @@
         // Form submission
 
         document.getElementById('crimeSurveyForm').addEventListener('submit', async function(e) {
-
             e.preventDefault();
-
             
-
+            // Show loading state on button
+            const submitBtn = document.querySelector('.btn-submit, .btn-primary[type="submit"], .btn-large');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
             // Collect form data
-
             const formData = new FormData(this);
 
             const data = Object.fromEntries(formData.entries());
@@ -1470,14 +1472,16 @@
                     }, 1500);
 
                 } else {
-
                     console.warn('Form submission failed:', response.status);
-
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
                 }
 
             } catch (error) {
 
                 console.error('Error submitting form:', error);
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
 
             }
 
@@ -1557,9 +1561,7 @@
 
             
 
-            // Show thank you message
-
-            alert('Thank you for completing the security survey! Your responses help us better understand security needs in your community and improve our services.');
+            // Form submitted successfully, redirect will handle the thank you message
 
             
 
