@@ -41,6 +41,10 @@
 
     <!-- Canonical -->
     <link rel="canonical" href="https://www.mambasecurity.co.za/">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -291,7 +295,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Slide 3: RAPID ARMED RESPONSE (unchanged) -->
+                <!-- Slide 3: RAPID ARMED RESPONSE  -->
                 <div class="slide">
                     <div class="slide-bg" data-bg="hero2.avif" style="background-image: none;"></div>
                     <div class="slide-overlay"></div>
@@ -307,17 +311,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- Slide 4: ADVANCED SECURITY TECHNOLOGY (unchanged) -->
+                <!-- Slide 4: FIRE OPS SA -->
                 <div class="slide">
-                    <div class="slide-bg" data-bg="hero3.avif" style="background-image: none;"></div>
+                    <div class="slide-bg" data-bg="fireopshero.png" style="background-image: none;"></div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
                         <div class="hero-content-wrapper">
-                            <h2 class="hero-title">ADVANCED SECURITY TECHNOLOGY</h2>
-                            <p class="hero-subtitle">State-of-the-Art Security Solutions</p>
-                            <p class="hero-description">Mamba App, LPR Camera Network, CCTV systems, and professional installations for complete property protection.</p>
+                            <h2 class="hero-title">FIRE OPS SA</h2>
+                            <p class="hero-subtitle">Private Fire and Rescue Operations</p>
+                            <p class="hero-description">A professional team specialising in tactical firefighting, first-response structural firefighting, rescue operations, fire audits, risk analysis, and fire investigations.</p>
                             <div class="hero-buttons">
-                                <a href="technologies.html" class="btn btn-primary">Our Security Technologies</a>
+                                <a href="ar.html#fire-ops" class="btn btn-primary">Our Fire Services</a>
                                 <a href="contact.html" class="btn btn-secondary">Request A Quote</a>
                             </div>
                         </div>
@@ -453,7 +457,7 @@
         </div>
     </section>
 
-    
+
     <!-- ===== REFERRAL VOUCHER SECTION ===== -->
     <section class="referral-voucher-section">
         <div class="container">
@@ -506,13 +510,22 @@
             <h2 class="float-up">🐍 Mamba Chase – Catch the Bad Guy!</h2>
             <p class="float-up">Test your reflexes in our mini‑game. Use arrow keys (desktop) or swipe on the screen (mobile) to move the snake. Catch the robber to score and grow – but don't hit the walls or yourself!</p>
             <div class="game-container">
-                <div class="game-canvas-wrapper">
-                    <canvas id="snakeCanvas" width="400" height="400"></canvas>
-                    <div class="canvas-overlay" id="canvasOverlay">
-                        <div class="overlay-content" id="overlayContent"></div>
+                <div class="game-play-column">
+                    <div class="game-canvas-wrapper">
+                        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+                        <div class="canvas-overlay" id="canvasOverlay">
+                            <div class="overlay-content" id="overlayContent"></div>
+                        </div>
+                        <div class="start-game-saved" id="savedStartButton" style="display: none;">
+                            <button id="savedStartGameBtn" class="btn btn-primary">Play Game</button>
+                        </div>
                     </div>
-                    <div class="start-game-saved" id="savedStartButton" style="display: none;">
-                        <button id="savedStartGameBtn" class="btn btn-primary">Play Game</button>
+                    <div class="game-winner-block">
+                        <div class="game-winner-copy">
+                            <span>Latest Winner</span>
+                            <strong>Mamba Chase Champion</strong>
+                        </div>
+                        <img src="scooter.jpg" alt="Mamba Chase latest game winner" loading="lazy">
                     </div>
                 </div>
                 <div class="game-info-panel">
@@ -568,7 +581,7 @@
                         <img src="mslogo.avif" alt="Mamba Security Logo - Security Services" class="footer-logo-image">
                     </div>
                     <p>Your trusted security partner.</p>
-                    
+
                     <div class="social-media">
                         <h4>Follow Our Security Updates</h4>
                         <div class="social-icons">
@@ -582,7 +595,7 @@
                             <a href="https://www.linkedin.com/company/mamba-strike-force-pty-ltd/posts/?feedView=all" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    
+
                     <div class="tribe-footer">
                         <div class="tribe-badge">
                             <i class="fab fa-whatsapp"></i><span class="hash-white">#</span><span class="join-green">JOIN</span><span class="the-white">THE</span><span class="tribe-green">TRIBE</span>
@@ -629,27 +642,27 @@
             <div class="footer-bottom">
                 <p>&copy; <span id="currentYear"></span> Mamba Security. All rights reserved. | Security Services Provider</p>
                 <div class="footer-links">
-                    <a href="privacypolicy.html">Privacy Policy</a> | 
-                    <a href="terms-of-service.html">Terms of Service</a> | 
+                    <a href="privacypolicy.html">Privacy Policy</a> |
+                    <a href="terms-of-service.html">Terms of Service</a> |
                     <a href="sitemap.html">Sitemap</a> |
                     <a href="cookie-policy.html">Cookie Policy</a>
             </div>
         </div>
     </footer>
 
-                
+
                 <!-- ===== AI SECURITY ASSESSMENT POPUP ===== -->
     <div class="security-popup-overlay" id="chatbotOverlay" onclick="if(event.target===this){this.classList.remove('active');document.body.style.overflow='';}">
         <div class="security-popup-modal" id="chatbotModal">
             <!-- Left Side - Promotional Image -->
             <div class="security-popup-image">
             </div>
-            
+
             <!-- Right Side - Assessment Chat -->
             <div class="security-popup-content">
                 <!-- Close button on popup -->
                 <div class="security-popup-close" id="chatbotClose" onclick="document.getElementById('chatbotOverlay').classList.remove('active'); document.body.style.overflow=''; return false;">×</div>
-                
+
                 <!-- Header -->
                 <div class="security-popup-header">
                     <div class="security-popup-title">
@@ -665,7 +678,7 @@
                         <button class="lang-btn" data-lang="af">AF</button>
                     </div>
                 </div>
-                
+
                 <!-- Chat Messages -->
                 <div class="security-popup-messages" id="chatbotMessages">
                     <div class="message bot-message">
@@ -680,7 +693,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Risk Score Display -->
                 <div class="risk-score-panel" id="riskScorePanel" style="display: none;">
                     <div class="risk-header">
@@ -692,7 +705,7 @@
                     </div>
                     <p class="risk-description" id="riskDescription"></p>
                 </div>
-                
+
                 <!-- Input Area -->
                 <div class="security-popup-input-area">
                     <div class="typing-indicator" id="typingIndicator" style="display: none;">
@@ -773,6 +786,6 @@
         <div class="whatsapp-mobile"><i class="fab fa-whatsapp"></i></div>
     </a>
 
-  <script src="index.js?v=2" defer></script> 
+  <script src="index.js?v=2" defer></script>
 </body>
 </html>

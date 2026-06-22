@@ -50,19 +50,19 @@ h1, h2, h3, h4 {
     line-height: 1.3;
 }
 
-h1 { 
+h1 {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1.5rem;
 }
-h2 { 
+h2 {
     font-size: clamp(1.6rem, 4vw, 2.2rem);
     margin-bottom: 1rem;
 }
-h3 { 
+h3 {
     font-size: clamp(1.4rem, 3.5vw, 1.8rem);
     margin-bottom: 0.5rem;
 }
-h4 { 
+h4 {
     font-size: clamp(1.2rem, 3vw, 1.4rem);
 }
 
@@ -326,8 +326,8 @@ body.menu-open {
 /* Logo - Larger for desktop */
 .logo {
     flex-shrink: 0;
-    margin-right: 30px;
-    margin-left: 20px; /* Shift logo right as in index */
+    margin-right: 18px;
+    margin-left: 6px; /* Shift logo right as in index */
 }
 
 .logo a {
@@ -370,9 +370,9 @@ body.menu-open {
     color: var(--mamba-text);
     text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-size: clamp(0.84rem, 1.3vw, 0.98rem);
     transition: all 0.3s ease;
-    padding: 8px 10px;
+    padding: 7px 8px;
     position: relative;
     white-space: nowrap;
     font-family: 'Montserrat', sans-serif;
@@ -483,6 +483,10 @@ body.menu-open {
     transition: all 0.6s ease;
 }
 
+#fire-ops {
+    scroll-margin-top: 140px;
+}
+
 .service-section-ar.visible {
     opacity: 1;
     transform: translateY(0);
@@ -559,6 +563,12 @@ body.menu-open {
     object-fit: contain;
     transition: transform 0.3s ease;
     filter: brightness(0) invert(1);
+}
+
+.service-icon-fire {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    color: #ffffff;
+    line-height: 1;
 }
 
 .service-text-ar {
@@ -650,9 +660,23 @@ body.menu-open {
 }
 
 /* WhatsApp Groups Image */
-.service-section-ar:nth-child(7) .service-image-ar img {
+.service-section-ar:nth-child(8) .service-image-ar img {
     object-fit: cover;
     object-position: center center;
+}
+
+/* Fire Ops image: slightly smaller for cleaner text alignment */
+.service-image-ar img[src="fireops2.png"] {
+    max-width: 88%;
+    max-height: 85%;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .service-image-ar img[src="fireops2.png"] {
+        max-width: 76%;
+        max-height: 72%;
+    }
 }
 
 .service-image-ar:hover {
@@ -1117,19 +1141,19 @@ img {
     .service-image-ar:hover {
         transform: none;
     }
-    
+
     .service-image-ar:hover img {
         transform: none;
     }
-    
+
     .btn:hover {
         transform: none;
     }
-    
+
     .service-icon-wrapper:hover {
         transform: none;
     }
-    
+
     /* Increase touch targets */
     .btn {
         min-height: 44px;
@@ -1137,11 +1161,11 @@ img {
         align-items: center;
         justify-content: center;
     }
-    
+
     .nav-link {
         padding: 12px 10px;
     }
-    
+
     .mobile-link {
         padding: 16px 0;
     }
@@ -1156,13 +1180,13 @@ img {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
+
     .float-on-scroll {
         opacity: 1;
         transform: none;
         transition: none;
     }
-    
+
     .whatsapp-float {
         animation: none;
     }
@@ -1176,16 +1200,16 @@ img {
         padding-left: max(15px, env(safe-area-inset-left));
         padding-right: max(15px, env(safe-area-inset-right));
     }
-    
+
     .armed-response-hero {
         padding-top: max(80px, env(safe-area-inset-top));
     }
-    
+
     .whatsapp-float {
         bottom: max(20px, env(safe-area-inset-bottom));
         right: max(20px, env(safe-area-inset-right));
     }
-    
+
     .footer {
         padding-bottom: max(30px, env(safe-area-inset-bottom));
     }
@@ -1203,7 +1227,7 @@ img {
         align-items: center;
         justify-content: center;
     }
-    
+
     .service-section-ar:nth-child(4) .service-image-ar img {
         object-fit: contain;
         width: auto;
@@ -1221,7 +1245,7 @@ img {
         max-height: 400px;
         padding: 15px;
     }
-    
+
     /* Make K9 image fill container better on mobile */
     .service-section-ar:nth-child(4) .service-image-ar img {
         object-fit: contain;
@@ -1247,35 +1271,35 @@ img {
     .hamburger {
         display: none;
     }
-    
+
     .nav-menu-container {
         display: flex;
     }
-    
+
     .mobile-menu {
         display: none;
     }
-    
+
     .mobile-header-center {
         display: none; /* hidden on desktop */
     }
-    
+
     .service-section-ar {
         grid-template-columns: 1fr 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: repeat(4, 1fr);
     }
-    
+
     .whatsapp-desktop {
         display: flex;
     }
-    
+
     .whatsapp-mobile {
         display: none;
     }
-    
+
     .social-icons {
         overflow-x: visible;
         justify-content: flex-start;
@@ -1290,7 +1314,7 @@ img {
         order: 1;
         z-index: 10002;
     }
-    
+
     /* Mobile header text visible and positioned */
     .mobile-header-center {
         display: block;
@@ -1308,7 +1332,7 @@ img {
         font-weight: 700;
         white-space: nowrap;
     }
-    
+
     /* Logo on the right for mobile/tablet */
     .logo {
         order: 2;
@@ -1319,117 +1343,117 @@ img {
         text-align: left;
         padding: 10px 0;
     }
-    
+
     .nav-menu-container {
         display: none;
     }
-    
+
     .logo-image {
         height: 85px;
         max-width: 260px;
     }
-    
+
     .mobile-logo-image {
         height: 85px;
         max-width: 260px;
     }
-    
+
     /* Service sections - single column on tablet */
     .service-section-ar {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .service-section-ar .service-content-ar {
         order: 1;
     }
-    
+
     .service-section-ar .service-image-ar {
         order: 2;
     }
-    
+
     .service-header-ar {
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
         gap: 20px;
     }
-    
+
     .service-header-ar h2 {
         flex: 1;
         min-width: auto;
     }
-    
+
     .service-icon-wrapper {
         width: 70px;
         height: 70px;
         padding: 8px;
     }
-    
+
     /* Image adjustments for tablet */
     .service-image-ar {
         min-height: 350px;
         max-height: 450px;
     }
-    
+
     /* Adjustments for all images on tablet */
     .service-section-ar .service-image-ar {
         min-height: 400px;
         max-height: 500px;
         padding: 15px;
     }
-    
+
     /* Special adjustments for cover images */
     .service-section-ar:nth-child(1) .service-image-ar img,
     .service-section-ar:nth-child(2) .service-image-ar img,
     .service-section-ar:nth-child(3) .service-image-ar img,
-    .service-section-ar:nth-child(7) .service-image-ar img {
+    .service-section-ar:nth-child(8) .service-image-ar img {
         object-fit: cover;
         object-position: center;
     }
-    
+
     .service-section-ar:nth-child(4) .service-image-ar {
         padding: 25px;
     }
-    
+
     .service-image-ar .overlay-btn {
         padding: 14px 30px;
         font-size: 1.2rem;
         min-width: 220px;
     }
-    
+
     /* FOOTER FIXES FOR TABLET */
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
+
     .footer-services ul {
         grid-template-columns: 1fr;
         gap: 8px;
     }
-    
+
     .footer-contact-info p {
         flex-direction: row;
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     /* SOCIAL ICONS - KEEP IN ONE LINE ON TABLET */
     .social-icons {
         justify-content: flex-start;
         gap: 10px;
     }
-    
+
     /* WhatsApp Button - Show mobile version */
     .whatsapp-desktop {
         display: none;
     }
-    
+
     .whatsapp-mobile {
         display: flex;
     }
-    
+
     .whatsapp-float {
         padding: 18px;
         width: 70px;
@@ -1439,7 +1463,7 @@ img {
         right: 25px;
         min-width: auto;
     }
-    
+
     .whatsapp-float i {
         font-size: 2.5rem;
     }
@@ -1451,68 +1475,68 @@ img {
         max-width: 95%;
         padding: 0 15px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
         margin-right: 0;
         padding: 12px 0;
     }
-    
+
     .logo-image {
         height: 80px;
         max-width: 240px;
     }
-    
+
     .mobile-logo-image {
         height: 80px;
         max-width: 240px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.8rem;
     }
-    
+
     .armed-response-hero {
         padding: 90px 0 50px;
         min-height: 70vh;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 2.2rem;
     }
-    
+
     .service-sections-container {
         padding: 50px 0;
     }
-    
+
     .service-section-ar {
         gap: 35px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.8rem;
     }
-    
+
     .service-icon-wrapper {
         width: 65px;
         height: 65px;
         padding: 7px;
     }
-    
+
     .service-header-ar {
         gap: 15px;
     }
-    
+
     /* FOOTER FIXES */
     .footer-content {
         gap: 25px;
     }
-    
+
     .social-icons {
         gap: 8px;
     }
-    
+
     .social-icon {
         width: 42px;
         height: 42px;
@@ -1524,102 +1548,102 @@ img {
     .container {
         padding: 0 15px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
         margin-right: 0;
         padding: 15px 0;
     }
-    
+
     .logo-image {
         height: 75px;
         max-width: 220px;
     }
-    
+
     .mobile-logo-image {
         height: 75px;
         max-width: 220px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.4rem;
     }
-    
+
     .armed-response-hero {
         padding: 80px 0 40px;
         min-height: 60vh;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 2rem;
     }
-    
+
     .service-sections-container {
         padding: 40px 0;
     }
-    
+
     .service-section-ar {
         gap: 30px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.6rem;
     }
-    
+
     .service-icon-wrapper {
         width: 60px;
         height: 60px;
         padding: 6px;
     }
-    
+
     .service-header-ar {
         gap: 15px;
     }
-    
+
     .service-image-ar {
         min-height: 300px;
         max-height: 380px;
     }
-    
+
     /* Adjustments for all images on mobile */
     .service-section-ar .service-image-ar {
         min-height: 350px;
         max-height: 420px;
         padding: 10px;
     }
-    
+
     /* Special adjustments for cover images */
     .service-section-ar:nth-child(1) .service-image-ar img,
     .service-section-ar:nth-child(2) .service-image-ar img,
     .service-section-ar:nth-child(3) .service-image-ar img,
-    .service-section-ar:nth-child(7) .service-image-ar img {
+    .service-section-ar:nth-child(8) .service-image-ar img {
         object-fit: cover;
         object-position: center;
     }
-    
+
     .service-section-ar:nth-child(4) .service-image-ar {
         padding: 20px;
     }
-    
+
     .service-image-ar .overlay-btn {
         padding: 12px 25px;
         font-size: 1.1rem;
         min-width: 200px;
     }
-    
+
     .emergency-cta {
         padding: 50px 0;
     }
-    
+
     .emergency-cta h2 {
         font-size: 1.8rem;
     }
-    
+
     .emergency-number {
         font-size: 2.2rem;
     }
-    
+
     /* EMERGENCY BUTTONS ICON SPACING */
     .emergency-buttons .btn {
         display: inline-flex;
@@ -1628,24 +1652,24 @@ img {
         gap: 12px;
         padding: 14px 25px;
     }
-    
+
     .emergency-buttons .btn i {
         font-size: 1.1em;
         flex-shrink: 0;
     }
-    
+
     /* FOOTER FIXES FOR MOBILE */
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
     }
-    
+
     .footer-logo-image {
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     .footer-brand p,
     .tribe-footer p,
     .footer-contact-info p,
@@ -1653,7 +1677,7 @@ img {
     .footer-resources a {
         text-align: center;
     }
-    
+
     /* SOCIAL ICONS - CENTERED AND IN ONE LINE ON MOBILE */
     .social-icons {
         justify-content: center;
@@ -1661,43 +1685,43 @@ img {
         overflow-x: auto;
         padding: 5px 0;
     }
-    
+
     .social-icon {
         width: 44px;
         height: 44px;
         font-size: 1.1rem;
     }
-    
+
     .footer-services ul {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    
+
     .footer-contact-info p {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 5px;
     }
-    
+
     .footer-contact-info i {
         margin-top: 0;
     }
-    
+
     .footer-resources ul {
         text-align: center;
     }
-    
+
     .footer-links {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .footer-links a {
         display: block;
         margin: 0;
     }
-    
+
     .whatsapp-float {
         bottom: 20px;
         right: 20px;
@@ -1711,125 +1735,125 @@ img {
     .container {
         padding: 0 12px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
         margin-right: 0;
         padding: 18px 0;
     }
-    
+
     .logo-image {
         height: 70px;
         max-width: 200px;
     }
-    
+
     .mobile-logo-image {
         height: 70px;
         max-width: 200px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.3rem;
     }
-    
+
     .armed-response-hero {
         padding: 70px 0 30px;
         min-height: 55vh;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 1.8rem;
     }
-    
+
     .armed-response-hero p {
         font-size: 1rem;
     }
-    
+
     .service-sections-container {
         padding: 30px 0;
     }
-    
+
     .service-section-ar {
         gap: 25px;
         margin-bottom: 30px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.5rem;
     }
-    
+
     .service-icon-wrapper {
         width: 55px;
         height: 55px;
         padding: 5px;
     }
-    
+
     .service-header-ar {
         gap: 12px;
     }
-    
+
     .service-text-ar p {
         font-size: 0.95rem;
     }
-    
+
     .service-image-ar {
         min-height: 250px;
         max-height: 320px;
     }
-    
+
     /* Adjustments for all images on medium phones */
     .service-section-ar .service-image-ar {
         min-height: 300px;
         max-height: 360px;
         padding: 8px;
     }
-    
+
     /* Special adjustments for cover images */
     .service-section-ar:nth-child(1) .service-image-ar img,
     .service-section-ar:nth-child(2) .service-image-ar img,
     .service-section-ar:nth-child(3) .service-image-ar img,
-    .service-section-ar:nth-child(7) .service-image-ar img {
+    .service-section-ar:nth-child(8) .service-image-ar img {
         object-fit: cover;
         object-position: center;
     }
-    
+
     .service-section-ar:nth-child(4) .service-image-ar {
         padding: 15px;
     }
-    
+
     .service-image-ar .overlay-btn {
         padding: 10px 20px;
         font-size: 1rem;
         min-width: 180px;
     }
-    
+
     .emergency-cta h2 {
         font-size: 1.6rem;
     }
-    
+
     .emergency-number {
         font-size: 1.8rem;
     }
-    
+
     /* EMERGENCY BUTTONS ICON SPACING */
     .emergency-buttons .btn {
         gap: 10px;
         padding: 12px 20px;
     }
-    
+
     /* SOCIAL ICONS - ONE LINE, SCROLLABLE IF NEEDED */
     .social-icons {
         gap: 10px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 42px;
         height: 42px;
         font-size: 1rem;
     }
-    
+
     .whatsapp-float {
         bottom: 15px;
         right: 15px;
@@ -1837,7 +1861,7 @@ img {
         height: 60px;
         padding: 15px;
     }
-    
+
     .whatsapp-float i {
         font-size: 2rem;
     }
@@ -1851,106 +1875,106 @@ img {
         margin-right: 0;
         padding: 20px 0;
     }
-    
+
     .logo-image {
         height: 65px;
         max-width: 180px;
     }
-    
+
     .mobile-logo-image {
         height: 65px;
         max-width: 180px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.2rem;
     }
-    
+
     .armed-response-hero {
         min-height: 50vh;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 1.6rem;
     }
-    
+
     .service-header-ar {
         flex-direction: row;
         align-items: center;
         gap: 10px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.4rem;
     }
-    
+
     .service-icon-wrapper {
         width: 50px;
         height: 50px;
         padding: 5px;
     }
-    
+
     .service-image-ar {
         min-height: 220px;
         max-height: 280px;
     }
-    
+
     /* Adjustments for all images on small phones */
     .service-section-ar .service-image-ar {
         min-height: 260px;
         max-height: 310px;
         padding: 5px;
     }
-    
+
     /* Special adjustments for cover images */
     .service-section-ar:nth-child(1) .service-image-ar img,
     .service-section-ar:nth-child(2) .service-image-ar img,
     .service-section-ar:nth-child(3) .service-image-ar img,
-    .service-section-ar:nth-child(7) .service-image-ar img {
+    .service-section-ar:nth-child(8) .service-image-ar img {
         object-fit: cover;
         object-position: center;
     }
-    
+
     .service-section-ar:nth-child(4) .service-image-ar {
         padding: 10px;
     }
-    
+
     .service-image-ar .overlay-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
         min-width: 160px;
     }
-    
+
     .emergency-cta h2 {
         font-size: 1.4rem;
     }
-    
+
     .emergency-number {
         font-size: 1.6rem;
     }
-    
+
     /* EMERGENCY BUTTONS ICON SPACING */
     .emergency-buttons .btn {
         gap: 8px;
         padding: 10px 15px;
     }
-    
+
     /* SOCIAL ICONS */
     .social-icons {
         gap: 8px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 40px;
         height: 40px;
         font-size: 0.95rem;
     }
-    
+
     .footer-services ul {
         gap: 8px;
     }
-    
+
     .footer-contact-info p {
         font-size: 0.95rem;
     }
@@ -1961,121 +1985,121 @@ img {
     .container {
         padding: 0 10px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
         margin-right: 0;
         padding: 22px 0;
     }
-    
+
     .logo-image {
         height: 60px;
         max-width: 160px;
     }
-    
+
     .mobile-logo-image {
         height: 60px;
         max-width: 160px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.1rem;
     }
-    
+
     .armed-response-hero {
         min-height: 45vh;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 1.4rem;
     }
-    
+
     .armed-response-hero p {
         font-size: 0.9rem;
     }
-    
+
     .hero-buttons .btn {
         width: 100%;
         max-width: 250px;
     }
-    
+
     .service-header-ar {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.3rem;
     }
-    
+
     .service-icon-wrapper {
         width: 45px;
         height: 45px;
         padding: 4px;
     }
-    
+
     .service-image-ar {
         min-height: 200px;
         max-height: 250px;
     }
-    
+
     /* Adjustments for all images on very small phones */
     .service-section-ar .service-image-ar {
         min-height: 230px;
         max-height: 280px;
         padding: 5px;
     }
-    
+
     /* Special adjustments for cover images */
     .service-section-ar:nth-child(1) .service-image-ar img,
     .service-section-ar:nth-child(2) .service-image-ar img,
     .service-section-ar:nth-child(3) .service-image-ar img,
-    .service-section-ar:nth-child(7) .service-image-ar img {
+    .service-section-ar:nth-child(8) .service-image-ar img {
         object-fit: cover;
         object-position: center;
     }
-    
+
     .service-section-ar:nth-child(4) .service-image-ar {
         padding: 8px;
     }
-    
+
     .emergency-cta h2 {
         font-size: 1.4rem;
     }
-    
+
     .emergency-number {
         font-size: 1.6rem;
     }
-    
+
     .emergency-buttons .btn {
         font-size: 0.9rem;
         padding: 10px 15px;
     }
-    
+
     /* FOOTER FIXES FOR VERY SMALL PHONES */
     .footer-content {
         gap: 25px;
     }
-    
+
     /* SOCIAL ICONS - ONE LINE WITH SCROLL IF NEEDED */
     .social-icons {
         gap: 6px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 38px;
         height: 38px;
         font-size: 0.9rem;
     }
-    
+
     .footer-services ul {
         grid-template-columns: 1fr;
         gap: 6px;
     }
-    
+
     .footer-contact-info p {
         flex-direction: column;
         align-items: center;
@@ -2083,26 +2107,26 @@ img {
         gap: 5px;
         font-size: 0.9rem;
     }
-    
+
     .footer-bottom p {
         font-size: 0.8rem;
     }
-    
+
     .footer-links {
         gap: 5px;
     }
-    
+
     .footer-links a {
         font-size: 0.75rem;
     }
-    
+
     .whatsapp-float {
         bottom: 10px;
         right: 10px;
         width: 55px;
         height: 55px;
     }
-    
+
     .whatsapp-float i {
         font-size: 1.8rem;
     }
@@ -2161,12 +2185,12 @@ body.menu-open {
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
     }
-    
+
     .mobile-menu.active {
         -webkit-transform: translateX(0);
         transform: translateX(0);
     }
-    
+
     /* Fix for Samsung's tap highlight */
     * {
         -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
@@ -2213,4 +2237,19 @@ body.menu-open {
             font-size: 0.85rem !important;
         }
     }
+}
+
+/* Global button hover readability fix */
+.btn:hover {
+    text-shadow: none !important;
+}
+
+.btn-primary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
+}
+
+.btn-secondary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
 }

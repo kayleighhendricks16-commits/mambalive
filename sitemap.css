@@ -46,21 +46,21 @@ h1, h2, h3, h4 {
     line-height: 1.3;
 }
 
-h1 { 
+h1 {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1.5rem;
     color: var(--mamba-green);
 }
-h2 { 
+h2 {
     font-size: clamp(1.6rem, 4vw, 2.2rem);
     margin-bottom: 1rem;
     color: var(--mamba-green);
 }
-h3 { 
+h3 {
     font-size: clamp(1.3rem, 3.5vw, 1.6rem);
     margin-bottom: 0.5rem;
 }
-h4 { 
+h4 {
     font-size: clamp(1.2rem, 3vw, 1.4rem);
 }
 
@@ -245,9 +245,9 @@ p {
     color: var(--mamba-text);
     text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-size: clamp(0.78rem, 1.2vw, 0.9rem);
     transition: all 0.3s ease;
-    padding: 8px 10px;
+    padding: 7px 7px;
     position: relative;
     white-space: nowrap;
     font-family: 'Montserrat', sans-serif;
@@ -790,23 +790,23 @@ p {
     .hamburger {
         display: none;
     }
-    
+
     .nav-menu-container {
         display: flex;
     }
-    
+
     .mobile-menu {
         display: none;
     }
-    
+
     .sitemap-grid {
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     }
-    
+
     .whatsapp-desktop {
         display: flex;
     }
-    
+
     .whatsapp-mobile {
         display: none;
     }
@@ -819,48 +819,48 @@ p {
         order: 1;
         z-index: 10002;
     }
-    
+
     .logo {
         order: 3;
         margin-left: auto;
         margin-right: 0;
     }
-    
+
     .nav-menu-container {
         display: none;
     }
-    
+
     .logo-image {
         height: 85px;
         max-width: 260px;
     }
-    
+
     .mobile-logo-image {
         height: 85px;
         max-width: 260px;
     }
-    
+
     .xml-content {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .stats-grid {
         grid-template-columns: repeat(4, 1fr);
     }
-    
+
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .whatsapp-desktop {
         display: none;
     }
-    
+
     .whatsapp-mobile {
         display: flex;
     }
-    
+
     .whatsapp-float {
         padding: 18px;
         width: 70px;
@@ -877,62 +877,62 @@ p {
     .container {
         padding: 0 15px;
     }
-    
+
     .logo {
         padding: 15px 0;
     }
-    
+
     .logo-image {
         height: 75px;
         max-width: 220px;
     }
-    
+
     .mobile-logo-image {
         height: 75px;
         max-width: 220px;
     }
-    
+
     .sitemap-hero {
         padding: 80px 0 40px;
         min-height: 50vh;
     }
-    
+
     .sitemap-hero h1 {
         font-size: 2rem;
     }
-    
+
     .sitemap-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .category-header {
         flex-direction: column;
         text-align: center;
         gap: 15px;
     }
-    
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    
+
     .footer-logo-image {
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     .social-icons {
         justify-content: center;
     }
-    
+
     .footer-services ul {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-contact-info p {
         flex-direction: column;
         align-items: center;
@@ -947,35 +947,35 @@ p {
         height: 70px;
         max-width: 200px;
     }
-    
+
     .mobile-logo-image {
         height: 70px;
         max-width: 200px;
     }
-    
+
     .sitemap-hero {
         padding: 70px 0 30px;
     }
-    
+
     .sitemap-hero h1 {
         font-size: 1.8rem;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .hero-buttons .btn {
         width: 100%;
         max-width: 300px;
     }
-    
+
     .xml-btn {
         width: 100%;
         justify-content: center;
     }
-    
+
     .whatsapp-float {
         bottom: 15px;
         right: 15px;
@@ -991,24 +991,24 @@ p {
         height: 65px;
         max-width: 180px;
     }
-    
+
     .mobile-logo-image {
         height: 65px;
         max-width: 180px;
     }
-    
+
     .sitemap-hero h1 {
         font-size: 1.6rem;
     }
-    
+
     .sitemap-card-header h3 {
         font-size: 1.1rem;
     }
-    
+
     .stat-number {
         font-size: 2rem;
     }
-    
+
     .social-icon {
         width: 40px;
         height: 40px;
@@ -1021,29 +1021,29 @@ p {
     .container {
         padding: 0 10px;
     }
-    
+
     .logo-image {
         height: 60px;
         max-width: 160px;
     }
-    
+
     .mobile-logo-image {
         height: 60px;
         max-width: 160px;
     }
-    
+
     .sitemap-hero {
         padding: 60px 0 25px;
     }
-    
+
     .sitemap-hero h1 {
         font-size: 1.4rem;
     }
-    
+
     .xml-content {
         padding: 25px;
     }
-    
+
     .whatsapp-float {
         bottom: 10px;
         right: 10px;
@@ -1093,4 +1093,19 @@ p {
 .contact-email a:hover,
 .footer-contact-info a[href^="mailto:"]:hover {
     color: var(--mamba-green) !important;
+}
+
+/* Global button hover readability fix */
+.btn:hover {
+    text-shadow: none !important;
+}
+
+.btn-primary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
+}
+
+.btn-secondary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
 }

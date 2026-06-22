@@ -627,8 +627,8 @@ body.menu-open {
 }
 .logo {
     flex-shrink: 0;
-    margin-right: 30px;
-    margin-left: 20px;
+    margin-right: 18px;
+    margin-left: 6px;
 }
 .logo a {
     display: flex;
@@ -664,9 +664,9 @@ body.menu-open {
     color: var(--mamba-text);
     text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-size: clamp(0.84rem, 1.3vw, 0.98rem);
     transition: all 0.3s ease;
-    padding: 8px 10px;
+    padding: 7px 8px;
     position: relative;
     white-space: nowrap;
     font-family: 'Montserrat', sans-serif;
@@ -1229,11 +1229,60 @@ body.menu-open {
     max-width: 1200px;
     margin: 0 auto;
 }
-.game-canvas-wrapper {
+.game-play-column {
     flex: 0 0 auto;
     width: min(400px, 90%);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.game-canvas-wrapper {
+    width: 100%;
     aspect-ratio: 1 / 1;
     position: relative;
+}
+.game-winner-block {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(153, 255, 0, 0.45);
+    border-radius: 10px;
+    color: var(--mamba-text);
+    box-shadow: 0 0 18px rgba(153, 255, 0, 0.12);
+}
+.game-winner-block img {
+    width: 100%;
+    height: clamp(230px, 28vw, 330px);
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 8px;
+    border: 2px solid var(--mamba-green);
+    background: #000;
+    order: 1;
+}
+
+.game-winner-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+    order: 2;
+    padding: 0 4px 4px;
+}
+.game-winner-copy span {
+    color: var(--mamba-green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.game-winner-copy strong {
+    color: var(--mamba-text);
+    font-size: 1.05rem;
+    line-height: 1.25;
 }
 #snakeCanvas {
     width: 100%;
@@ -1352,6 +1401,7 @@ body.menu-open {
 .game-info-panel {
     flex: 1 1 300px;
     min-width: 260px;
+    align-self: stretch;
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid var(--mamba-green);
     border-radius: 10px;
@@ -1361,6 +1411,7 @@ body.menu-open {
     overflow: visible;
     max-height: none;
 }
+
 .stats {
     display: flex;
     justify-content: space-between;
@@ -2002,7 +2053,6 @@ input:checked + .slider:before { transform: translateX(26px); }
         user-select: none;
         -webkit-user-select: none;
     }
-
     /* Security section */
     .security-content-wrapper,
     .company-profile-content,
@@ -2121,29 +2171,50 @@ input:checked + .slider:before { transform: translateX(26px); }
         flex-direction: column;
         align-items: center;
     }
-    
+
     /* Game container - perfectly centered */
-    .game-container { 
-        flex-direction: column; 
-        align-items: center; 
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        gap: 20px; 
+        gap: 20px;
         padding: 0;
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
         text-align: center;
     }
-    .game-info-panel { 
-        width: 100%; 
-        max-width: 500px; 
-        flex: none; 
-        overflow: visible; 
+    .game-play-column {
+        width: min(350px, 95vw);
+        max-width: 350px;
+        display: flex;
+        flex-direction: column;
+    }
+    .game-winner-block {
+        order: -1;
+        width: min(350px, 95vw);
+        max-width: 350px;
+        padding: 12px;
+        margin-bottom: 2px;
+    }
+    .game-winner-block img {
+        width: 100%;
+        height: clamp(210px, 62vw, 300px);
+    }
+    .game-winner-copy strong {
+        font-size: 0.98rem;
+    }
+    .game-info-panel {
+        width: 100%;
+        max-width: 500px;
+        flex: none;
+        overflow: visible;
         padding: 15px;
         margin: 0 auto;
     }
-    .game-canvas-wrapper { 
-        width: min(350px, 95vw); 
+    .game-canvas-wrapper {
+        width: 100%;
         max-width: 350px;
         aspect-ratio: 1 / 1;
         box-sizing: border-box;
@@ -2171,15 +2242,15 @@ input:checked + .slider:before { transform: translateX(26px); }
     .stat-item {
         padding: 10px 8px;
     }
-    .leaderboard-list { 
-        max-height: 200px; 
+    .leaderboard-list {
+        max-height: 200px;
         overflow-y: auto;
         width: 100%;
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
     }
-    
+
     /* Ensure full game info panel is visible */
     .game-info-panel {
         min-height: auto;
@@ -2187,14 +2258,14 @@ input:checked + .slider:before { transform: translateX(26px); }
         display: block;
         visibility: visible;
     }
-    
+
     /* Force leaderboard visibility on mobile */
     .leaderboard {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
     }
-    
+
     .leaderboard-list {
         display: block !important;
         visibility: visible !important;
@@ -2203,17 +2274,17 @@ input:checked + .slider:before { transform: translateX(26px); }
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
-    
+
     /* Fix leaderboard display on mobile */
     .leaderboard {
         margin-top: 10px;
     }
-    
+
     .leaderboard h3 {
         font-size: 0.9rem;
         margin-bottom: 8px;
     }
-    
+
     .leaderboard-item {
         padding: 6px 4px;
         font-size: 0.8rem;
@@ -2221,11 +2292,11 @@ input:checked + .slider:before { transform: translateX(26px); }
         justify-content: space-between;
         align-items: center;
     }
-    
+
     .leaderboard-item .rank {
         flex: 0 0 20px;
     }
-    
+
     .leaderboard-item .name {
         flex: 1;
         text-align: left;
@@ -2233,7 +2304,7 @@ input:checked + .slider:before { transform: translateX(26px); }
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    
+
     .leaderboard-item .score {
         flex: 0 0 40px;
         text-align: right;
@@ -2438,7 +2509,7 @@ body.menu-open {
         margin-bottom: 3px;
         padding-left: 14px;
     }
-    
+
     /* Reduce gap between How to Play and FAQ on mobile */
     .faq-section {
         padding: 30px 0 40px 0;
@@ -3011,7 +3082,7 @@ body.menu-open {
         align-items: center;
         padding: 20px;
     }
-    
+
     .security-popup-modal {
         width: 95%;
         height: auto;
@@ -3020,17 +3091,17 @@ body.menu-open {
         border-radius: 16px;
         flex-direction: column;
     }
-    
+
     .security-popup-image {
         display: none;
     }
-    
+
     .security-popup-content {
         width: 100%;
         height: auto;
         max-height: 85vh;
     }
-    
+
     .security-popup-close {
         top: 8px;
         right: 8px;
@@ -3040,37 +3111,37 @@ body.menu-open {
         background: rgba(153, 255, 0, 0.2);
         z-index: 10001;
     }
-    
+
     .security-popup-header {
         padding: 45px 15px 12px;
         flex-shrink: 0;
     }
-    
+
     .security-popup-title {
         gap: 8px;
     }
-    
+
     .security-popup-title i {
         font-size: 1.3rem;
     }
-    
+
     .security-popup-title h2 {
         font-size: 0.95rem;
     }
-    
+
     .security-popup-title p {
         font-size: 0.7rem;
     }
-    
+
     .language-selector {
         gap: 4px;
     }
-    
+
     .lang-btn {
         padding: 4px 8px;
         font-size: 0.7rem;
     }
-    
+
     .security-popup-messages {
         padding: 12px;
         flex: 1;
@@ -3078,93 +3149,93 @@ body.menu-open {
         max-height: 45vh;
         overflow-y: auto;
     }
-    
+
     .message {
         gap: 8px;
         margin-bottom: 10px;
     }
-    
+
     .message-avatar {
         width: 30px;
         height: 30px;
         font-size: 0.85rem;
     }
-    
+
     .message-content {
         padding: 8px 10px;
     }
-    
+
     .message-content p {
         font-size: 0.85rem;
         line-height: 1.4;
     }
-    
+
     .quick-replies {
         gap: 5px;
         margin-top: 6px;
     }
-    
+
     .quick-reply {
         padding: 6px 10px;
         font-size: 0.75rem;
     }
-    
+
     .typing-indicator {
         padding: 6px 10px;
     }
-    
+
     .typing-indicator span {
         width: 5px;
         height: 5px;
     }
-    
+
     .risk-score-panel {
         padding: 10px;
         margin-bottom: 8px;
     }
-    
+
     .risk-score-header {
         margin-bottom: 8px;
     }
-    
+
     .risk-badge {
         padding: 3px 8px;
         font-size: 0.65rem;
     }
-    
+
     .risk-bar-container {
         height: 6px;
     }
-    
+
     .risk-description {
         font-size: 0.75rem;
     }
-    
+
     .security-popup-input-area {
         padding: 10px 12px;
         flex-shrink: 0;
     }
-    
+
     .security-popup-form {
         gap: 6px;
     }
-    
+
     .security-popup-input {
         padding: 8px 10px;
         font-size: 16px; /* Prevents zoom on iOS */
     }
-    
+
     .security-popup-send {
         width: 36px;
         height: 36px;
     }
-    
+
     .action-btn {
         padding: 8px 12px;
         font-size: 0.75rem;
         min-height: 40px;
     }
-    
+
     .action-buttons {
         flex-direction: column;
         gap: 6px;
@@ -3177,3 +3248,18 @@ body.menu-open {
     display: none !important;
 }
 
+
+/* Global button hover readability fix */
+.btn:hover {
+    text-shadow: none !important;
+}
+
+.btn-primary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
+}
+
+.btn-secondary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
+}

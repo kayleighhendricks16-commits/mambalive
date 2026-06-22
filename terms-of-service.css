@@ -54,22 +54,22 @@ h1, h2, h3, h4 {
     line-height: 1.3;
 }
 
-h1 { 
+h1 {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1rem;
     color: var(--mamba-green);
 }
-h2 { 
+h2 {
     font-size: clamp(1.6rem, 4vw, 2.2rem);
     margin-bottom: 1rem;
     color: var(--mamba-green);
 }
-h3 { 
+h3 {
     font-size: clamp(1.4rem, 3.5vw, 1.8rem);
     margin-bottom: 0.75rem;
     color: var(--mamba-text);
 }
-h4 { 
+h4 {
     font-size: clamp(1.2rem, 3vw, 1.4rem);
     color: var(--mamba-text);
 }
@@ -156,7 +156,7 @@ strong {
 /* Logo */
 .logo {
     flex-shrink: 0;
-    margin-right: 30px;
+    margin-right: 18px;
 }
 
 .logo a {
@@ -199,9 +199,9 @@ strong {
     color: var(--mamba-text);
     text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-size: clamp(0.84rem, 1.3vw, 0.98rem);
     transition: all 0.3s ease;
-    padding: 8px 10px;
+    padding: 7px 8px;
     position: relative;
     white-space: nowrap;
     font-family: 'Montserrat', sans-serif;
@@ -1817,11 +1817,11 @@ body.menu-open {
     .hamburger {
         display: none;
     }
-    
+
     .nav-menu-container {
         display: flex;
     }
-    
+
     .mobile-menu {
         display: none;
     }
@@ -1829,19 +1829,19 @@ body.menu-open {
     .mobile-header-center {
         display: none;
     }
-    
+
     .footer-content {
         grid-template-columns: repeat(4, 1fr);
     }
-    
+
     .whatsapp-desktop {
         display: flex;
     }
-    
+
     .whatsapp-mobile {
         display: none;
     }
-    
+
     .social-icons {
         overflow-x: visible;
         justify-content: flex-start;
@@ -1856,7 +1856,7 @@ body.menu-open {
         order: 1;
         z-index: 10002;
     }
-    
+
     /* Logo positioned after hamburger (left side) */
     .logo {
         order: 2;
@@ -1879,21 +1879,21 @@ body.menu-open {
         font-weight: 700;
         white-space: nowrap;
     }
-    
+
     .nav-menu-container {
         display: none;
     }
-    
+
     .logo-image {
         height: 85px;
         max-width: 260px;
     }
-    
+
     .mobile-logo-image {
         height: 85px;
         max-width: 260px;
     }
-    
+
     .services-grid,
     .responsibilities-grid,
     .restrictions-grid,
@@ -1904,17 +1904,17 @@ body.menu-open {
     .contact-details-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
+
     .footer-services ul {
         grid-template-columns: 1fr;
         gap: 8px;
     }
-    
+
     .agreement-box,
     .terms-item,
     .ip-protection,
@@ -1927,28 +1927,28 @@ body.menu-open {
         align-items: center;
         text-align: center;
     }
-    
+
     .footer-contact-info p {
         flex-direction: row;
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     /* SOCIAL ICONS - KEEP IN ONE LINE ON TABLET */
     .social-icons {
         justify-content: flex-start;
         gap: 10px;
     }
-    
+
     /* WhatsApp Button - Show mobile version */
     .whatsapp-desktop {
         display: none;
     }
-    
+
     .whatsapp-mobile {
         display: flex;
     }
-    
+
     .whatsapp-float {
         padding: 18px;
         width: 70px;
@@ -1958,7 +1958,7 @@ body.menu-open {
         right: 25px;
         min-width: auto;
     }
-    
+
     .whatsapp-float i {
         font-size: 2.5rem;
     }
@@ -1969,7 +1969,7 @@ body.menu-open {
     .container {
         padding: 0 15px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
@@ -1980,79 +1980,79 @@ body.menu-open {
     .mobile-header-center {
         font-size: 1.4rem;
     }
-    
+
     .logo-image {
         height: 75px;
         max-width: 220px;
     }
-    
+
     .mobile-logo-image {
         height: 75px;
         max-width: 220px;
     }
-    
+
     .terms-hero {
         padding: clamp(80px, 12vw, 100px) 0 clamp(40px, 6vw, 50px);
     }
-    
+
     .terms-hero h1 {
         font-size: clamp(2rem, 5vw, 2.5rem);
     }
-    
+
     .terms-hero .hero-subtitle {
         font-size: clamp(1rem, 2.5vw, 1.2rem);
     }
-    
+
     .legal-notice {
         flex-direction: column;
         text-align: center;
         gap: 10px;
     }
-    
+
     .terms-effective {
         flex-direction: column;
         gap: 5px;
     }
-    
+
     .agreement-box {
         padding: 20px;
         margin-bottom: 40px;
     }
-    
+
     .agreement-box i {
         font-size: 2.5rem;
     }
-    
+
     .agreement-text p {
         font-size: 1.1rem;
     }
-    
+
     .terms-section {
         padding: 25px;
         margin-bottom: 40px;
     }
-    
+
     .section-header {
         flex-direction: column;
         text-align: center;
         gap: 15px;
         margin-bottom: 20px;
     }
-    
+
     .section-number {
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
     }
-    
+
     .section-header h2 {
         font-size: 1.6rem;
     }
-    
+
     .section-content {
         padding-left: 0;
     }
-    
+
     .terms-item,
     .note,
     .service-type,
@@ -2065,7 +2065,7 @@ body.menu-open {
     .contact-detail {
         padding: 15px;
     }
-    
+
     .terms-icon,
     .ip-badge,
     .payment-icon,
@@ -2076,7 +2076,7 @@ body.menu-open {
         width: 60px;
         height: 60px;
     }
-    
+
     .terms-icon i,
     .ip-badge i,
     .payment-icon i,
@@ -2086,63 +2086,63 @@ body.menu-open {
     .law-icon i {
         font-size: 2rem;
     }
-    
+
     .acceptance-section {
         padding: 30px 20px;
         margin-top: 60px;
     }
-    
+
     .acceptance-content p {
         font-size: 1.2rem;
     }
-    
+
     .acceptance-actions {
         flex-direction: column;
         align-items: center;
         gap: 15px;
     }
-    
+
     /* FOOTER FIXES FOR MOBILE */
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
     }
-    
+
     .footer-logo-image {
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     .social-icons {
         justify-content: center;
         gap: 12px;
     }
-    
+
     .social-icon {
         width: 44px;
         height: 44px;
         font-size: 1.1rem;
     }
-    
+
     .footer-services ul,
     .footer-resources ul {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    
+
     .footer-contact-info p {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 5px;
     }
-    
+
     .footer-links {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .whatsapp-float {
         bottom: 20px;
         right: 20px;
@@ -2156,7 +2156,7 @@ body.menu-open {
     .container {
         padding: 0 12px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
@@ -2167,29 +2167,29 @@ body.menu-open {
     .mobile-header-center {
         font-size: 1.3rem;
     }
-    
+
     .logo-image {
         height: 70px;
         max-width: 200px;
     }
-    
+
     .mobile-logo-image {
         height: 70px;
         max-width: 200px;
     }
-    
+
     /* SOCIAL ICONS - ONE LINE, SCROLLABLE IF NEEDED */
     .social-icons {
         gap: 10px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 42px;
         height: 42px;
         font-size: 1rem;
     }
-    
+
     .whatsapp-float {
         bottom: 15px;
         right: 15px;
@@ -2197,7 +2197,7 @@ body.menu-open {
         height: 60px;
         padding: 15px;
     }
-    
+
     .whatsapp-float i {
         font-size: 2rem;
     }
@@ -2215,51 +2215,51 @@ body.menu-open {
     .mobile-header-center {
         font-size: 1.2rem;
     }
-    
+
     .logo-image {
         height: 65px;
         max-width: 180px;
     }
-    
+
     .mobile-logo-image {
         height: 65px;
         max-width: 180px;
     }
-    
+
     .terms-section {
         padding: 20px;
     }
-    
+
     .section-number {
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
     }
-    
+
     .section-header h2 {
         font-size: 1.4rem;
     }
-    
+
     .services-grid,
     .responsibilities-grid {
         gap: 15px;
     }
-    
+
     .service-type,
     .responsibility {
         padding: 12px;
     }
-    
+
     .acceptance-content p {
         font-size: 1.1rem;
     }
-    
+
     /* SOCIAL ICONS */
     .social-icons {
         gap: 8px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 40px;
         height: 40px;
@@ -2272,7 +2272,7 @@ body.menu-open {
     .container {
         padding: 0 10px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
@@ -2283,64 +2283,64 @@ body.menu-open {
     .mobile-header-center {
         font-size: 1.1rem;
     }
-    
+
     .logo-image {
         height: 60px;
         max-width: 160px;
     }
-    
+
     .mobile-logo-image {
         height: 60px;
         max-width: 160px;
     }
-    
+
     .terms-section {
         padding: 20px;
     }
-    
+
     .section-number {
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
     }
-    
+
     .section-header h2 {
         font-size: 1.4rem;
     }
-    
+
     .purpose-item,
     .service-type,
     .responsibility {
         padding: 15px;
     }
-    
+
     .acceptance-content p {
         font-size: 1.1rem;
     }
-    
+
     /* FOOTER FIXES FOR VERY SMALL PHONES */
     .footer-content {
         gap: 25px;
     }
-    
+
     /* SOCIAL ICONS - ONE LINE WITH SCROLL IF NEEDED */
     .social-icons {
         gap: 6px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 38px;
         height: 38px;
         font-size: 0.9rem;
     }
-    
+
     .footer-services ul,
     .footer-resources ul {
         grid-template-columns: 1fr;
         gap: 6px;
     }
-    
+
     .footer-contact-info p {
         flex-direction: column;
         align-items: center;
@@ -2348,26 +2348,26 @@ body.menu-open {
         gap: 5px;
         font-size: 0.9rem;
     }
-    
+
     .footer-bottom p {
         font-size: 0.8rem;
     }
-    
+
     .footer-links {
         gap: 5px;
     }
-    
+
     .footer-links a {
         font-size: 0.75rem;
     }
-    
+
     .whatsapp-float {
         bottom: 10px;
         right: 10px;
         width: 55px;
         height: 55px;
     }
-    
+
     .whatsapp-float i {
         font-size: 1.8rem;
     }
@@ -2384,16 +2384,16 @@ img {
     .terms-section:hover {
         transform: none;
     }
-    
+
     .btn:hover {
         transform: none;
     }
-    
+
     .service-type:hover,
     .responsibility:hover {
         transform: none;
     }
-    
+
     /* Increase touch targets */
     .btn {
         min-height: 44px;
@@ -2401,11 +2401,11 @@ img {
         align-items: center;
         justify-content: center;
     }
-    
+
     .nav-link {
         padding: 12px 10px;
     }
-    
+
     .mobile-link {
         padding: 16px 0;
     }
@@ -2420,7 +2420,7 @@ img {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
+
     .whatsapp-float {
         animation: none;
     }
@@ -2434,16 +2434,16 @@ img {
         padding-left: max(15px, env(safe-area-inset-left));
         padding-right: max(15px, env(safe-area-inset-right));
     }
-    
+
     .terms-hero {
         padding-top: max(80px, env(safe-area-inset-top));
     }
-    
+
     .whatsapp-float {
         bottom: max(20px, env(safe-area-inset-bottom));
         right: max(20px, env(safe-area-inset-right));
     }
-    
+
     .footer {
         padding-bottom: max(30px, env(safe-area-inset-bottom));
     }
@@ -2502,12 +2502,12 @@ body.menu-open {
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
     }
-    
+
     .mobile-menu.active {
         -webkit-transform: translateX(0);
         transform: translateX(0);
     }
-    
+
     /* Fix for Samsung's tap highlight */
     * {
         -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
@@ -2554,4 +2554,19 @@ body.menu-open {
             font-size: 0.85rem !important;
         }
     }
+}
+
+/* Global button hover readability fix */
+.btn:hover {
+    text-shadow: none !important;
+}
+
+.btn-primary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
+}
+
+.btn-secondary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
 }

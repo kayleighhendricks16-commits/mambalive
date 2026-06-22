@@ -50,19 +50,19 @@ h1, h2, h3, h4 {
     line-height: 1.3;
 }
 
-h1 { 
+h1 {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1.5rem;
 }
-h2 { 
+h2 {
     font-size: clamp(1.6rem, 4vw, 2.2rem);
     margin-bottom: 1rem;
 }
-h3 { 
+h3 {
     font-size: clamp(1.4rem, 3.5vw, 1.8rem);
     margin-bottom: 0.5rem;
 }
-h4 { 
+h4 {
     font-size: clamp(1.2rem, 3vw, 1.4rem);
 }
 
@@ -326,8 +326,8 @@ body.menu-open {
 /* Logo - Larger for desktop (added margin-left to match index) */
 .logo {
     flex-shrink: 0;
-    margin-right: 30px;
-    margin-left: 20px; /* Shift logo right */
+    margin-right: 18px;
+    margin-left: 6px; /* Shift logo right */
 }
 
 .logo a {
@@ -370,9 +370,9 @@ body.menu-open {
     color: var(--mamba-text);
     text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-size: clamp(0.84rem, 1.3vw, 0.98rem);
     transition: all 0.3s ease;
-    padding: 8px 10px;
+    padding: 7px 8px;
     position: relative;
     white-space: nowrap;
     font-family: 'Montserrat', sans-serif;
@@ -1230,52 +1230,52 @@ body.menu-open {
     .hamburger {
         display: none;
     }
-    
+
     .nav-menu-container {
         display: flex;
     }
-    
+
     .mobile-menu {
         display: none;
     }
-    
+
     .mobile-header-center {
         display: none; /* hidden on desktop */
     }
-    
+
     .service-section-ar {
         grid-template-columns: 1fr 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: repeat(4, 1fr);
     }
-    
+
     .whatsapp-desktop {
         display: flex;
     }
-    
+
     .whatsapp-mobile {
         display: none;
     }
-    
+
     .social-icons {
         overflow-x: visible;
         justify-content: flex-start;
     }
-    
+
     /* Adjust features grid for desktop */
     .features-grid-tech {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     /* LPR images on desktop - stacked vertically */
     .lpr-images-container {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
     }
-    
+
     .lpr-image-wrapper {
         height: 50%;
         min-height: 280px;
@@ -1290,7 +1290,7 @@ body.menu-open {
         order: 1;
         z-index: 10002;
     }
-    
+
     /* Mobile header text visible and positioned */
     .mobile-header-center {
         display: block;
@@ -1308,7 +1308,7 @@ body.menu-open {
         font-weight: 700;
         white-space: nowrap;
     }
-    
+
     /* Logo on the right for mobile/tablet */
     .logo {
         order: 2;
@@ -1319,88 +1319,88 @@ body.menu-open {
         text-align: left;
         padding: 10px 0;
     }
-    
+
     .nav-menu-container {
         display: none;
     }
-    
+
     .logo-image {
         height: 85px;
         max-width: 260px;
     }
-    
+
     .mobile-logo-image {
         height: 85px;
         max-width: 260px;
     }
-    
+
     /* Service sections - single column on tablet */
     .service-section-ar {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .service-section-ar .service-content-ar {
         order: 1;
     }
-    
+
     .service-section-ar .service-image-ar {
         order: 2;
     }
-    
+
     .service-header-ar {
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
         gap: 20px;
     }
-    
+
     .service-header-ar h2 {
         flex: 1;
         min-width: auto;
     }
-    
+
     .service-icon-wrapper {
         width: 70px;
         height: 70px;
         padding: 8px;
     }
-    
+
     /* Features grid for tablet */
     .features-grid-tech {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-    
+
     /* LPR images on tablet - stacked vertically with smaller gap */
     .lpr-images-container {
         flex-direction: column;
         gap: 15px;
         padding: 15px;
     }
-    
+
     .lpr-image-wrapper {
         min-height: 220px;
     }
-    
+
     /* Image adjustments for tablet */
     .service-image-ar {
         min-height: 350px;
         max-height: 450px;
     }
-    
+
     /* Specific adjustments for LPR section on tablet */
     .service-section-ar:nth-child(5) .service-image-ar {
         min-height: 480px;
         max-height: 580px;
     }
-    
+
     /* Specific adjustments for MAPP.AVIF on tablet */
     .service-section-ar:nth-child(2) .service-image-ar {
         min-height: 400px;
         max-height: 500px;
     }
-    
+
     .service-section-ar:nth-child(1) .service-image-ar,
     .service-section-ar:nth-child(3) .service-image-ar,
     .service-section-ar:nth-child(4) .service-image-ar,
@@ -1408,45 +1408,45 @@ body.menu-open {
         min-height: 350px;
         max-height: 450px;
     }
-    
+
     .service-image-ar .overlay-btn {
         padding: 14px 30px;
         font-size: 1.2rem;
         min-width: 220px;
     }
-    
+
     /* FOOTER FIXES FOR TABLET */
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
+
     .footer-services ul {
         grid-template-columns: 1fr;
         gap: 8px;
     }
-    
+
     .footer-contact-info p {
         flex-direction: row;
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     /* SOCIAL ICONS - KEEP IN ONE LINE ON TABLET */
     .social-icons {
         justify-content: flex-start;
         gap: 10px;
     }
-    
+
     /* WhatsApp Button - Show mobile version */
     .whatsapp-desktop {
         display: none;
     }
-    
+
     .whatsapp-mobile {
         display: flex;
     }
-    
+
     .whatsapp-float {
         padding: 18px;
         width: 70px;
@@ -1456,7 +1456,7 @@ body.menu-open {
         right: 25px;
         min-width: auto;
     }
-    
+
     .whatsapp-float i {
         font-size: 2.5rem;
     }
@@ -1477,93 +1477,93 @@ body.menu-open {
     .container {
         padding: 0 15px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
         margin-right: 0;
         padding: 15px 0;
     }
-    
+
     .logo-image {
         height: 75px;
         max-width: 220px;
     }
-    
+
     .mobile-logo-image {
         height: 75px;
         max-width: 220px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.4rem;
     }
-    
+
     .armed-response-hero {
         padding: 80px 0 40px;
         min-height: 60vh;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 2rem;
     }
-    
+
     .service-sections-container {
         padding: 40px 0;
     }
-    
+
     .service-section-ar {
         gap: 30px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.6rem;
     }
-    
+
     .service-icon-wrapper {
         width: 60px;
         height: 60px;
         padding: 6px;
     }
-    
+
     .service-header-ar {
         gap: 15px;
     }
-    
+
     /* Features grid for mobile */
     .features-grid-tech {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     /* LPR images on mobile - stacked vertically */
     .lpr-images-container {
         flex-direction: column;
         gap: 12px;
         padding: 10px;
     }
-    
+
     .lpr-image-wrapper {
         min-height: 180px;
     }
-    
+
     .service-image-ar {
         min-height: 300px;
         max-height: 380px;
     }
-    
+
     /* Specific adjustments for LPR section on large phones */
     .service-section-ar:nth-child(5) .service-image-ar {
         min-height: 400px;
         max-height: 480px;
     }
-    
+
     /* Specific adjustments for MAPP.AVIF on large phones */
     .service-section-ar:nth-child(2) .service-image-ar {
         min-height: 380px;
         max-height: 450px;
     }
-    
+
     .service-section-ar:nth-child(1) .service-image-ar,
     .service-section-ar:nth-child(3) .service-image-ar,
     .service-section-ar:nth-child(4) .service-image-ar,
@@ -1571,47 +1571,47 @@ body.menu-open {
         min-height: 300px;
         max-height: 380px;
     }
-    
+
     .service-image-ar .overlay-btn {
         padding: 12px 25px;
         font-size: 1.1rem;
         min-width: 200px;
     }
-    
+
     .emergency-cta {
         padding: 50px 0;
     }
-    
+
     .emergency-cta h2 {
         font-size: 1.8rem;
     }
-    
+
     .emergency-number {
         font-size: 2.2rem;
     }
-    
+
     .emergency-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .emergency-buttons .btn {
         width: 100%;
         max-width: 300px;
     }
-    
+
     /* FOOTER FIXES FOR MOBILE */
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
     }
-    
+
     .footer-logo-image {
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     .footer-brand p,
     .tribe-footer p,
     .footer-contact-info p,
@@ -1619,7 +1619,7 @@ body.menu-open {
     .footer-resources a {
         text-align: center;
     }
-    
+
     /* SOCIAL ICONS - CENTERED AND IN ONE LINE ON MOBILE */
     .social-icons {
         justify-content: center;
@@ -1627,40 +1627,40 @@ body.menu-open {
         overflow-x: auto;
         padding: 5px 0;
     }
-    
+
     .social-icon {
         width: 44px;
         height: 44px;
         font-size: 1.1rem;
     }
-    
+
     .footer-services ul,
     .footer-resources ul {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    
+
     .footer-contact-info p {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 5px;
     }
-    
+
     .footer-contact-info i {
         margin-top: 0;
     }
-    
+
     .footer-links {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .footer-links a {
         display: block;
         margin: 0;
     }
-    
+
     .whatsapp-float {
         bottom: 20px;
         right: 20px;
@@ -1674,109 +1674,109 @@ body.menu-open {
     .container {
         padding: 0 12px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
         margin-right: 0;
         padding: 18px 0;
     }
-    
+
     .logo-image {
         height: 70px;
         max-width: 200px;
     }
-    
+
     .mobile-logo-image {
         height: 70px;
         max-width: 200px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.3rem;
     }
-    
+
     .armed-response-hero {
         padding: 70px 0 30px;
         min-height: 55vh;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 1.8rem;
     }
-    
+
     .armed-response-hero p {
         font-size: 1rem;
     }
-    
+
     .service-sections-container {
         padding: 30px 0;
     }
-    
+
     .service-section-ar {
         gap: 25px;
         margin-bottom: 30px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.5rem;
     }
-    
+
     .service-icon-wrapper {
         width: 55px;
         height: 55px;
         padding: 5px;
     }
-    
+
     .service-header-ar {
         gap: 12px;
     }
-    
+
     .service-text-ar p {
         font-size: 0.95rem;
     }
-    
+
     /* Features grid adjustments */
     .features-grid-tech {
         gap: 15px;
     }
-    
+
     .feature-item-tech {
         padding: 15px;
     }
-    
+
     .feature-item-tech i {
         font-size: 2rem;
     }
-    
+
     /* LPR images on medium phones */
     .lpr-images-container {
         flex-direction: column;
         gap: 10px;
         padding: 8px;
     }
-    
+
     .lpr-image-wrapper {
         min-height: 160px;
     }
-    
+
     .service-image-ar {
         min-height: 250px;
         max-height: 320px;
     }
-    
+
     /* Specific adjustments for LPR section on medium phones */
     .service-section-ar:nth-child(5) .service-image-ar {
         min-height: 350px;
         max-height: 420px;
     }
-    
+
     /* Specific adjustments for MAPP.AVIF on medium phones */
     .service-section-ar:nth-child(2) .service-image-ar {
         min-height: 320px;
         max-height: 380px;
     }
-    
+
     .service-section-ar:nth-child(1) .service-image-ar,
     .service-section-ar:nth-child(3) .service-image-ar,
     .service-section-ar:nth-child(4) .service-image-ar,
@@ -1784,33 +1784,33 @@ body.menu-open {
         min-height: 250px;
         max-height: 300px;
     }
-    
+
     .service-image-ar .overlay-btn {
         padding: 10px 20px;
         font-size: 1rem;
         min-width: 180px;
     }
-    
+
     .emergency-cta h2 {
         font-size: 1.6rem;
     }
-    
+
     .emergency-number {
         font-size: 1.8rem;
     }
-    
+
     /* SOCIAL ICONS - ONE LINE, SCROLLABLE IF NEEDED */
     .social-icons {
         gap: 10px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 42px;
         height: 42px;
         font-size: 1rem;
     }
-    
+
     .whatsapp-float {
         bottom: 15px;
         right: 15px;
@@ -1818,7 +1818,7 @@ body.menu-open {
         height: 60px;
         padding: 15px;
     }
-    
+
     .whatsapp-float i {
         font-size: 2rem;
     }
@@ -1832,75 +1832,75 @@ body.menu-open {
         margin-right: 0;
         padding: 20px 0;
     }
-    
+
     .logo-image {
         height: 65px;
         max-width: 180px;
     }
-    
+
     .mobile-logo-image {
         height: 65px;
         max-width: 180px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.2rem;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 1.6rem;
     }
-    
+
     .service-header-ar {
         flex-direction: row;
         align-items: center;
         gap: 10px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.4rem;
     }
-    
+
     .service-icon-wrapper {
         width: 50px;
         height: 50px;
         padding: 5px;
     }
-    
+
     /* Features list adjustments */
     .features-list-tech li {
         padding-left: 30px;
         font-size: 0.9rem;
     }
-    
+
     /* LPR images on small phones */
     .lpr-images-container {
         flex-direction: column;
         gap: 8px;
         padding: 6px;
     }
-    
+
     .lpr-image-wrapper {
         min-height: 140px;
     }
-    
+
     .service-image-ar {
         min-height: 220px;
         max-height: 280px;
     }
-    
+
     /* Specific adjustments for LPR section on small phones */
     .service-section-ar:nth-child(5) .service-image-ar {
         min-height: 320px;
         max-height: 380px;
     }
-    
+
     /* Specific adjustments for MAPP.AVIF on small phones */
     .service-section-ar:nth-child(2) .service-image-ar {
         min-height: 280px;
         max-height: 330px;
     }
-    
+
     .service-section-ar:nth-child(1) .service-image-ar,
     .service-section-ar:nth-child(3) .service-image-ar,
     .service-section-ar:nth-child(4) .service-image-ar,
@@ -1908,38 +1908,38 @@ body.menu-open {
         min-height: 220px;
         max-height: 260px;
     }
-    
+
     .service-image-ar .overlay-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
         min-width: 160px;
     }
-    
+
     .emergency-cta h2 {
         font-size: 1.4rem;
     }
-    
+
     .emergency-number {
         font-size: 1.6rem;
     }
-    
+
     /* SOCIAL ICONS */
     .social-icons {
         gap: 8px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 40px;
         height: 40px;
         font-size: 0.95rem;
     }
-    
+
     .footer-services ul,
     .footer-resources ul {
         gap: 8px;
     }
-    
+
     .footer-contact-info p {
         font-size: 0.95rem;
     }
@@ -1950,99 +1950,99 @@ body.menu-open {
     .container {
         padding: 0 10px;
     }
-    
+
     .logo {
         order: 2;
         margin-left: 0;
         margin-right: 0;
         padding: 22px 0;
     }
-    
+
     .logo-image {
         height: 60px;
         max-width: 160px;
     }
-    
+
     .mobile-logo-image {
         height: 60px;
         max-width: 160px;
     }
-    
+
     .mobile-header-center {
         font-size: 1.1rem;
     }
-    
+
     .armed-response-hero h1 {
         font-size: 1.4rem;
     }
-    
+
     .armed-response-hero p {
         font-size: 0.9rem;
     }
-    
+
     .hero-buttons .btn {
         width: 100%;
         max-width: 250px;
     }
-    
+
     .service-header-ar {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     .service-header-ar h2 {
         font-size: 1.3rem;
     }
-    
+
     .service-icon-wrapper {
         width: 45px;
         height: 45px;
         padding: 4px;
     }
-    
+
     /* Features list and grid adjustments */
     .features-list-tech li {
         font-size: 0.85rem;
         margin-bottom: 10px;
     }
-    
+
     .feature-item-tech {
         padding: 12px;
     }
-    
+
     .feature-item-tech i {
         font-size: 1.8rem;
     }
-    
+
     /* LPR images on very small phones */
     .lpr-images-container {
         flex-direction: column;
         gap: 6px;
         padding: 5px;
     }
-    
+
     .lpr-image-wrapper {
         min-height: 120px;
     }
-    
+
     .service-image-ar {
         min-height: 200px;
         max-height: 250px;
     }
-    
+
     /* Specific adjustments for LPR section on very small phones */
     .service-section-ar:nth-child(5) .service-image-ar {
         min-height: 280px;
         max-height: 340px;
     }
-    
+
     /* Specific adjustments for MAPP.AVIF on very small phones */
     .service-section-ar:nth-child(2) .service-image-ar {
         min-height: 250px;
         max-height: 300px;
     }
-    
+
     .service-section-ar:nth-child(1) .service-image-ar,
     .service-section-ar:nth-child(3) .service-image-ar,
     .service-section-ar:nth-child(4) .service-image-ar,
@@ -2050,43 +2050,43 @@ body.menu-open {
         min-height: 200px;
         max-height: 230px;
     }
-    
+
     .emergency-cta h2 {
         font-size: 1.4rem;
     }
-    
+
     .emergency-number {
         font-size: 1.6rem;
     }
-    
+
     .emergency-buttons .btn {
         font-size: 0.9rem;
         padding: 10px 15px;
     }
-    
+
     /* FOOTER FIXES FOR VERY SMALL PHONES */
     .footer-content {
         gap: 25px;
     }
-    
+
     /* SOCIAL ICONS - ONE LINE WITH SCROLL IF NEEDED */
     .social-icons {
         gap: 6px;
         justify-content: center;
     }
-    
+
     .social-icon {
         width: 38px;
         height: 38px;
         font-size: 0.9rem;
     }
-    
+
     .footer-services ul,
     .footer-resources ul {
         grid-template-columns: 1fr;
         gap: 6px;
     }
-    
+
     .footer-contact-info p {
         flex-direction: column;
         align-items: center;
@@ -2094,26 +2094,26 @@ body.menu-open {
         gap: 5px;
         font-size: 0.9rem;
     }
-    
+
     .footer-bottom p {
         font-size: 0.8rem;
     }
-    
+
     .footer-links {
         gap: 5px;
     }
-    
+
     .footer-links a {
         font-size: 0.75rem;
     }
-    
+
     .whatsapp-float {
         bottom: 10px;
         right: 10px;
         width: 55px;
         height: 55px;
     }
-    
+
     .whatsapp-float i {
         font-size: 1.8rem;
     }
@@ -2161,19 +2161,19 @@ img {
     .service-image-ar:hover {
         transform: none;
     }
-    
+
     .service-image-ar:hover img {
         transform: none;
     }
-    
+
     .btn:hover {
         transform: none;
     }
-    
+
     .service-icon-wrapper:hover {
         transform: none;
     }
-    
+
     /* Increase touch targets */
     .btn {
         min-height: 44px;
@@ -2181,11 +2181,11 @@ img {
         align-items: center;
         justify-content: center;
     }
-    
+
     .nav-link {
         padding: 12px 10px;
     }
-    
+
     .mobile-link {
         padding: 16px 0;
     }
@@ -2200,13 +2200,13 @@ img {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
+
     .float-on-scroll {
         opacity: 1;
         transform: none;
         transition: none;
     }
-    
+
     .whatsapp-float {
         animation: none;
     }
@@ -2220,16 +2220,16 @@ img {
         padding-left: max(15px, env(safe-area-inset-left));
         padding-right: max(15px, env(safe-area-inset-right));
     }
-    
+
     .armed-response-hero {
         padding-top: max(100px, env(safe-area-inset-top));
     }
-    
+
     .whatsapp-float {
         bottom: max(20px, env(safe-area-inset-bottom));
         right: max(20px, env(safe-area-inset-right));
     }
-    
+
     .footer {
         padding-bottom: max(30px, env(safe-area-inset-bottom));
     }
@@ -2288,12 +2288,12 @@ body.menu-open {
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
     }
-    
+
     .mobile-menu.active {
         -webkit-transform: translateX(0);
         transform: translateX(0);
     }
-    
+
     /* Fix for Samsung's tap highlight */
     * {
         -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
@@ -2340,4 +2340,19 @@ body.menu-open {
             font-size: 0.85rem !important;
         }
     }
+}
+
+/* Global button hover readability fix */
+.btn:hover {
+    text-shadow: none !important;
+}
+
+.btn-primary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
+}
+
+.btn-secondary:hover {
+    color: var(--mamba-dark) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28) !important;
 }
