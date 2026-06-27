@@ -1,0 +1,9 @@
+/* Consistent section separation across the Mamba site on mobile. */
+@media (max-width: 768px) {
+    body > section + section,
+    body > main > section + section,
+    main > section + section,
+    .page-content > section + section {
+        border-top: 2px solid rgba(153, 255, 0, 0.72) !important;
+    }
+}

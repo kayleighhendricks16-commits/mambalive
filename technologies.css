@@ -3435,3 +3435,5 @@ body.menu-open {
 .armoury-brand{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:.01em}
 .armoury-board-cta .btn{padding:clamp(12px,3vw,14px) clamp(20px,4vw,35px);font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(.9rem,2vw,1.1rem);border-radius:50px;text-transform:none;background:var(--mamba-green);color:var(--mamba-dark);box-shadow:0 0 15px rgba(153,255,0,.3)}
 @media(min-width:761px){.armoury-grid thead th:not(:first-child){font-size:1.05rem;line-height:1.15}}
+.armoury-board{border:1px solid rgba(161,255,55,.42)}
+.community-shield-packages{border:none!important;box-shadow:none!important;background:transparent!important}
