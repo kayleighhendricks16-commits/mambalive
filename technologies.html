@@ -63,8 +63,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="technologies.css">
-    <link rel="stylesheet" href="mobile-section-dividers.css">
+    <link rel="stylesheet" href="technologies.css?v=20260701">
+    <link rel="stylesheet" href="section-navigation.css?v=20260701">
+    <link rel="stylesheet" href="technologies-wow.css?v=20260702-4">
+    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260628">
 
     <!-- Structured Data with locations -->
     <script type="application/ld+json">
@@ -207,22 +209,61 @@
     </header>
 
     <!-- ===== TECHNOLOGIES HERO ===== -->
-    <section class="armed-response-hero">
-        <div class="container">
-            <h1 class="float-on-scroll">MAMBA SECURITY TECHNOLOGIES</h1>
-            <p class="float-on-scroll">Advanced security technology solutions with cutting-edge systems and comprehensive security integration in Edenvale, Kempton Park, Benoni, Primrose and surrounding areas.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary float-on-scroll">Contact Our Tech Team</a>
-                <a href="contact.html#quote" class="btn btn-secondary float-on-scroll">Request Technology Quote</a>
+    <section class="armed-response-hero tech-command-hero">
+        <div class="tech-grid-overlay" aria-hidden="true"></div>
+        <div class="container tech-hero-layout">
+            <div class="tech-hero-copy">
+                <span class="tech-eyebrow float-on-scroll"><i class="fas fa-circle" aria-hidden="true"></i> Mamba connected protection</span>
+                <h1 class="float-on-scroll"><span>Security</span> that sees, thinks and responds.</h1>
+                <p class="float-on-scroll">One connected ecosystem for alarms, cameras, access, mobile control and real-time response—designed around your property and backed by Mamba’s local control centre.</p>
+                <div class="hero-buttons float-on-scroll">
+                    <a href="#technology-services" class="btn btn-primary">View Technology Solutions</a>
+                    <a href="contact.html#quote" class="btn btn-secondary">Request A Security Quote</a>
+                </div>
+                <div class="tech-proof-row float-on-scroll" aria-label="Technology service highlights">
+                    <span><strong>Local</strong> control-centre support</span>
+                    <span><strong>AI</strong> camera intelligence</span>
+                    <span><strong>Local</strong> technical teams</span>
+                </div>
+            </div>
+            <div class="tech-status-panel float-on-scroll" aria-label="Mamba connected security system status">
+                <div class="status-panel-top"><span><i class="fas fa-circle" aria-hidden="true"></i> System online</span><small>Mamba network</small></div>
+                <div class="status-panel-main">
+                    <div class="status-shield"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                    <div><strong>Connected security systems</strong><span>Alarms, cameras and response working together.</span></div>
+                </div>
+                <div class="status-system-list">
+                    <a href="#installations"><i class="fas fa-house-signal"></i><span>Alarm & access control</span><small>Installed</small></a>
+                    <a href="#lpr-camera"><i class="fas fa-camera"></i><span>Smart camera monitoring</span><small>Live alerts</small></a>
+                    <a href="#mamba-app"><i class="fas fa-mobile-screen-button"></i><span>Mamba mobile app</span><small>Remote control</small></a>
+                    <a href="#control-centre"><i class="fas fa-tower-broadcast"></i><span>Mamba control centre</span><small>Response support</small></a>
+                </div>
             </div>
         </div>
     </section>
 
+    <nav class="tech-jumpbar" aria-label="Technology sections">
+        <div class="container tech-jumpbar-inner">
+            <span class="tech-jump-label">Explore systems</span>
+            <a href="#installations">Installations</a>
+            <a href="#mamba-app">Mamba App</a>
+            <a href="#solar-security">Solar</a>
+            <a href="#maintenance">Maintenance</a>
+            <a href="#lpr-camera">LPR Network</a>
+            <a href="#control-centre">Control Centre</a>
+        </div>
+    </nav>
+
     <!-- ===== TECHNOLOGIES SERVICES (Order swapped: Installations first, then Solar) ===== -->
-    <section class="service-sections-container">
+    <section class="service-sections-container" id="technology-services">
         <div class="container">
+            <header class="tech-services-intro float-on-scroll">
+                <span>Built as one system</span>
+                <h2>Every layer talks to the next.</h2>
+                <p>From the device at your gate to the operator in our control centre, Mamba technology is designed to shorten the distance between detection and response.</p>
+            </header>
             <!-- Security Installations Section (moved to first position) -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="installations" data-status="Design + install">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Security Installations</h2>
@@ -239,7 +280,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="install.jpg" alt="Mamba Security Installations Team" loading="lazy">
+                    <img src="install.jpg" alt="Mamba Security Installations Team" width="6726" height="3887" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -247,7 +288,7 @@
             </div>
 
             <!-- Mamba App Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="mamba-app" data-status="Mobile command">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Mamba Security App</h2>
@@ -282,7 +323,7 @@
             </div>
 
             <!-- Solar Security Systems Section (moved to third position) -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="solar-security" data-status="Power resilience">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Solar Security Systems</h2>
@@ -294,7 +335,7 @@
 
                         <p>Mamba Solar is able to assist with full solar installations for your entire premises, providing uninterrupted power supply for all your security systems.</p>
 
-                        <p>Our solar solutions include battery backup systems, solar panel installation, and smart power management to keep your security operational around the clock regardless of power outages.</p>
+                        <p>Our solar solutions include battery backup systems, solar panel installation, and smart power management to keep your security operational during power outages.</p>
                     </div>
                 </div>
                 <div class="service-image-ar">
@@ -306,7 +347,7 @@
             </div>
 
             <!-- System Maintenance Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="maintenance" data-status="System health">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>System Maintenance</h2>
@@ -319,11 +360,11 @@
 
                         <p>The advantage of a maintenance agreement is to give you peace of mind and that you know the integrity of your alarm is never compromised.</p>
 
-                        <p>Our maintenance services include regular system checks, battery replacements, software updates, and continuous emergency support to ensure your security systems are always functioning optimally.</p>
+                        <p>Our maintenance services include regular system checks, battery replacements, software updates, and ongoing technical support to keep your security systems functioning optimally.</p>
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="main.jpeg" alt="Mamba Security System Maintenance" loading="lazy">
+                    <img src="main.jpeg" alt="Mamba Security System Maintenance" width="6744" height="4500" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -331,7 +372,7 @@
             </div>
 
             <!-- LPR Camera System Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="lpr-camera" data-status="Live intelligence">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>LPR Camera Systems</h2>
@@ -369,10 +410,10 @@
                 <div class="service-image-ar">
                     <div class="lpr-images-container">
                         <div class="lpr-image-wrapper">
-                            <img src="LPR.png" alt="Mamba Security LPR Camera System - Camera 1" loading="lazy">
+                            <img src="LPR.png" alt="Mamba Security LPR Camera System - Camera 1" width="1221" height="762" loading="lazy" decoding="async">
                         </div>
                         <div class="lpr-image-wrapper">
-                            <img src="LPR2.png" alt="Mamba Security LPR Camera System - Camera 2" loading="lazy">
+                            <img src="LPR2.png" alt="Mamba Security LPR Camera System - Camera 2" width="1085" height="663" loading="lazy" decoding="async">
                         </div>
                     </div>
                     <div class="image-overlay">
@@ -382,7 +423,7 @@
             </div>
 
             <!-- Control Centre Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="control-centre" data-status="Human response">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Control Centre Monitoring</h2>
@@ -393,13 +434,13 @@
                     <div class="service-text-ar">
                         <p>Having a local Control Centre, the operational hub of the group of companies, is critical to the efficient and effective sharing of information between all relevant stakeholders.</p>
 
-                        <p>Our state-of-the-art control centre operates Always with trained professionals monitoring all connected security systems. We provide real-time response coordination, incident management, and emergency dispatch services.</p>
+                        <p>Our state-of-the-art control centre uses trained professionals to monitor connected security systems. We provide real-time response coordination, incident management, and emergency dispatch services.</p>
 
                         <p>The control centre integrates with all Mamba security technologies, providing seamless communication between armed response teams, guarding personnel, and technology systems for comprehensive security coverage.</p>
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="offsite.jpg" alt="Mamba Security Control Centre" loading="lazy">
+                    <img src="offsite.jpg" alt="Mamba Security Control Centre" width="5756" height="3842" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -410,7 +451,7 @@
             <section class="community-shield-packages float-on-scroll" aria-labelledby="community-shield-title">
                 <div class="armoury-board">
                     <div class="armoury-brand" aria-hidden="true"><span>Mamba Armoury</span><small>Package comparison</small></div>
-                    <h2 id="community-shield-title" class="sr-only">Armoury Packages</h2>
+                    <h2 class="sr-only">Armoury Packages</h2>
                     <table class="armoury-grid">
                         <caption class="sr-only">Comparison of Mamba Armoury package features</caption>
                         <thead><tr><th scope="col">Package Summary:</th><th scope="col">Elite<br>Protection</th><th scope="col">Community<br>Shield</th><th scope="col">Smart<br>Secure</th></tr></thead>
@@ -844,5 +885,6 @@
             display: none !important;
         }
     </style>
+    <script src="section-navigation.js?v=20260701" defer></script>
 </body>
 </html>

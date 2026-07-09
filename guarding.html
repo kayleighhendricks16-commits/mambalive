@@ -63,8 +63,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="guarding.css">
-    <link rel="stylesheet" href="mobile-section-dividers.css">
+    <link rel="stylesheet" href="guarding.css?v=20260701-4">
+    <link rel="stylesheet" href="section-navigation.css?v=20260701">
+    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260628">
 
     <!-- Structured Data with locations -->
     <script type="application/ld+json">
@@ -259,7 +260,7 @@
                 <p>Mamba guarding is supported by control-centre infrastructure, dedicated technical teams, armed response coverage, medical-response partnerships and fire-response escalation through Fire Ops SA.</p>
             </div>
             <div class="backbone-visual float-on-scroll">
-                <img src="ccpic.png" alt="Mamba Security control centre supporting guarding operations" loading="lazy">
+                <img src="cc2.png" alt="Mamba Security control centre supporting guarding operations" width="1200" height="800" loading="lazy" decoding="async">
                 <div class="backbone-badge">
                     <strong>Operational support</strong>
                     <span>Control-centre resources, smart cameras and response teams support agreed site procedures.</span>
@@ -269,15 +270,15 @@
     </section>
 
     <!-- ===== GUARDING SERVICES ===== -->
-    <section class="service-sections-container">
+    <section class="service-sections-container" id="guarding-services">
         <div class="container">
             <div class="guarding-section-intro float-on-scroll">
                 <span class="section-label">Guarding built around the site</span>
-                <h2>Professional officers, site-specific procedures and measurable oversight</h2>
+                <h2>Professional security officers, site-specific procedures and measurable oversight</h2>
                 <p>Each solution is shaped around the premises, the people moving through it and the risks that matter most. The result is visible security backed by selection, training, management inspections and fast response support.</p>
             </div>
             <!-- Corporate Guarding Section -->
-            <div class="service-section-ar service-corporate float-on-scroll">
+            <div class="service-section-ar service-corporate float-on-scroll" id="corporate">
                 <div class="service-content-ar">
                     <span class="service-number">01</span>
                     <div class="service-header-ar">
@@ -305,7 +306,7 @@
             </div>
 
             <!-- Road Closures Section -->
-            <div class="service-section-ar service-road-closures float-on-scroll">
+            <div class="service-section-ar service-road-closures float-on-scroll" id="road-closures">
                 <div class="service-content-ar">
                     <span class="service-number">02</span>
                     <div class="service-header-ar">
@@ -325,7 +326,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="rc.png" alt="Mamba Security Road Closures Management" loading="lazy">
+                    <img src="rc.png" alt="Mamba Security Road Closures Management" width="897" height="1122" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -333,7 +334,7 @@
             </div>
 
             <!-- Secure Estates Section -->
-            <div class="service-section-ar service-estates float-on-scroll">
+            <div class="service-section-ar service-estates float-on-scroll" id="secure-estates">
                 <div class="service-content-ar">
                     <span class="service-number">03</span>
                     <div class="service-header-ar">
@@ -353,7 +354,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="SE.avif" alt="Mamba Security Secure Estates Protection" loading="lazy">
+                    <img src="esate.png" alt="Mamba Security Secure Estates Protection" width="1200" height="800" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -361,7 +362,7 @@
             </div>
 
             <!-- Schools Section -->
-            <div class="service-section-ar service-schools float-on-scroll">
+            <div class="service-section-ar service-schools float-on-scroll" id="schools">
                 <div class="service-content-ar">
                     <span class="service-number">04</span>
                     <div class="service-header-ar">
@@ -381,7 +382,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="schoolcurro.jpg" alt="Mamba Security School Protection Services" loading="lazy">
+                    <img src="schoolcurro.jpg" alt="Mamba Security School Protection Services" width="5448" height="3637" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -389,7 +390,7 @@
             </div>
 
             <!-- AD HOC Section -->
-            <div class="service-section-ar service-adhoc float-on-scroll">
+            <div class="service-section-ar service-adhoc float-on-scroll" id="ad-hoc">
                 <div class="service-content-ar">
                     <span class="service-number">05</span>
                     <div class="service-header-ar">
@@ -409,7 +410,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="adhoc.png" alt="Mamba Security AD HOC Security Services" loading="lazy">
+                    <img src="adhocnew.JPG" alt="Mamba Security AD HOC Security Services" width="1448" height="1086" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -686,21 +687,24 @@
         function initFloatUpAnimation() {
             const floatElements = document.querySelectorAll('.float-on-scroll');
 
+            if (!('IntersectionObserver' in window)) {
+                floatElements.forEach(element => element.classList.add('visible'));
+                return;
+            }
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
+                    if (!entry.isIntersecting) return;
+
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 });
             }, {
-                threshold: 0.12,
-                rootMargin: '0px 0px -90px 0px'
+                threshold: 0.08,
+                rootMargin: '80px 0px -40px 0px'
             });
 
-            floatElements.forEach(element => {
-                observer.observe(element);
-            });
+            floatElements.forEach(element => observer.observe(element));
         }
 
         // Initialize float-up animation
@@ -806,5 +810,6 @@
             display: none !important;
         }
     </style>
+    <script src="section-navigation.js?v=20260701" defer></script>
 </body>
 </html>

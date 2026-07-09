@@ -754,12 +754,12 @@ body.menu-open {
     object-position: center 20%;
 }
 
-/* Specific adjustments for SE.avif (1223×1356) - TALL IMAGE */
+/* Secure Estates image */
 .service-section-ar:nth-child(3) .service-image-ar {
     padding: 0;
 }
 
-/* Specific adjustments for adhoc.png (1258×765) - WIDE IMAGE */
+/* Ad Hoc guarding image */
 .service-section-ar:nth-child(5) .service-image-ar {
     padding: 0;
 }
@@ -1749,6 +1749,62 @@ img {
     }
 }
 
+/* Performance: avoid rendering large off-screen sections until they approach view. */
+.operations-backbone,
+.emergency-cta {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+}
+
+/* Keep common interactions on compositor-friendly properties. */
+.service-section-ar {
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.service-image-ar {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-image-ar .image-overlay {
+    transition: opacity 0.3s ease;
+}
+
+.backbone-badge {
+    backdrop-filter: blur(4px);
+}
+
+@media (hover: none), (pointer: coarse) {
+    .service-image-ar:hover,
+    .service-image-ar:hover img {
+        transform: none;
+    }
+
+    .whatsapp-float {
+        animation: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .float-on-scroll,
+    .service-section-ar {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 /* MEDIUM PHONES (425px - 599px) */
 @media (max-width: 599px) and (min-width: 425px) {
     .container {
@@ -2731,5 +2787,62 @@ body.menu-open {
 
     .armed-response-hero .hero-buttons {
         align-items: center;
+    }
+}
+
+/* ===== GUARDING PERFORMANCE PASS ===== */
+.header,
+.backbone-badge {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+.whatsapp-float {
+    animation: none !important;
+}
+
+.float-on-scroll {
+    opacity: 0 !important;
+    transform: translate3d(0, 18px, 0) !important;
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transition-delay: 0s !important;
+    will-change: auto !important;
+}
+
+.float-on-scroll.visible {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+}
+
+.operations-backbone,
+.emergency-cta {
+    content-visibility: visible;
+    contain: none;
+}
+
+.intelligence-card,
+.service-section-ar,
+.service-image-ar,
+.backbone-visual {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.backbone-visual img {
+    filter: none;
+}
+
+.service-image-ar img,
+.service-image-ar .image-overlay,
+.service-icon-wrapper {
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .service-image-ar:hover {
+        transform: translateY(-3px);
+    }
+
+    .service-image-ar:hover img {
+        transform: none;
     }
 }

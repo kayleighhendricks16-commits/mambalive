@@ -1,0 +1,40 @@
+/* Stable in-page navigation and lighter motion. */
+.service-sections-container[id],
+.service-section-ar[id],
+.community-category[id],
+section[id] {
+    scroll-margin-top: 150px;
+}
+
+.service-section-ar {
+    transition-property: opacity, transform;
+}
+
+@media (max-width: 767px) {
+    .service-sections-container[id],
+    .service-section-ar[id],
+    .community-category[id],
+    section[id] {
+        scroll-margin-top: 100px;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .service-image-ar:hover,
+    .service-image-ar:hover img {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .float-on-scroll,
+    .service-section-ar {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

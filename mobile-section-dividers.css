@@ -7,3 +7,72 @@
         border-top: 2px solid rgba(153, 255, 0, 0.72) !important;
     }
 }
+
+/* Keep the expanded desktop navigation on one line after adding Shop. */
+@media (min-width: 769px) and (max-width: 1400px) {
+    .navbar .logo-image {
+        width: auto !important;
+        height: 78px !important;
+        max-width: 165px !important;
+    }
+
+    .navbar .logo {
+        margin-inline: 2px 8px !important;
+    }
+
+    .navbar .nav-menu {
+        gap: 2px !important;
+    }
+
+    .navbar .nav-link {
+        padding-inline: 5px !important;
+        font-size: clamp(0.68rem, 0.88vw, 0.8rem) !important;
+    }
+}
+
+/* Persistent store cart shortcut outside the Shop page. */
+.global-store-cart {
+    position: fixed;
+    z-index: 998;
+    right: 28px;
+    bottom: 118px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 12px 10px 16px;
+    border: 1px solid rgba(153, 255, 0, 0.52);
+    border-radius: 999px;
+    background: rgba(7, 11, 7, 0.94);
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+    backdrop-filter: blur(12px);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.global-store-cart i { color: #99ff00; }
+.global-store-cart strong {
+    min-width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #293129;
+    color: #99ff00;
+    font-size: 0.7rem;
+}
+.global-store-cart.has-items strong { background: #99ff00; color: #071000; }
+.global-store-cart:hover { background: #99ff00; color: #071000; transform: translateY(-2px); }
+.global-store-cart:hover i { color: #071000; }
+
+@media (max-width: 768px) {
+    .global-store-cart {
+        right: 14px;
+        bottom: 92px;
+        min-height: 46px;
+        padding: 9px 10px 9px 13px;
+    }
+    .global-store-cart span { display: none; }
+}

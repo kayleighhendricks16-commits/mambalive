@@ -63,8 +63,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="ar.css">
-    <link rel="stylesheet" href="mobile-section-dividers.css">
+    <link rel="stylesheet" href="ar.css?v=20260701">
+    <link rel="stylesheet" href="section-navigation.css?v=20260701">
+    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260628">
 
     <!-- Structured Data with locations -->
     <script type="application/ld+json">
@@ -201,7 +202,7 @@
     <section class="service-sections-container">
         <div class="container">
             <!-- Armed Response Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="armed-response">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Armed Response</h2>
@@ -222,7 +223,7 @@
             </div>
 
             <!-- Dedicated Vehicles Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="dedicated-vehicles">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Dedicated Vehicles</h2>
@@ -245,7 +246,7 @@
             </div>
 
             <!-- Special Operations Unit Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="special-operations">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Special Operations Unit</h2>
@@ -258,7 +259,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="sp.png" alt="Mamba Security Special Operations Unit" loading="lazy">
+                    <img src="sp.png" alt="Mamba Security Special Operations Unit" width="873" height="1091" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -266,7 +267,7 @@
             </div>
 
             <!-- K9 Unit Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="k9-unit">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>K9 Unit</h2>
@@ -279,7 +280,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="k92.jpg" alt="Mamba Security K9 Unit" loading="lazy">
+                    <img src="k92.jpg" alt="Mamba Security K9 Unit" width="3778" height="5660" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -287,7 +288,7 @@
             </div>
 
             <!-- Medical Response Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="medical-response">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Medical Response</h2>
@@ -302,7 +303,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="hurtbaby.png" alt="Mamba Security Medical Response" loading="lazy">
+                    <img src="hurtbaby.png" alt="Mamba Security Medical Response" width="1261" height="739" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -310,7 +311,7 @@
             </div>
 
             <!-- Tactical Medical Response Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="tactical-medical">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Tactical Medical Response</h2>
@@ -325,7 +326,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="mrv.png" alt="Mamba Security Tactical Medical Response" loading="lazy">
+                    <img src="mrv.png" alt="Mamba Security Tactical Medical Response" width="1493" height="1054" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="contact.html#quote" class="btn btn-primary overlay-btn">Request A Quote</a>
                     </div>
@@ -348,7 +349,7 @@
                     </div>
                 </div>
                 <div class="service-image-ar">
-                    <img src="fireops2.png" alt="Fire Ops SA emergency fire and rescue response" loading="lazy">
+                    <img src="fireops2.png" alt="Fire Ops SA emergency fire and rescue response" width="1000" height="970" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <a href="https://fireopssa.co.za/contact-us/" class="btn btn-primary overlay-btn" target="_blank" rel="noopener noreferrer">Request A Quote</a>
                     </div>
@@ -356,7 +357,7 @@
             </div>
 
             <!-- WhatsApp Emergency Groups Section -->
-            <div class="service-section-ar float-on-scroll">
+            <div class="service-section-ar float-on-scroll" id="whatsapp-groups">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>WhatsApp Emergency Groups</h2>
@@ -739,5 +740,6 @@
             display: none !important;
         }
     </style>
+    <script src="section-navigation.js?v=20260701" defer></script>
 </body>
 </html>
