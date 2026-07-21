@@ -422,31 +422,72 @@ body.menu-open {
 
 /* ===== CONTACT HERO ===== */
 .contact-hero {
-    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('contacthero.jpg');
+    min-height: min(820px, calc(100vh - 110px));
+    padding: clamp(28px, 4vw, 56px) 0 clamp(54px, 7vw, 92px);
+    display: flex;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+        url('contacthero.jpg');
     background-size: cover;
     background-position: center;
     background-position-y: 30%;
-    padding: clamp(100px, 18vw, 150px) 0 clamp(70px, 12vw, 100px);
-    text-align: center;
-    border-bottom: 3px solid var(--mamba-green);
-    min-height: 80vh;
-    display: flex;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(18px, 3vw, 32px);
     align-items: center;
-    justify-content: center;
+    justify-items: center;
+}
+
+.hero-copy {
+    max-width: 1200px;
+    text-align: center;
+}
+
+.hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    margin: 0 auto 12px;
+    padding: 8px 12px;
+    color: var(--mamba-green);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    border: 1px solid rgba(153, 255, 0, 0.38);
+    background: rgba(153, 255, 0, 0.09);
+    border-radius: 999px;
+    box-shadow: 0 0 25px rgba(153, 255, 0, 0.12);
 }
 
 .contact-hero h1 {
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    color: var(--mamba-green);
-    margin-bottom: 20px;
+    font-size: clamp(3rem, 5.2vw, 5.4rem);
+    color: #fff;
+    margin: 0 auto 24px;
+    font-weight: 700;
+    line-height: .97;
+    letter-spacing: .02em;
+    text-align: center;
+    text-transform: uppercase;
+    max-width: 760px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .contact-hero p {
-    font-size: clamp(1rem, 3vw, 1.4rem);
-    max-width: 800px;
+    max-width: 790px;
     margin: 0 auto 30px;
-    color: var(--mamba-text);
+    color: #b8c1b8;
+    font-size: clamp(1rem, 1.35vw, 1.16rem);
+    line-height: 1.75;
 }
 
 .hero-buttons {
@@ -1338,8 +1379,8 @@ body.menu-open {
     }
 
     .contact-hero {
-        padding: 90px 0 50px;
-        min-height: 60vh;
+        padding: 50px 0 36px;
+        min-height: auto;
     }
 
     .contact-hero h1 {
@@ -1414,12 +1455,12 @@ body.menu-open {
     }
 
     .contact-hero {
-        padding: 80px 0 40px;
-        min-height: 60vh;
+        padding: 24px 0 40px;
+        min-height: auto;
     }
-
+    
     .contact-hero h1 {
-        font-size: 2rem;
+        font-size: clamp(2.45rem, 12vw, 3.7rem);
     }
 
     .contact-hero p {
