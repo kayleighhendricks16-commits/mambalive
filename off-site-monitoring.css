@@ -1418,7 +1418,7 @@ body.menu-open { overflow: hidden !important; }
     .mobile-logo-image { height: 80px; max-width: 240px; }
     .mobile-header-center { font-size: 1.8rem; }
     .armed-response-hero { padding: 38px 0 46px; }
-    .armed-response-hero h1 { font-size: clamp(2.8rem, 7.4vw, 4.3rem); }
+
     .services-container { grid-template-columns: 1fr; }
     .footer-content { gap: 25px; }
     .social-icons { gap: 8px; }
@@ -1439,7 +1439,7 @@ body.menu-open { overflow: hidden !important; }
         background-position: center;
     }
     .hero-kicker { font-size: 0.68rem; line-height: 1.35; }
-    .armed-response-hero h1 { font-size: 2rem; margin-bottom: 14px; }
+    .armed-response-hero h1 { font-size: 2.2rem; margin-bottom: 14px; }
     .armed-response-hero .hero-lead {
         padding-left: 0;
         font-size: 1rem;
@@ -2397,13 +2397,13 @@ body.menu-open {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-copy { max-width: 820px; }
     .hero-camera-stack { min-height: 560px; }
-    .armed-response-hero h1 { font-size: clamp(3rem,8vw,5.2rem); }
+
 }
 @media (max-width: 767px) {
     .armed-response-hero { padding: 24px 0 40px; min-height: auto; }
     .armed-response-hero::after { display:none; }
     .hero-grid { gap: 42px; }
-    .armed-response-hero h1 { font-size: clamp(2.45rem,12vw,3.7rem); }
+
     .hero-proof { grid-template-columns: 1fr; gap: 13px; }
     .hero-proof span { display: grid; grid-template-columns: 28px 1fr; align-items: center; }
     .hero-proof strong { margin: 0; }
@@ -2426,3 +2426,491 @@ body.menu-open {
     .camera-tile figcaption { left: 16px; right: 16px; bottom: 16px; }
 }
 .community-shield-packages{border:none!important;box-shadow:none!important;background:transparent!important}
+
+/* ===== MOBILE HERO OVERRIDES (must come last to win over revamp section) ===== */
+/* Bring hero closer to header on tablets */
+@media (max-width: 1024px) {
+    .armed-response-hero {
+        padding: 50px 0 36px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 2.2rem !important;
+    }
+}
+/* Large phones */
+@media (max-width: 767px) {
+    .armed-response-hero {
+        padding: 0 0 12px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 2.2rem !important;
+    }
+}
+/* Medium phones */
+@media (max-width: 599px) and (min-width: 425px) {
+    .armed-response-hero {
+        padding: 0 0 10px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.8rem !important;
+    }
+}
+/* Small phones */
+@media (max-width: 424px) and (min-width: 375px) {
+    .armed-response-hero {
+        padding: 0 0 8px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.6rem !important;
+    }
+}
+/* Very small phones */
+@media (max-width: 374px) {
+    .armed-response-hero {
+        padding: 0 0 6px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* Final monitoring hero override: placed at EOF so no older mobile block can win. */
+@media (max-width: 1024px) {
+    .armed-response-hero {
+        min-height: 520px !important;
+        padding: 40px 0 28px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(2.4rem, 8vw, 4.2rem) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .armed-response-hero {
+        min-height: 660px !important;
+        padding: 0 0 22px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(2.05rem, 10vw, 3.35rem) !important;
+        margin-bottom: 18px !important;
+    }
+
+    .armed-response-hero p,
+    .armed-response-hero .hero-lead {
+        font-size: 1rem !important;
+        line-height: 1.65 !important;
+    }
+}
+
+@media (max-width: 424px) {
+    .armed-response-hero {
+        min-height: 660px !important;
+        padding: 0 0 20px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(1.9rem, 10.5vw, 2.75rem) !important;
+    }
+}
+
+.armed-response-hero .hero-copy,
+.armed-response-hero .hero-kicker,
+.armed-response-hero h1,
+.armed-response-hero p,
+.armed-response-hero .hero-lead,
+.armed-response-hero .hero-buttons,
+.armed-response-hero .hero-buttons .btn {
+    will-change: transform, opacity;
+    animation: heroFloatUp 1100ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.armed-response-hero .hero-kicker {
+    animation-delay: 80ms;
+}
+
+.armed-response-hero h1 {
+    animation-delay: 160ms;
+}
+
+.armed-response-hero p,
+.armed-response-hero .hero-lead {
+    animation-delay: 260ms;
+}
+
+.armed-response-hero .hero-buttons {
+    animation-delay: 360ms;
+}
+
+.armed-response-hero .hero-buttons .btn {
+    animation-delay: 420ms;
+}
+
+@keyframes heroFloatUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .armed-response-hero .hero-copy,
+    .armed-response-hero .hero-kicker,
+    .armed-response-hero h1,
+    .armed-response-hero p,
+    .armed-response-hero .hero-lead,
+    .armed-response-hero .hero-buttons,
+    .armed-response-hero .hero-buttons .btn {
+        animation: none;
+    }
+}
+
+@media (max-width: 767px) {
+    body .armed-response-hero {
+        padding-top: 6px !important;
+        padding-bottom: 22px !important;
+    }
+
+    body .armed-response-hero .hero-grid {
+        gap: 16px !important;
+    }
+
+    body .armed-response-hero .hero-kicker {
+        margin-bottom: 10px !important;
+    }
+
+    body .armed-response-hero h1 {
+        margin-bottom: 18px !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
+    }
+
+    body .armed-response-hero p,
+    body .armed-response-hero .hero-lead {
+        margin-bottom: 24px !important;
+        color: #b8c1b8 !important;
+    }
+
+    body .hero-buttons {
+        gap: 12px !important;
+    }
+
+    body .hero-buttons .btn {
+        padding: 11px 16px !important;
+        font-size: 0.8rem !important;
+        border-radius: 50px !important;
+        text-transform: uppercase !important;
+        letter-spacing: .07em !important;
+        font-weight: 800 !important;
+    }
+}
+
+@media (max-width: 424px) {
+    body .armed-response-hero {
+        padding-top: 2px !important;
+        padding-bottom: 20px !important;
+    }
+}
+
+/* Keep phone hero heights identical even when button wrapping differs. */
+@media (max-width: 767px) {
+    .armed-response-hero,
+    .contact-hero {
+        min-height: 660px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .armed-response-hero {
+        padding-top: 4px !important;
+        padding-bottom: 36px !important;
+    }
+
+    .armed-response-hero .hero-grid {
+        gap: 16px !important;
+    }
+
+    .armed-response-hero .hero-kicker {
+        margin-bottom: 10px !important;
+    }
+
+    .armed-response-hero h1 {
+        margin-bottom: 18px !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
+    }
+
+    .armed-response-hero p,
+    .armed-response-hero .hero-lead {
+        margin-bottom: 24px !important;
+        color: #b8c1b8 !important;
+    }
+
+    .hero-buttons {
+        gap: 12px !important;
+    }
+
+    .hero-buttons .btn {
+        padding: 11px 16px !important;
+        font-size: 0.8rem !important;
+        border-radius: 50px !important;
+        text-transform: uppercase !important;
+        letter-spacing: .07em !important;
+        font-weight: 800 !important;
+    }
+}
+
+@media (max-width: 424px) {
+    .armed-response-hero {
+        padding-top: 2px !important;
+        padding-bottom: 34px !important;
+    }
+}
+
+/* Final cascade guard: keep monitoring hero aligned with the other service pages. */
+@media (max-width: 1024px) {
+    .armed-response-hero {
+        min-height: 520px !important;
+        padding: 40px 0 28px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(2.4rem, 8vw, 4.2rem) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .armed-response-hero {
+        min-height: 660px !important;
+        padding: 0 0 22px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(2.05rem, 10vw, 3.35rem) !important;
+        margin-bottom: 18px !important;
+    }
+
+    .armed-response-hero p,
+    .armed-response-hero .hero-lead {
+        font-size: 1rem !important;
+        line-height: 1.65 !important;
+    }
+}
+
+@media (max-width: 424px) {
+    .armed-response-hero {
+        min-height: 660px !important;
+        padding: 0 0 20px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(1.9rem, 10.5vw, 2.75rem) !important;
+    }
+}
+
+/* ===== UNIFIED SERVICE PAGE HERO ===== */
+.armed-response-hero,
+.contact-hero {
+    min-height: min(820px, calc(100vh - 110px)) !important;
+    padding: clamp(40px, 5vw, 64px) 0 clamp(58px, 7vw, 92px) !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.armed-response-hero .hero-grid,
+.contact-hero .hero-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    justify-items: center !important;
+    align-items: center !important;
+}
+
+.armed-response-hero .hero-copy,
+.contact-hero .hero-copy {
+    max-width: 980px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+.armed-response-hero .hero-kicker,
+.contact-hero .hero-kicker {
+    margin: 0 auto 12px !important;
+}
+
+.armed-response-hero h1,
+.contact-hero h1 {
+    max-width: 800px !important;
+    margin: 0 auto 24px !important;
+    color: #fff !important;
+    font-size: clamp(3rem, 5.2vw, 5.4rem) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important;
+    line-height: .97 !important;
+    letter-spacing: .02em !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+}
+
+.armed-response-hero p,
+.armed-response-hero .hero-lead,
+.contact-hero p,
+.contact-hero .hero-lead {
+    max-width: 790px !important;
+    margin: 0 auto 30px !important;
+    color: #b8c1b8 !important;
+    font-size: clamp(1rem, 1.35vw, 1.16rem) !important;
+    line-height: 1.75 !important;
+}
+
+.armed-response-hero .hero-buttons,
+.contact-hero .hero-buttons {
+    justify-content: center !important;
+    gap: 20px !important;
+}
+
+@media (max-width: 1024px) {
+    .armed-response-hero,
+    .contact-hero {
+        min-height: 520px !important;
+        padding: 40px 0 28px !important;
+    }
+
+    .armed-response-hero h1,
+    .contact-hero h1 {
+        font-size: clamp(2.4rem, 8vw, 4.2rem) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .armed-response-hero,
+    .contact-hero {
+        min-height: 660px !important;
+        padding: 0 0 22px !important;
+    }
+
+    .armed-response-hero h1,
+    .contact-hero h1 {
+        font-size: clamp(2.05rem, 10vw, 3.35rem) !important;
+        margin-bottom: 18px !important;
+    }
+
+    .armed-response-hero p,
+    .armed-response-hero .hero-lead,
+    .contact-hero p,
+    .contact-hero .hero-lead {
+        font-size: 1rem !important;
+        line-height: 1.65 !important;
+    }
+}
+
+@media (max-width: 424px) {
+    .armed-response-hero,
+    .contact-hero {
+        min-height: 660px !important;
+        padding: 0 0 20px !important;
+    }
+
+    .armed-response-hero h1,
+    .contact-hero h1 {
+        font-size: clamp(1.9rem, 10.5vw, 2.75rem) !important;
+    }
+}
+
+/* ===== MOBILE HERO OVERRIDES - ALL HEROES CONSISTENT ===== */
+@media (max-width: 1024px) {
+    .armed-response-hero {
+        padding: 50px 0 36px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 2.2rem !important;
+    }
+}
+@media (max-width: 767px) {
+    .armed-response-hero {
+        padding: 12px 0 36px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 2.2rem !important;
+    }
+}
+@media (max-width: 599px) and (min-width: 425px) {
+    .armed-response-hero {
+        padding: 10px 0 32px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.8rem !important;
+    }
+}
+@media (max-width: 424px) and (min-width: 375px) {
+    .armed-response-hero {
+        padding: 8px 0 30px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.6rem !important;
+    }
+}
+@media (max-width: 374px) {
+    .armed-response-hero {
+        padding: 6px 0 28px !important;
+        min-height: auto !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* Final monitoring hero override: placed at EOF so no older mobile block can win. */
+@media (max-width: 1024px) {
+    .armed-response-hero {
+        min-height: 520px !important;
+        padding: 40px 0 28px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(2.4rem, 8vw, 4.2rem) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .armed-response-hero {
+        min-height: 660px !important;
+        padding: 0 0 22px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(2.05rem, 10vw, 3.35rem) !important;
+        margin-bottom: 18px !important;
+    }
+
+    .armed-response-hero p,
+    .armed-response-hero .hero-lead {
+        font-size: 1rem !important;
+        line-height: 1.65 !important;
+    }
+}
+
+@media (max-width: 424px) {
+    .armed-response-hero {
+        min-height: 660px !important;
+        padding: 0 0 20px !important;
+    }
+
+    .armed-response-hero h1 {
+        font-size: clamp(1.9rem, 10.5vw, 2.75rem) !important;
+    }
+}

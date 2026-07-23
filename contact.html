@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles (external CSS) -->
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="contact.css?v=20260722">
     <link rel="stylesheet" href="mobile-section-dividers.css?v=20260628">
 
     <!-- Structured Data with locations -->
@@ -565,13 +565,13 @@
         const mobileMenu = document.getElementById('mobileMenu');
         const body = document.body;
         const whatsappFloat = document.querySelector('.whatsapp-float');
-
         if (hamburger && mobileMenu) {
             hamburger.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
                 body.classList.toggle('menu-open');
                 hamburger.classList.toggle('active');
 
+                // Hide/show WhatsApp button when menu is open
                 if (mobileMenu.classList.contains('active')) {
                     if (whatsappFloat) whatsappFloat.style.display = 'none';
                 } else {

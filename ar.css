@@ -3166,8 +3166,8 @@ body.menu-open {
 @media (max-width: 767px) {
     .response-mobile-hub {
         position: relative;
-        width: 140px;
-        height: 140px;
+        width: 170px;
+        height: 170px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -3176,8 +3176,8 @@ body.menu-open {
 
     .response-mobile-hub-glow {
         position: absolute;
-        width: 190px;
-        height: 190px;
+        width: 230px;
+        height: 230px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -3188,8 +3188,8 @@ body.menu-open {
 
     .response-mobile-hub-ring {
         position: absolute;
-        width: 146px;
-        height: 146px;
+        width: 178px;
+        height: 178px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -3201,8 +3201,8 @@ body.menu-open {
     .response-mobile-hub-core {
         position: relative;
         z-index: 2;
-        width: 126px;
-        height: 126px;
+        width: 156px;
+        height: 156px;
         border-radius: 50%;
         border: 3px solid #99ff00;
         background: radial-gradient(circle at 30% 30%, #121812, #050505);
@@ -3210,13 +3210,13 @@ body.menu-open {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 40px rgba(153,255,0,0.3);
+        box-shadow: 0 0 50px rgba(153,255,0,0.35);
     }
 
     .response-mobile-hub-core .hub-shield-img {
-        width: 32px;
+        width: 52px;
         height: auto;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
         object-fit: contain;
     }
 
@@ -3224,7 +3224,7 @@ body.menu-open {
         color: #99ff00;
         font-family: 'Montserrat', sans-serif;
         font-weight: 900;
-        font-size: 0.75rem;
+        font-size: 0.82rem;
         letter-spacing: 1px;
         line-height: 1.1;
         text-align: center;
@@ -3234,12 +3234,12 @@ body.menu-open {
         color: rgba(153,255,0,0.75);
         font-family: 'Montserrat', sans-serif;
         font-weight: 800;
-        font-size: 0.48rem;
-        letter-spacing: 0.5px;
+        font-size: 0.55rem;
+        letter-spacing: 0.8px;
         line-height: 1.2;
         text-align: center;
         white-space: normal;
-        max-width: 110px;
+        max-width: 130px;
     }
 
     .response-mobile-cards {

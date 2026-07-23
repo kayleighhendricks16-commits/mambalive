@@ -3,7 +3,7 @@ const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const body = document.body;
 const whatsappFloat = document.querySelector('.whatsapp-float');
-const gameFloat = document.querySelector('.game-float');
+const quoteFloat = document.querySelector('.quote-float');
 
 if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', () => {
@@ -12,10 +12,10 @@ if (hamburger && mobileMenu) {
         hamburger.classList.toggle('active');
         if (mobileMenu.classList.contains('active')) {
             if (whatsappFloat) whatsappFloat.style.display = 'none';
-            if (gameFloat) gameFloat.style.display = 'none';
+            if (quoteFloat) quoteFloat.style.display = 'none';
         } else {
             if (whatsappFloat) whatsappFloat.style.display = 'flex';
-            if (gameFloat) gameFloat.style.display = 'inline-flex';
+            if (quoteFloat) quoteFloat.style.display = 'inline-flex';
         }
     });
 
@@ -25,7 +25,7 @@ if (hamburger && mobileMenu) {
             body.classList.remove('menu-open');
             hamburger.classList.remove('active');
             if (whatsappFloat) whatsappFloat.style.display = 'flex';
-            if (gameFloat) gameFloat.style.display = 'inline-flex';
+            if (quoteFloat) quoteFloat.style.display = 'inline-flex';
         });
     });
 
@@ -35,7 +35,7 @@ if (hamburger && mobileMenu) {
             body.classList.remove('menu-open');
             hamburger.classList.remove('active');
             if (whatsappFloat) whatsappFloat.style.display = 'flex';
-            if (gameFloat) gameFloat.style.display = 'inline-flex';
+            if (quoteFloat) quoteFloat.style.display = 'inline-flex';
         }
     });
 
@@ -45,7 +45,7 @@ if (hamburger && mobileMenu) {
             body.classList.remove('menu-open');
             hamburger.classList.remove('active');
             if (whatsappFloat) whatsappFloat.style.display = 'flex';
-            if (gameFloat) gameFloat.style.display = 'inline-flex';
+            if (quoteFloat) quoteFloat.style.display = 'inline-flex';
         }
     });
 }
@@ -931,32 +931,7 @@ try {
     console.error('Snake game initialization error:', error);
 }
 
-// ==================== PLAY OUR GAME BUTTON (Simple scroll only) ====================
-(function() {
-    const playOurGameBtn = document.getElementById('playOurGameBtn');
 
-    if(!playOurGameBtn) return;
-
-    function handlePlayGame(e) {
-        e.preventDefault();
-
-        // Simple scroll to game section - let the game handle itself
-        const gameSection = document.getElementById('snake-game');
-        if(gameSection) {
-            gameSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
-
-    // Support both click and touch for mobile
-    playOurGameBtn.addEventListener('click', handlePlayGame);
-    playOurGameBtn.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        handlePlayGame(e);
-    }, { passive: false });
-})();
 
 // ==================== LEADERBOARD SYSTEM (npoint.io + Formizee) ====================
 
