@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="ar.css?v=20260701">
+    <link rel="stylesheet" href="ar.css?v=20260722-command-center">
     <link rel="stylesheet" href="section-navigation.css?v=20260701">
     <link rel="stylesheet" href="mobile-section-dividers.css?v=20260628">
 
@@ -86,7 +86,7 @@
           "Gauteng"
         ]
       },
-      "description": "Rapid armed response teams, special operations units, K9 security, and emergency medical response for Always protection in Edenvale, Kempton Park, Benoni, Primrose and across Gauteng.",
+      "description": "Rapid armed response teams, special operations units, K9 security, and emergency medical response for protection in Edenvale, Kempton Park, Benoni, Primrose and across Gauteng.",
       "areaServed": {
         "@type": "Place",
         "name": "Edenvale, Kempton Park, Benoni, Primrose, Gauteng, South Africa"
@@ -201,11 +201,247 @@
         </div>
     </section>
 
+    <!-- ===== EKURHULENI CRIME STATS ===== -->
+    <section class="response-dashboard" id="response-stats">
+        <div class="container">
+            <div class="response-dashboard-header float-on-scroll">
+                <span class="section-label"><i class="fas fa-circle"></i> Ekurhuleni crime intelligence</span>
+                <h2>Ekurhuleni Crime Statistics</h2>
+                <p>4th Quarter (January – March 2026) — SAPS crime data for the Ekurhuleni District, covering Edenvale, Kempton Park, Benoni, Primrose and the broader East Rand.</p>
+            </div>
+            <div class="response-stats-grid">
+                <div class="resp-stat-card float-on-scroll">
+                    <div class="resp-stat-icon"><i class="fas fa-home"></i></div>
+                    <div class="resp-stat-number"><span class="resp-stat-counter" data-target="6" data-decimal=".9%">0</span></div>
+                    <div class="resp-stat-label">Property Crime Reduction</div>
+                </div>
+                <div class="resp-stat-card float-on-scroll">
+                    <div class="resp-stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="resp-stat-number"><span class="resp-stat-counter" data-target="4" data-decimal=".2%">0</span></div>
+                    <div class="resp-stat-label">Contact Crime Reduction</div>
+                </div>
+                <div class="resp-stat-card float-on-scroll">
+                    <div class="resp-stat-icon"><i class="fas fa-car"></i></div>
+                    <div class="resp-stat-number"><span class="resp-stat-counter" data-target="18" data-decimal=".7%">0</span></div>
+                    <div class="resp-stat-label">Carjacking Reduction</div>
+                </div>
+                <div class="resp-stat-card float-on-scroll">
+                    <div class="resp-stat-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="resp-stat-number"><span class="resp-stat-counter" data-target="15" data-decimal=".5%">0</span></div>
+                    <div class="resp-stat-label">Murder Reduction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESPONSE CHAIN FLOW ===== -->
+    <section class="response-network-showcase" id="response-flow" aria-labelledby="response-flow-title">
+        <div class="response-grid-bg" aria-hidden="true"></div>
+        <div class="container">
+            <div class="response-network-header float-on-scroll">
+                <span class="section-label"><i class="fas fa-circle"></i> End-to-end response</span>
+                <h2 id="response-flow-title">From Alert To Resolution</h2>
+                <p>Every emergency follows the same proven chain — a coordinated sequence from first alert to scene secure. Here's how we respond.</p>
+            </div>
+
+            <div class="response-flow-strip float-on-scroll">
+                <div class="flow-step">
+                    <span class="flow-num">STEP 01</span>
+                    <strong>Alert</strong>
+                    <span>Alarm triggers, control centre receives instant alert with location data</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                    <span class="flow-num">STEP 02</span>
+                    <strong>Dispatch</strong>
+                    <span>Nearest unit dispatched via GPS — vehicle, K9, or tactical response</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                    <span class="flow-num">STEP 03</span>
+                    <strong>Respond</strong>
+                    <span>Armed officers arrive on scene, assess threat, and take action</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                    <span class="flow-num">STEP 04</span>
+                    <strong>Secure</strong>
+                    <span>Scene secured, suspect apprehended, property protected, incident logged</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESPONSE NETWORK COMMAND CENTER ===== -->
+    <section class="response-network-showcase" id="response-network" aria-labelledby="response-network-title">
+        <div class="response-grid-bg" aria-hidden="true"></div>
+        <div class="container">
+            <div class="response-network-header float-on-scroll">
+                <span class="section-label"><i class="fas fa-circle"></i> Connected response</span>
+                <h2 id="response-network-title">Mamba Response Network</h2>
+                <p>Every unit, every vehicle, every tool connected to one Control Centre — coordinated in real time.</p>
+            </div>
+
+            <div class="response-stage float-on-scroll">
+                <div class="response-orbit-wrap" id="responseOrbit">
+                    <svg class="response-lines-svg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                        <defs>
+                            <filter id="respGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="4" result="blur"/>
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <g class="resp-orbit-lines-glow" stroke="#99ff00" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.06">
+                            <line x1="500" y1="350" x2="500" y2="90"/>
+                            <line x1="500" y1="350" x2="780" y2="160"/>
+                            <line x1="500" y1="350" x2="880" y2="350"/>
+                            <line x1="500" y1="350" x2="780" y2="540"/>
+                            <line x1="500" y1="350" x2="120" y2="350"/>
+                            <line x1="500" y1="350" x2="220" y2="540"/>
+                            <line x1="500" y1="350" x2="500" y2="610"/>
+                            <line x1="500" y1="350" x2="220" y2="160"/>
+                        </g>
+                        <g class="resp-orbit-lines" stroke="#99ff00" stroke-width="2" stroke-linecap="round" fill="none">
+                            <line data-node="armed" x1="500" y1="350" x2="500" y2="90"/>
+                            <line data-node="vehicles" x1="500" y1="350" x2="780" y2="160"/>
+                            <line data-node="special" x1="500" y1="350" x2="880" y2="350"/>
+                            <line data-node="k9" x1="500" y1="350" x2="780" y2="540"/>
+                            <line data-node="fire-ops" x1="500" y1="350" x2="120" y2="350"/>
+                            <line data-node="tacmed" x1="500" y1="350" x2="220" y2="540"/>
+                            <line data-node="smart-camera" x1="500" y1="350" x2="500" y2="610"/>
+                            <line data-node="whatsapp" x1="500" y1="350" x2="220" y2="160"/>
+                        </g>
+                        <g class="resp-orbit-pulses" fill="#99ff00" filter="url(#respGlow)">
+                            <circle r="4"><animateMotion dur="2.4s" repeatCount="indefinite" path="M500,350 L500,90"/></circle>
+                            <circle r="4"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.4s" path="M500,350 L780,160"/></circle>
+                            <circle r="4"><animateMotion dur="2.2s" repeatCount="indefinite" begin="0.8s" path="M500,350 L880,350"/></circle>
+                            <circle r="4"><animateMotion dur="3s" repeatCount="indefinite" begin="0.2s" path="M500,350 L780,540"/></circle>
+                            <circle r="4"><animateMotion dur="2.3s" repeatCount="indefinite" begin="1.2s" path="M500,350 L120,350"/></circle>
+                            <circle r="4"><animateMotion dur="2.9s" repeatCount="indefinite" begin="0.6s" path="M500,350 L220,540"/></circle>
+                            <circle r="4"><animateMotion dur="2.5s" repeatCount="indefinite" begin="1s" path="M500,350 L500,610"/></circle>
+                            <circle r="4"><animateMotion dur="2.7s" repeatCount="indefinite" begin="0.3s" path="M500,350 L220,160"/></circle>
+                        </g>
+                    </svg>
+
+                    <div class="resp-orbit-ring resp-orbit-ring-1" aria-hidden="true"></div>
+                    <div class="resp-orbit-ring resp-orbit-ring-2" aria-hidden="true"></div>
+                    <div class="resp-orbit-ring resp-orbit-ring-3" aria-hidden="true"></div>
+
+                    <div class="response-hub" aria-label="Mamba Control Centre central hub">
+                        <div class="resp-hub-glow" aria-hidden="true"></div>
+                        <div class="resp-hub-core">
+                            <img src="mamba shield.png" alt="Mamba Shield" class="hub-shield-img">
+                            <span class="resp-hub-title">MAMBA</span>
+                            <span class="resp-hub-sub">ARMED RESPONSE</span>
+                            <span class="resp-hub-status"><span class="resp-status-dot"></span> Live</span>
+                        </div>
+                    </div>
+
+                    <button type="button" class="response-node resp-node-pos-top is-active" data-node="armed" aria-pressed="true">
+                        <span class="resp-node-icon"><i class="fas fa-car"></i></span>
+                        <span class="resp-node-label">Armed Response</span>
+                    </button>
+                    <button type="button" class="response-node resp-node-pos-tr" data-node="vehicles" aria-pressed="false">
+                        <span class="resp-node-icon"><i class="fas fa-truck"></i></span>
+                        <span class="resp-node-label">Dedicated Vehicles</span>
+                    </button>
+                    <button type="button" class="response-node resp-node-pos-right" data-node="special" aria-pressed="false">
+                        <span class="resp-node-icon"><i class="fas fa-crosshairs"></i></span>
+                        <span class="resp-node-label">Special Ops</span>
+                    </button>
+                    <button type="button" class="response-node resp-node-pos-br" data-node="k9" aria-pressed="false">
+                        <span class="resp-node-icon"><i class="fas fa-dog"></i></span>
+                        <span class="resp-node-label">K9 Unit</span>
+                    </button>
+                    <button type="button" class="response-node resp-node-pos-left" data-node="fire-ops" aria-pressed="false">
+                        <span class="resp-node-icon"><i class="fas fa-fire"></i></span>
+                        <span class="resp-node-label">Fire Ops</span>
+                    </button>
+                    <button type="button" class="response-node resp-node-pos-bl" data-node="tacmed" aria-pressed="false">
+                        <span class="resp-node-icon"><i class="fas fa-truck-medical"></i></span>
+                        <span class="resp-node-label">TacMed</span>
+                    </button>
+                    <button type="button" class="response-node resp-node-pos-bottom" data-node="smart-camera" aria-pressed="false">
+                        <span class="resp-node-icon"><i class="fas fa-camera"></i></span>
+                        <span class="resp-node-label">Smart Camera Network</span>
+                    </button>
+                    <button type="button" class="response-node resp-node-pos-tl" data-node="whatsapp" aria-pressed="false">
+                        <span class="resp-node-icon"><i class="fab fa-whatsapp"></i></span>
+                        <span class="resp-node-label">WhatsApp Groups</span>
+                    </button>
+                </div>
+
+                <div class="resp-detail-panel" id="respDetailPanel">
+                    <div class="resp-detail-badge"><i class="fas fa-link"></i> Response Network</div>
+                    <h3 id="respDetailTitle">Control Centre Online.</h3>
+                    <p id="respDetailText">Every armed response unit, K9 team, medical vehicle and tactical operator is connected to one Control Centre. When an alert comes in, the closest unit is dispatched instantly — tracked by GPS, supported by the control room, and backed by the full Mamba network.</p>
+                    <ul class="resp-detail-stats" id="respDetailStats">
+                        <li><i class="fas fa-check"></i> All units GPS-tracked & dispatched from control centre</li>
+                        <li><i class="fas fa-check"></i> K9, tactical, medical & fire — one coordinated grid</li>
+                        <li><i class="fas fa-check"></i> Real-time incident management & logging</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile card grid -->
+            <div class="response-mobile-stage float-on-scroll">
+                <div class="response-mobile-hub">
+                    <div class="response-mobile-hub-glow"></div>
+                    <div class="response-mobile-hub-ring"></div>
+                    <div class="response-mobile-hub-core">
+                        <img src="mamba shield.png" alt="Mamba Shield" class="hub-shield-img">
+                        <span class="response-mobile-hub-title">MAMBA</span>
+                        <span class="response-mobile-hub-sub">ARMED RESPONSE</span>
+                    </div>
+                </div>
+                <div class="response-mobile-cards">
+                    <button type="button" class="resp-m-card" data-node="armed"><i class="fas fa-car"></i><span>Armed Response</span></button>
+                    <button type="button" class="resp-m-card" data-node="vehicles"><i class="fas fa-truck"></i><span>Dedicated Vehicles</span></button>
+                    <button type="button" class="resp-m-card" data-node="special"><i class="fas fa-crosshairs"></i><span>Special Ops</span></button>
+                    <button type="button" class="resp-m-card" data-node="k9"><i class="fas fa-dog"></i><span>K9 Unit</span></button>
+                    <button type="button" class="resp-m-card" data-node="fire-ops"><i class="fas fa-fire"></i><span>Fire Ops</span></button>
+                    <button type="button" class="resp-m-card" data-node="tacmed"><i class="fas fa-truck-medical"></i><span>TacMed</span></button>
+                    <button type="button" class="resp-m-card" data-node="smart-camera"><i class="fas fa-camera"></i><span>Smart Camera Network</span></button>
+                    <button type="button" class="resp-m-card" data-node="whatsapp"><i class="fab fa-whatsapp"></i><span>WhatsApp Groups</span></button>
+                </div>
+                <div class="resp-detail-panel resp-detail-mobile" id="respDetailMobile">
+                    <div class="resp-detail-badge"><i class="fas fa-link"></i> Response Network</div>
+                    <h3>Control Centre Online.</h3>
+                    <p>Every armed response unit, K9 team, medical vehicle and tactical operator is connected to one Control Centre. When an alert comes in, the closest unit is dispatched instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICE JUMP NAVIGATION ===== -->
+    <section class="response-jump-bar" aria-label="Jump to response service">
+        <div class="container">
+            <div class="response-jump-header float-on-scroll">
+                <span class="section-label"><i class="fas fa-circle"></i> Explore in detail</span>
+                <h2>Jump to a Service</h2>
+                <p>Select a response service below to scroll straight to the full breakdown</p>
+            </div>
+            <div class="resp-jump-grid float-on-scroll">
+                <a href="#armed-response" class="resp-jump-btn"><i class="fas fa-car"></i> Armed Response</a>
+                <a href="#dedicated-vehicles" class="resp-jump-btn"><i class="fas fa-truck"></i> Dedicated Vehicles</a>
+                <a href="#special-operations" class="resp-jump-btn"><i class="fas fa-crosshairs"></i> Special Ops</a>
+                <a href="#k9-unit" class="resp-jump-btn"><i class="fas fa-dog"></i> K9 Unit</a>
+                <a href="#fire-ops" class="resp-jump-btn"><i class="fas fa-fire"></i> Fire Ops</a>
+                <a href="#tactical-medical" class="resp-jump-btn"><i class="fas fa-truck-medical"></i> TacMed</a>
+                <a href="#medical-response" class="resp-jump-btn"><i class="fas fa-heartbeat"></i> Medical Response</a>
+                <a href="#whatsapp-groups" class="resp-jump-btn"><i class="fab fa-whatsapp"></i> WhatsApp Groups</a>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== ARMED RESPONSE SERVICES ===== -->
     <section class="service-sections-container">
         <div class="container">
             <!-- Armed Response Section -->
-            <div class="service-section-ar float-on-scroll" id="armed-response">
+            <div class="service-section-ar float-on-scroll" id="armed-response" data-status="system active" data-number="01">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Armed Response</h2>
@@ -226,7 +462,7 @@
             </div>
 
             <!-- Dedicated Vehicles Section -->
-            <div class="service-section-ar float-on-scroll" id="dedicated-vehicles">
+            <div class="service-section-ar float-on-scroll" id="dedicated-vehicles" data-status="fleet online" data-number="02">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Dedicated Vehicles</h2>
@@ -249,7 +485,7 @@
             </div>
 
             <!-- Special Operations Unit Section -->
-            <div class="service-section-ar float-on-scroll" id="special-operations">
+            <div class="service-section-ar float-on-scroll" id="special-operations" data-status="tactical standby" data-number="03">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Special Operations Unit</h2>
@@ -270,7 +506,7 @@
             </div>
 
             <!-- K9 Unit Section -->
-            <div class="service-section-ar float-on-scroll" id="k9-unit">
+            <div class="service-section-ar float-on-scroll" id="k9-unit" data-status="k9 on patrol" data-number="04">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>K9 Unit</h2>
@@ -291,7 +527,7 @@
             </div>
 
             <!-- Medical Response Section -->
-            <div class="service-section-ar float-on-scroll" id="medical-response">
+            <div class="service-section-ar float-on-scroll" id="medical-response" data-status="medical ready" data-number="05">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Medical Response</h2>
@@ -314,7 +550,7 @@
             </div>
 
             <!-- Tactical Medical Response Section -->
-            <div class="service-section-ar float-on-scroll" id="tactical-medical">
+            <div class="service-section-ar float-on-scroll" id="tactical-medical" data-status="tacmed deployed" data-number="06">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Tactical Medical Response</h2>
@@ -337,7 +573,7 @@
             </div>
 
             <!-- Fire Ops Section -->
-            <div class="service-section-ar float-on-scroll" id="fire-ops">
+            <div class="service-section-ar float-on-scroll" id="fire-ops" data-status="fire standby" data-number="07">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>Fire Ops SA</h2>
@@ -360,7 +596,7 @@
             </div>
 
             <!-- WhatsApp Emergency Groups Section -->
-            <div class="service-section-ar float-on-scroll" id="whatsapp-groups">
+            <div class="service-section-ar float-on-scroll" id="whatsapp-groups" data-status="tribe connected" data-number="08">
                 <div class="service-content-ar">
                     <div class="service-header-ar">
                         <h2>WhatsApp Emergency Groups</h2>
@@ -487,6 +723,43 @@
             </div>
         </div>
     </footer>
+
+    <!-- ===== QUOTE FLOATING BUTTON STYLES ===== -->
+    <style>
+        .quote-float {
+            position: fixed; bottom: calc(30px + env(safe-area-inset-bottom,0px));
+            left: calc(30px + env(safe-area-inset-left,0px));
+            background: #99ff00; color: #000; border-radius: 50px;
+            padding: 18px 28px; text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-weight: 700;
+            font-size: 1.15rem;
+            box-shadow: 0 8px 25px rgba(153,255,0,0.45);
+            z-index: 9998;
+            display: inline-flex; align-items: center; gap: 12px;
+            border: 2px solid rgba(0,0,0,0.2); white-space: nowrap;
+            cursor: pointer; touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none; will-change: transform;
+            backface-visibility: hidden; transform: translateZ(0);
+            animation: floatSoft 4.8s ease-in-out infinite;
+            transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease, background-color 0.35s ease;
+        }
+        .quote-float i { font-size: 1.4rem; }
+        .quote-float:hover {
+            transform: translateY(-4px) scale(1.03) translateZ(0);
+            background: #88dd00;
+            box-shadow: 0 12px 28px rgba(153,255,0,0.55);
+        }
+        @media (max-width: 767px) {
+            .quote-float { left: 20px; bottom: 20px; padding: 14px 20px; font-size: 1.05rem; }
+            .quote-float i { font-size: 1.2rem; }
+        }
+    </style>
+
+    <!-- ===== REQUEST A QUOTE FLOATING BUTTON ===== -->
+    <a href="contact.html" class="quote-float" aria-label="Request a quote">
+        <span>Request A Quote</span>
+    </a>
 
     <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
     <a href="https://wa.me/27833002975" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
@@ -733,6 +1006,210 @@
                 element.style.transitionDuration = '0.01ms !important';
             });
         }
+
+        // ===== RESPONSE NETWORK INTERACTIVITY =====
+        function initResponseNetwork() {
+            var networkData = {
+                armed: {
+                    title: 'Armed Response',
+                    text: 'Professional armed reaction officers responding to alarms, incidents and emergencies across the East Rand — GPS-tracked, control-centre coordinated, and on standby.',
+                    stats: ['Industry-leading sub-10 minute response times', 'GPS-tracked vehicle dispatch from control centre', 'Available every day of the year']
+                },
+                vehicles: {
+                    title: 'Dedicated Vehicles',
+                    text: 'Area-dedicated response vehicles maintaining high visibility in small, defined zones — equipped with dash cams and auto-dispatch devices linked live to the Mamba Control Centre.',
+                    stats: ['Area-dedicated for fastest possible response', 'Dash cam and auto-dispatch technology', 'High-visibility crime deterrence patrols']
+                },
+                special: {
+                    title: 'Special Operations Unit',
+                    text: 'Highly trained tactical response unit equipped to handle high-risk situations, armed apprehensions, and coordinated multi-vehicle responses with SAPS and EMPD.',
+                    stats: ['Tactical intervention & high-risk apprehensions', 'Coordinated with SAPS, EMPD & K9 units', 'Proven track record of successful arrests']
+                },
+                k9: {
+                    title: 'K9 Detection Unit',
+                    text: 'Specialist K9 units for narcotics detection, suspect tracking, and school security operations — working alongside SAPS and community safety initiatives.',
+                    stats: ['Narcotics & contraband detection specialist', 'Suspect apprehension support', 'School & community patrol partnership']
+                },
+                'fire-ops': {
+                    title: 'Fire Ops',
+                    text: 'Private fire and rescue capability supporting emergency response with tactical firefighting, structural firefighting, fire audits, and risk analysis — integrated into the Mamba response network.',
+                    stats: ['Tactical firefighting first response', 'Fire audits, risk analysis & investigations', 'Integrated with Mamba response network']
+                },
+                tacmed: {
+                    title: 'Tactical Medical Response',
+                    text: 'The TacMed vehicle is dedicated to Mamba clients, providing elite pre-hospital emergency medical response with further improved response times.',
+                    stats: ['Dedicated TacMed vehicle for Mamba clients', 'Premier private emergency services provider', 'Advanced pre-hospital care capability']
+                },
+                'smart-camera': {
+                    title: 'Smart Camera Network',
+                    text: 'Intelligent camera systems with AI-powered analytics, off-site monitoring, and automated alerts — providing eyes on the ground across the entire response network.',
+                    stats: ['AI-powered video analytics & detection', 'Off-site monitoring & automated alerts', 'Integrated across the Mamba response grid']
+                },
+                whatsapp: {
+                    title: 'WhatsApp Emergency Groups',
+                    text: 'Real-time emergency alerts, community support, and direct contact with our control centre — monitored around the clock by Mamba Control Centre and management.',
+                    stats: ['Monitored by Mamba Control Centre', 'Real-time emergency alerts & community updates', 'Alerts have led to successful suspect arrests']
+                }
+            };
+
+            var desktopPanel = document.getElementById('respDetailPanel');
+            var mobilePanel = document.getElementById('respDetailMobile');
+            var nodes = document.querySelectorAll('.response-node, .resp-m-card');
+            var lines = document.querySelectorAll('.resp-orbit-lines line');
+
+            var defaultTitle = 'Control Centre Online.';
+            var defaultText = 'Every armed response unit, K9 team, medical vehicle and tactical operator is connected to one Control Centre. When an alert comes in, the closest unit is dispatched instantly — tracked by GPS, supported by the control room, and backed by the full Mamba network.';
+            var defaultStats = [
+                'All units GPS-tracked & dispatched from control centre',
+                'K9, tactical, fire-ops & smart camera — one coordinated grid',
+                'Real-time incident management & logging'
+            ];
+
+            function setActiveNode(nodeId) {
+                nodes.forEach(function(node) {
+                    node.classList.remove('is-active');
+                    node.setAttribute('aria-pressed', 'false');
+                });
+                lines.forEach(function(line) {
+                    line.classList.remove('is-active');
+                });
+
+                if (!nodeId) {
+                    if (desktopPanel) {
+                        desktopPanel.style.opacity = '0';
+                        desktopPanel.style.transform = 'translateY(8px)';
+                        setTimeout(function() {
+                            var titleEl = document.getElementById('respDetailTitle');
+                            var textEl = document.getElementById('respDetailText');
+                            var statsEl = document.getElementById('respDetailStats');
+                            if (titleEl) titleEl.textContent = defaultTitle;
+                            if (textEl) textEl.textContent = defaultText;
+                            if (statsEl) {
+                                statsEl.innerHTML = defaultStats.map(function(s) {
+                                    return '<li><i class="fas fa-check"></i> ' + s + '</li>';
+                                }).join('');
+                            }
+                            desktopPanel.style.opacity = '1';
+                            desktopPanel.style.transform = 'translateY(0)';
+                        }, 180);
+                    }
+                    if (mobilePanel) {
+                        var mTitle = mobilePanel.querySelector('h3');
+                        var mText = mobilePanel.querySelector('p');
+                        if (mTitle) mTitle.textContent = defaultTitle;
+                        if (mText) mText.textContent = defaultText;
+                    }
+                    return;
+                }
+
+                var data = networkData[nodeId];
+                if (!data) return;
+
+                nodes.forEach(function(node) {
+                    if (node.getAttribute('data-node') === nodeId) {
+                        node.classList.add('is-active');
+                        node.setAttribute('aria-pressed', 'true');
+                    }
+                });
+
+                lines.forEach(function(line) {
+                    if (line.getAttribute('data-node') === nodeId) {
+                        line.classList.add('is-active');
+                    }
+                });
+
+                if (desktopPanel) {
+                    desktopPanel.style.opacity = '0';
+                    desktopPanel.style.transform = 'translateY(8px)';
+                    setTimeout(function() {
+                        var titleEl = document.getElementById('respDetailTitle');
+                        var textEl = document.getElementById('respDetailText');
+                        var statsEl = document.getElementById('respDetailStats');
+                        if (titleEl) titleEl.textContent = data.title;
+                        if (textEl) textEl.textContent = data.text;
+                        if (statsEl) {
+                            statsEl.innerHTML = data.stats.map(function(s) {
+                                return '<li><i class="fas fa-check"></i> ' + s + '</li>';
+                            }).join('');
+                        }
+                        desktopPanel.style.opacity = '1';
+                        desktopPanel.style.transform = 'translateY(0)';
+                    }, 180);
+                }
+
+                if (mobilePanel) {
+                    var mTitle = mobilePanel.querySelector('h3');
+                    var mText = mobilePanel.querySelector('p');
+                    if (mTitle) mTitle.textContent = data.title;
+                    if (mText) mText.textContent = data.text;
+                }
+            }
+
+            nodes.forEach(function(node) {
+                node.addEventListener('click', function() {
+                    setActiveNode(node.getAttribute('data-node'));
+                });
+            });
+
+            var mobileHub = document.querySelector('.response-mobile-hub');
+            if (mobileHub) {
+                mobileHub.addEventListener('click', function() {
+                    setActiveNode(null);
+                });
+            }
+
+            var desktopHub = document.querySelector('.response-hub');
+            if (desktopHub) {
+                desktopHub.addEventListener('click', function() {
+                    setActiveNode(null);
+                });
+            }
+        }
+
+        // ===== COUNTER ANIMATION =====
+        function initResponseCounters() {
+            var counters = document.querySelectorAll('.resp-stat-counter');
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var counter = entry.target;
+                        var target = parseInt(counter.getAttribute('data-target'));
+                        var decimal = counter.getAttribute('data-decimal') || '';
+                        var current = 0;
+                        var duration = 800;
+                        var startTime = null;
+
+                        function animate(timestamp) {
+                            if (!startTime) startTime = timestamp;
+                            var progress = Math.min((timestamp - startTime) / duration, 1);
+                            var eased = 1 - Math.pow(1 - progress, 3);
+                            current = Math.floor(eased * target);
+                            counter.textContent = current + decimal;
+
+                            if (progress < 1) {
+                                requestAnimationFrame(animate);
+                            } else {
+                                counter.textContent = target + decimal;
+                            }
+                        }
+
+                        requestAnimationFrame(animate);
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(function(counter) {
+                observer.observe(counter);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initResponseNetwork();
+            initResponseCounters();
+        });
 
         console.log('Mamba Security Armed Response page loaded successfully');
     </script>

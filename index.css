@@ -257,6 +257,59 @@ strong {
     animation: floatSoft 4.8s ease-in-out infinite;
 }
 
+/* ===== REQUEST A QUOTE FLOATING BUTTON ===== */
+.quote-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: var(--mamba-green);
+    color: var(--mamba-dark);
+    border-radius: 50px;
+    padding: 18px 28px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    box-shadow: 0 8px 25px rgba(153, 255, 0, 0.45);
+    z-index: 9999;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, background-color 0.35s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
+    bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+    left: calc(30px + env(safe-area-inset-left, 0px));
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    animation: floatSoft 4.8s ease-in-out infinite;
+}
+.quote-float i {
+    font-size: 1.4rem;
+}
+.quote-float:hover {
+    transform: translateY(-4px) scale(1.03) translateZ(0);
+    background: #88dd00;
+    box-shadow: 0 12px 28px rgba(153, 255, 0, 0.55);
+    color: var(--mamba-dark);
+}
+
+/* Hide quote button when mobile menu is open */
+.mobile-menu.active ~ .quote-float,
+.mobile-menu.active + .quote-float,
+.quote-float.mobile-menu-open {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
 .whatsapp-float {
     position: fixed;
     bottom: calc(30px + env(safe-area-inset-bottom, 0px));

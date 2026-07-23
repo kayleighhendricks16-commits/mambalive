@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="technologies.css">
+    <link rel="stylesheet" href="technologies.css?v=20260722">
     <link rel="stylesheet" href="technologies-wow.css">
     
     <!-- Structured Data with locations -->
@@ -251,7 +251,7 @@
                             <line data-node="app" x1="500" y1="350" x2="780" y2="160"/>
                             <line data-node="lpr" x1="500" y1="350" x2="880" y2="350"/>
                             <line data-node="control" x1="500" y1="350" x2="780" y2="540"/>
-                            <line data-node="solar" x1="500" y1="350" x2="500" y2="610"/>
+                            <line data-node="off-site" x1="500" y1="350" x2="500" y2="610"/>
                             <line data-node="maintenance" x1="500" y1="350" x2="220" y2="540"/>
                             <line data-node="access" x1="500" y1="350" x2="120" y2="350"/>
                             <line data-node="alarms" x1="500" y1="350" x2="220" y2="160"/>
@@ -275,7 +275,7 @@
                     <div class="network-hub" aria-label="Mamba Network central hub">
                         <div class="hub-glow" aria-hidden="true"></div>
                         <div class="hub-core">
-                            <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                            <img src="mamba shield.png" alt="Mamba Shield" class="hub-shield-img">
                             <span class="hub-title">MAMBA</span>
                             <span class="hub-sub">NETWORK</span>
                             <span class="hub-status"><span class="status-dot"></span> Live</span>
@@ -298,9 +298,9 @@
                         <span class="node-icon"><i class="fas fa-desktop"></i></span>
                         <span class="node-label">Control Centre</span>
                     </button>
-                    <button type="button" class="network-node node-pos-bottom" data-node="solar" aria-pressed="false">
-                        <span class="node-icon"><i class="fas fa-solar-panel"></i></span>
-                        <span class="node-label">Solar Systems</span>
+                    <button type="button" class="network-node node-pos-bottom" data-node="off-site" aria-pressed="false">
+                        <span class="node-icon"><i class="fas fa-camera"></i></span>
+                        <span class="node-label">Off-Site Monitoring</span>
                     </button>
                     <button type="button" class="network-node node-pos-bl" data-node="maintenance" aria-pressed="false">
                         <span class="node-icon"><i class="fas fa-wrench"></i></span>
@@ -323,7 +323,7 @@
                     <ul class="detail-stats" id="networkDetailStats">
                         <li><i class="fas fa-check"></i> Alarms, cameras, LPR & access — all in one grid</li>
                         <li><i class="fas fa-check"></i> Real-time detection, verification & response</li>
-                        <li><i class="fas fa-check"></i> Monitored Always by our control centre</li>
+                        <li><i class="fas fa-check"></i> Monitored by our control centre</li>
                     </ul>
                 </div>
             </div>
@@ -334,7 +334,7 @@
                     <div class="mobile-hub-glow"></div>
                     <div class="mobile-hub-ring"></div>
                     <div class="mobile-hub-core">
-                        <i class="fas fa-shield-halved"></i>
+                        <img src="mamba shield.png" alt="Mamba Shield" class="hub-shield-img">
                         <span class="mobile-hub-title">MAMBA</span>
                         <span class="mobile-hub-sub">NETWORK</span>
                     </div>
@@ -344,7 +344,7 @@
                     <button type="button" class="m-card" data-node="app"><i class="fas fa-mobile-alt"></i><span>Mamba App</span></button>
                     <button type="button" class="m-card" data-node="lpr"><i class="fas fa-camera"></i><span>LPR Network</span></button>
                     <button type="button" class="m-card" data-node="control"><i class="fas fa-desktop"></i><span>Control Centre</span></button>
-                    <button type="button" class="m-card" data-node="solar"><i class="fas fa-solar-panel"></i><span>Solar Systems</span></button>
+                    <button type="button" class="m-card" data-node="off-site"><i class="fas fa-camera"></i><span>Off-Site Monitoring</span></button>
                     <button type="button" class="m-card" data-node="maintenance"><i class="fas fa-wrench"></i><span>Maintenance</span></button>
                     <button type="button" class="m-card" data-node="access"><i class="fas fa-key"></i><span>Smart Access</span></button>
                     <button type="button" class="m-card" data-node="alarms"><i class="fas fa-bell"></i><span>Alarm Systems</span></button>
@@ -369,7 +369,7 @@
             <div class="jump-button-grid">
                 <a href="#tech-installations" class="jump-btn"><i class="fas fa-tools"></i> Installations</a>
                 <a href="#tech-app" class="jump-btn"><i class="fas fa-mobile-alt"></i> Mamba App</a>
-                <a href="#tech-solar" class="jump-btn"><i class="fas fa-solar-panel"></i> Solar Security</a>
+                <a href="#tech-solar" class="jump-btn"><i class="fas fa-sun"></i> Solar Systems</a>
                 <a href="#tech-maintenance" class="jump-btn"><i class="fas fa-wrench"></i> Maintenance</a>
                 <a href="#tech-lpr" class="jump-btn"><i class="fas fa-camera"></i> LPR Network</a>
                 <a href="#tech-control" class="jump-btn"><i class="fas fa-desktop"></i> Control Centre</a>
@@ -552,7 +552,7 @@
                     <div class="service-text-ar">
                         <p>Having a local Control Centre, the operational hub of the group of companies, is critical to the efficient and effective sharing of information between all relevant stakeholders.</p>
                         
-                        <p>Our state-of-the-art control centre operates Always with trained professionals monitoring all connected security systems. We provide real-time response coordination, incident management, and emergency dispatch services.</p>
+                        <p>Our state-of-the-art control centre operates with trained professionals monitoring all connected security systems. We provide real-time response coordination, incident management, and emergency dispatch services.</p>
                         
                         <p>The control centre integrates with all Mamba security technologies, providing seamless communication between armed response teams, guarding personnel, and technology systems for comprehensive security coverage.</p>
                     </div>
@@ -669,17 +669,47 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer>    <!-- ===== QUOTE FLOATING BUTTON STYLES ===== -->
+    <style>
+        .quote-float {
+            position: fixed; bottom: calc(30px + env(safe-area-inset-bottom,0px));
+            left: calc(30px + env(safe-area-inset-left,0px));
+            background: #99ff00; color: #000; border-radius: 50px;
+            padding: 18px 28px; text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-weight: 700;
+            font-size: 1.15rem;
+            box-shadow: 0 8px 25px rgba(153,255,0,0.45);
+            z-index: 9998;
+            display: inline-flex; align-items: center; gap: 12px;
+            border: 2px solid rgba(0,0,0,0.2); white-space: nowrap;
+            cursor: pointer; touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none; will-change: transform;
+            backface-visibility: hidden; transform: translateZ(0);
+            animation: floatSoft 4.8s ease-in-out infinite;
+            transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease, background-color 0.35s ease;
+        }
+        .quote-float i { font-size: 1.4rem; }
+        .quote-float:hover {
+            transform: translateY(-4px) scale(1.03) translateZ(0);
+            background: #88dd00;
+            box-shadow: 0 12px 28px rgba(153,255,0,0.55);
+        }
+        @media (max-width: 767px) {
+            .quote-float { left: 20px; bottom: 20px; padding: 14px 20px; font-size: 1.05rem; }
+            .quote-float i { font-size: 1.2rem; }
+        }
+    </style>
+
+    <!-- ===== REQUEST A QUOTE FLOATING BUTTON ===== -->
+    <a href="contact.html" class="quote-float" aria-label="Request a quote">
+        <span>Request A Quote</span>
+    </a>
 
     <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
     <a href="https://wa.me/27833002975" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
-        <div class="whatsapp-desktop">
-            <i class="fab fa-whatsapp"></i>
-            <span>Chat with us</span>
-        </div>
-        <div class="whatsapp-mobile">
-            <i class="fab fa-whatsapp"></i>
-        </div>
+        <div class="whatsapp-desktop"><i class="fab fa-whatsapp"></i><span>Chat with us</span></div>
+        <div class="whatsapp-mobile"><i class="fab fa-whatsapp"></i></div>
     </a>
 
     <!-- ===== INLINE STYLES (For Samsung Fixes) ===== -->
@@ -755,6 +785,7 @@
         const mobileMenu = document.getElementById('mobileMenu');
         const body = document.body;
         const whatsappFloat = document.querySelector('.whatsapp-float');
+        const quoteFloat = document.querySelector('.quote-float');
 
         if (hamburger && mobileMenu) {
             hamburger.addEventListener('click', () => {
@@ -937,13 +968,13 @@
                 },
                 control: {
                     title: 'Control Centre',
-                    text: 'Always-on monitoring with trained operators coordinating response, incident management and emergency dispatch across all connected systems.',
-                    stats: ['Always-on professional monitoring', 'Real-time response coordination', 'Integrated with all Mamba tech']
+                    text: 'Off-site monitoring with trained operators coordinating response, incident management and emergency dispatch across all connected systems.',
+                    stats: ['Professional monitoring', 'Real-time response coordination', 'Integrated with all Mamba tech']
                 },
-                solar: {
-                    title: 'Solar Systems',
-                    text: 'Keep your security running during load shedding with solar power and battery backup — uninterrupted protection around the clock.',
-                    stats: ['Full premises solar', 'Battery backup systems', 'Smart power management']
+                'off-site': {
+                    title: 'Off-Site Monitoring',
+                    text: 'AI-powered remote monitoring with video analytics, smart detection, and instant alerts — keeping your property under watch from our control centre around the clock.',
+                    stats: ['AI-powered video analytics & smart detection', 'Monitoring with instant alerts', 'Integrated with Mamba control centre response']
                 },
                 maintenance: {
                     title: 'Maintenance',
@@ -972,7 +1003,7 @@
             var defaultStats = [
                 'Alarms, cameras, LPR & access — all in one grid',
                 'Real-time detection, verification & response',
-                'Monitored Always by our control centre'
+                'Monitored by our control centre'
             ];
 
             function setActiveNode(nodeId) {

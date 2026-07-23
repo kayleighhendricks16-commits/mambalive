@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="specialty-services.css?v=20260701">
+    <link rel="stylesheet" href="specialty-services.css?v=20260702">
     <link rel="stylesheet" href="section-navigation.css?v=20260701">
     <link rel="stylesheet" href="mobile-section-dividers.css?v=20260628">
 
@@ -568,6 +568,43 @@
             </div>
         </div>
     </footer>
+
+    <!-- ===== QUOTE FLOATING BUTTON STYLES ===== -->
+    <style>
+        .quote-float {
+            position: fixed; bottom: calc(30px + env(safe-area-inset-bottom,0px));
+            left: calc(30px + env(safe-area-inset-left,0px));
+            background: #99ff00; color: #000; border-radius: 50px;
+            padding: 18px 28px; text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-weight: 700;
+            font-size: 1.15rem;
+            box-shadow: 0 8px 25px rgba(153,255,0,0.45);
+            z-index: 9998;
+            display: inline-flex; align-items: center; gap: 12px;
+            border: 2px solid rgba(0,0,0,0.2); white-space: nowrap;
+            cursor: pointer; touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none; will-change: transform;
+            backface-visibility: hidden; transform: translateZ(0);
+            animation: floatSoft 4.8s ease-in-out infinite;
+            transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease, background-color 0.35s ease;
+        }
+        .quote-float i { font-size: 1.4rem; }
+        .quote-float:hover {
+            transform: translateY(-4px) scale(1.03) translateZ(0);
+            background: #88dd00;
+            box-shadow: 0 12px 28px rgba(153,255,0,0.55);
+        }
+        @media (max-width: 767px) {
+            .quote-float { left: 20px; bottom: 20px; padding: 14px 20px; font-size: 1.05rem; }
+            .quote-float i { font-size: 1.2rem; }
+        }
+    </style>
+
+    <!-- ===== REQUEST A QUOTE FLOATING BUTTON ===== -->
+    <a href="contact.html" class="quote-float" aria-label="Request a quote">
+        <span>Request A Quote</span>
+    </a>
 
     <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
     <a href="https://wa.me/27833002975" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
