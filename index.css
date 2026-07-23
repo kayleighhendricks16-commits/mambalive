@@ -325,7 +325,7 @@ strong {
 .whatsapp-float {
     position: fixed;
     bottom: calc(30px + env(safe-area-inset-bottom, 0px));
-    left: calc(30px + env(safe-area-inset-left, 0px));
+    right: calc(30px + env(safe-area-inset-right, 0px));
     background: var(--whatsapp-green);
     color: white;
     border-radius: 50px;
