@@ -565,17 +565,20 @@
         const mobileMenu = document.getElementById('mobileMenu');
         const body = document.body;
         const whatsappFloat = document.querySelector('.whatsapp-float');
+        const quoteFloat = document.querySelector('.quote-float');
         if (hamburger && mobileMenu) {
             hamburger.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
                 body.classList.toggle('menu-open');
                 hamburger.classList.toggle('active');
 
-                // Hide/show WhatsApp button when menu is open
+                // Hide/show WhatsApp & Quote buttons when menu is open
                 if (mobileMenu.classList.contains('active')) {
                     if (whatsappFloat) whatsappFloat.style.display = 'none';
+                    if (quoteFloat) quoteFloat.style.display = 'none';
                 } else {
                     if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                    if (quoteFloat) quoteFloat.style.display = 'inline-flex';
                 }
             });
 
@@ -585,6 +588,7 @@
                     body.classList.remove('menu-open');
                     hamburger.classList.remove('active');
                     if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                    if (quoteFloat) quoteFloat.style.display = 'inline-flex';
                 });
             });
 
@@ -596,6 +600,7 @@
                     body.classList.remove('menu-open');
                     hamburger.classList.remove('active');
                     if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                    if (quoteFloat) quoteFloat.style.display = 'inline-flex';
                 }
             });
 
@@ -606,6 +611,7 @@
                         body.classList.remove('menu-open');
                         hamburger.classList.remove('active');
                         if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                        if (quoteFloat) quoteFloat.style.display = 'inline-flex';
                     }
                 }
             });

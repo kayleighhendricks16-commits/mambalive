@@ -215,7 +215,7 @@ strong {
 .game-float {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px;
     background: var(--mamba-green);
     color: var(--mamba-dark);
     border-radius: 50px;
@@ -239,7 +239,7 @@ strong {
     user-select: none;
     -webkit-user-select: none;
     bottom: calc(30px + env(safe-area-inset-bottom, 0px));
-    right: calc(30px + env(safe-area-inset-right, 0px));
+    left: calc(30px + env(safe-area-inset-left, 0px));
     will-change: transform;
     backface-visibility: hidden;
     transform: translateZ(0);
@@ -261,7 +261,7 @@ strong {
 .quote-float {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px;
     background: var(--mamba-green);
     color: var(--mamba-dark);
     border-radius: 50px;
@@ -285,7 +285,7 @@ strong {
     user-select: none;
     -webkit-user-select: none;
     bottom: calc(30px + env(safe-area-inset-bottom, 0px));
-    right: calc(30px + env(safe-area-inset-right, 0px));
+    left: calc(30px + env(safe-area-inset-left, 0px));
     will-change: transform;
     backface-visibility: hidden;
     transform: translateZ(0);
@@ -325,7 +325,7 @@ strong {
 .whatsapp-float {
     position: fixed;
     bottom: calc(30px + env(safe-area-inset-bottom, 0px));
-    right: calc(30px + env(safe-area-inset-right, 0px));
+    left: calc(30px + env(safe-area-inset-left, 0px));
     background: var(--whatsapp-green);
     color: white;
     border-radius: 50px;

@@ -751,7 +751,7 @@
             box-shadow: 0 12px 28px rgba(153,255,0,0.55);
         }
         @media (max-width: 767px) {
-            .quote-float { right: 20px; bottom: 20px; padding: 14px 20px; font-size: 1.05rem; }
+            .quote-float { left: 20px; bottom: 20px; padding: 14px 20px; font-size: 1.05rem; }
             .quote-float i { font-size: 1.2rem; }
         }
     </style>
@@ -845,6 +845,7 @@
         const mobileMenu = document.getElementById('mobileMenu');
         const body = document.body;
         const whatsappFloat = document.querySelector('.whatsapp-float');
+        const quoteFloat = document.querySelector('.quote-float');
 
         if (hamburger && mobileMenu) {
             hamburger.addEventListener('click', () => {
@@ -852,11 +853,13 @@
                 body.classList.toggle('menu-open');
                 hamburger.classList.toggle('active');
 
-                // Hide/show WhatsApp button
+                // Hide/show WhatsApp & Quote buttons
                 if (mobileMenu.classList.contains('active')) {
                     if (whatsappFloat) whatsappFloat.style.display = 'none';
+                    if (quoteFloat) quoteFloat.style.display = 'none';
                 } else {
                     if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                    if (quoteFloat) quoteFloat.style.display = 'inline-flex';
                 }
             });
 
@@ -867,6 +870,7 @@
                     body.classList.remove('menu-open');
                     hamburger.classList.remove('active');
                     if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                    if (quoteFloat) quoteFloat.style.display = 'inline-flex';
                 });
             });
 
@@ -879,6 +883,7 @@
                     body.classList.remove('menu-open');
                     hamburger.classList.remove('active');
                     if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                    if (quoteFloat) quoteFloat.style.display = 'inline-flex';
                 }
             });
 
@@ -890,6 +895,7 @@
                         body.classList.remove('menu-open');
                         hamburger.classList.remove('active');
                         if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                        if (quoteFloat) quoteFloat.style.display = 'inline-flex';
                     }
                 }
             });
