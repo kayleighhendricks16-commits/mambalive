@@ -1541,7 +1541,7 @@ body.menu-open {
     }
     
     .armed-response-hero {
-        padding: 12px 0 36px;
+        padding: 24px 0 40px;
         min-height: auto;
     }
     
@@ -2263,7 +2263,7 @@ img {
     }
     
     .armed-response-hero {
-        padding-top: max(100px, env(safe-area-inset-top));
+        padding-top: max(80px, env(safe-area-inset-top));
     }
     
     .whatsapp-float {
@@ -2410,17 +2410,19 @@ body.menu-open {
 }
 @media (max-width: 767px) {
     .armed-response-hero {
-        padding: 12px 0 36px !important;
+        padding: 14px 0 30px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
-        font-size: clamp(2.45rem, 12vw, 3.7rem) !important;
+        font-size: 2rem !important;
     }
 }
 @media (max-width: 599px) and (min-width: 425px) {
     .armed-response-hero {
-        padding: 10px 0 32px !important;
+        padding: 12px 0 28px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
         font-size: 1.8rem !important;
@@ -2428,8 +2430,9 @@ body.menu-open {
 }
 @media (max-width: 424px) and (min-width: 375px) {
     .armed-response-hero {
-        padding: 8px 0 30px !important;
+        padding: 10px 0 26px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
         font-size: 1.6rem !important;
@@ -2437,8 +2440,9 @@ body.menu-open {
 }
 @media (max-width: 374px) {
     .armed-response-hero {
-        padding: 6px 0 28px !important;
+        padding: 8px 0 24px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
         font-size: 1.4rem !important;
@@ -2521,8 +2525,9 @@ body.menu-open {
 @media (max-width: 767px) {
     .armed-response-hero,
     .contact-hero {
-        min-height: 650px !important;
+        min-height: auto !important;
         padding: 0 0 22px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1,
@@ -2543,8 +2548,9 @@ body.menu-open {
 @media (max-width: 424px) {
     .armed-response-hero,
     .contact-hero {
-        min-height: 650px !important;
+        min-height: auto !important;
         padding: 0 0 20px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1,
@@ -2557,7 +2563,8 @@ body.menu-open {
 @media (max-width: 767px) {
     .armed-response-hero,
     .contact-hero {
-        min-height: 660px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
     }
 }
 
@@ -2566,6 +2573,7 @@ body.menu-open {
     .contact-hero {
         padding-top: 6px !important;
         padding-bottom: 32px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero .hero-grid,
@@ -2690,5 +2698,55 @@ body.menu-open {
     .armed-response-hero .hero-buttons .btn,
     .contact-hero .hero-buttons .btn {
         animation: none;
+    }
+}
+
+/* ===== FINAL MOBILE HERO OVERRIDES ===== */
+@media (max-width: 767px) {
+    .armed-response-hero,
+    .contact-hero {
+        padding: 40px 0 30px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1,
+    .contact-hero h1 {
+        font-size: 2rem !important;
+    }
+}
+@media (max-width: 599px) and (min-width: 425px) {
+    .armed-response-hero,
+    .contact-hero {
+        padding: 32px 0 28px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1,
+    .contact-hero h1 {
+        font-size: 1.8rem !important;
+    }
+}
+@media (max-width: 424px) and (min-width: 375px) {
+    .armed-response-hero,
+    .contact-hero {
+        padding: 28px 0 24px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1,
+    .contact-hero h1 {
+        font-size: 1.6rem !important;
+    }
+}
+@media (max-width: 374px) {
+    .armed-response-hero,
+    .contact-hero {
+        padding: 24px 0 22px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1,
+    .contact-hero h1 {
+        font-size: 1.4rem !important;
     }
 }

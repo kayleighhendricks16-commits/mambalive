@@ -310,6 +310,18 @@ strong {
     opacity: 0 !important;
 }
 
+@media (max-width: 767px) {
+    .quote-float {
+        left: 20px !important;
+        bottom: 20px !important;
+        padding: 14px 20px !important;
+        font-size: 1.05rem !important;
+    }
+    .quote-float i {
+        font-size: 1.2rem !important;
+    }
+}
+
 .whatsapp-float {
     position: fixed;
     bottom: calc(30px + env(safe-area-inset-bottom, 0px));

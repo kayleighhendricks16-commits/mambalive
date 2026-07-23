@@ -1502,7 +1502,7 @@ body.menu-open { overflow: hidden !important; }
     .logo-image { height: 70px; max-width: 200px; }
     .mobile-logo-image { height: 70px; max-width: 200px; }
     .mobile-header-center { font-size: 1.3rem; }
-    .armed-response-hero { padding: 35px 0 24px; min-height: auto; }
+    .armed-response-hero { padding: 6px 0 26px; min-height: auto; align-items: flex-start; }
     .armed-response-hero h1 { font-size: 1.8rem; }
     .armed-response-hero p { font-size: 1rem; }
     .monitoring-header h2 { font-size: 1.4rem; }
@@ -1518,7 +1518,7 @@ body.menu-open { overflow: hidden !important; }
     .logo-image { height: 65px; max-width: 180px; }
     .mobile-logo-image { height: 65px; max-width: 180px; }
     .mobile-header-center { font-size: 1.2rem; }
-    .armed-response-hero { padding: 70px 0 30px; min-height: 55vh; }
+    .armed-response-hero { padding: 4px 0 24px; min-height: auto; align-items: flex-start; }
     .armed-response-hero h1 { font-size: 1.6rem; }
     .hero-buttons { gap: 8px; }
     .hero-buttons .btn { padding: 10px 12px; font-size: 0.78rem; }
@@ -1538,7 +1538,7 @@ body.menu-open { overflow: hidden !important; }
     .logo-image { height: 60px; max-width: 160px; }
     .mobile-logo-image { height: 60px; max-width: 160px; }
     .mobile-header-center { font-size: 1.1rem; }
-    .armed-response-hero { padding: 60px 0 25px; min-height: 50vh; }
+    .armed-response-hero { padding: 2px 0 22px; min-height: auto; align-items: flex-start; }
     .armed-response-hero h1 { font-size: 1.4rem; }
     .armed-response-hero p { font-size: 0.9rem; }
     .hero-buttons { gap: 8px; }
@@ -1593,7 +1593,7 @@ img { max-width: 100%; height: auto; }
         padding-left: max(15px, env(safe-area-inset-left));
         padding-right: max(15px, env(safe-area-inset-right));
     }
-    .armed-response-hero { padding-top: max(24px, env(safe-area-inset-top)); }
+    .armed-response-hero { padding-top: max(8px, env(safe-area-inset-top)); align-items: flex-start; }
     .whatsapp-float { bottom: max(20px, env(safe-area-inset-bottom)); right: max(20px, env(safe-area-inset-right)); }
     .footer { padding-bottom: max(30px, env(safe-area-inset-bottom)); }
 }
@@ -2400,7 +2400,7 @@ body.menu-open {
 
 }
 @media (max-width: 767px) {
-    .armed-response-hero { padding: 24px 0 40px; min-height: auto; }
+    .armed-response-hero { padding: 8px 0 30px; min-height: auto; align-items: flex-start; }
     .armed-response-hero::after { display:none; }
     .hero-grid { gap: 42px; }
 
@@ -2482,8 +2482,9 @@ body.menu-open {
 /* Final monitoring hero override: placed at EOF so no older mobile block can win. */
 @media (max-width: 1024px) {
     .armed-response-hero {
-        min-height: 520px !important;
+        min-height: auto !important;
         padding: 40px 0 28px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1 {
@@ -2493,12 +2494,13 @@ body.menu-open {
 
 @media (max-width: 767px) {
     .armed-response-hero {
-        min-height: 660px !important;
-        padding: 0 0 22px !important;
+        min-height: auto !important;
+        padding: 14px 0 22px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1 {
-        font-size: clamp(2.05rem, 10vw, 3.35rem) !important;
+        font-size: 2rem !important;
         margin-bottom: 18px !important;
     }
 
@@ -2511,8 +2513,9 @@ body.menu-open {
 
 @media (max-width: 424px) {
     .armed-response-hero {
-        min-height: 660px !important;
-        padding: 0 0 20px !important;
+        min-height: auto !important;
+        padding: 10px 0 20px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1 {
@@ -2627,7 +2630,8 @@ body.menu-open {
 @media (max-width: 767px) {
     .armed-response-hero,
     .contact-hero {
-        min-height: 660px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
     }
 }
 
@@ -2692,12 +2696,13 @@ body.menu-open {
 
 @media (max-width: 767px) {
     .armed-response-hero {
-        min-height: 660px !important;
-        padding: 0 0 22px !important;
+        min-height: auto !important;
+        padding: 14px 0 22px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1 {
-        font-size: clamp(2.05rem, 10vw, 3.35rem) !important;
+        font-size: 2rem !important;
         margin-bottom: 18px !important;
     }
 
@@ -2710,8 +2715,9 @@ body.menu-open {
 
 @media (max-width: 424px) {
     .armed-response-hero {
-        min-height: 660px !important;
-        padding: 0 0 20px !important;
+        min-height: auto !important;
+        padding: 10px 0 20px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1 {
@@ -2753,7 +2759,7 @@ body.menu-open {
     max-width: 800px !important;
     margin: 0 auto 24px !important;
     color: #fff !important;
-    font-size: clamp(3rem, 5.2vw, 5.4rem) !important;
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem) !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 700 !important;
     line-height: .97 !important;
@@ -2795,8 +2801,9 @@ body.menu-open {
 @media (max-width: 767px) {
     .armed-response-hero,
     .contact-hero {
-        min-height: 660px !important;
+        min-height: auto !important;
         padding: 0 0 22px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1,
@@ -2817,8 +2824,9 @@ body.menu-open {
 @media (max-width: 424px) {
     .armed-response-hero,
     .contact-hero {
-        min-height: 660px !important;
+        min-height: auto !important;
         padding: 0 0 20px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1,
@@ -2832,6 +2840,7 @@ body.menu-open {
     .armed-response-hero {
         padding: 50px 0 36px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
         font-size: 2.2rem !important;
@@ -2839,17 +2848,19 @@ body.menu-open {
 }
 @media (max-width: 767px) {
     .armed-response-hero {
-        padding: 12px 0 36px !important;
+        padding: 14px 0 30px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
-        font-size: 2.2rem !important;
+        font-size: 2rem !important;
     }
 }
 @media (max-width: 599px) and (min-width: 425px) {
     .armed-response-hero {
-        padding: 10px 0 32px !important;
+        padding: 12px 0 28px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
         font-size: 1.8rem !important;
@@ -2857,8 +2868,9 @@ body.menu-open {
 }
 @media (max-width: 424px) and (min-width: 375px) {
     .armed-response-hero {
-        padding: 8px 0 30px !important;
+        padding: 10px 0 26px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
         font-size: 1.6rem !important;
@@ -2866,8 +2878,9 @@ body.menu-open {
 }
 @media (max-width: 374px) {
     .armed-response-hero {
-        padding: 6px 0 28px !important;
+        padding: 8px 0 24px !important;
         min-height: auto !important;
+        align-items: flex-start !important;
     }
     .armed-response-hero h1 {
         font-size: 1.4rem !important;
@@ -2877,8 +2890,9 @@ body.menu-open {
 /* Final monitoring hero override: placed at EOF so no older mobile block can win. */
 @media (max-width: 1024px) {
     .armed-response-hero {
-        min-height: 520px !important;
+        min-height: auto !important;
         padding: 40px 0 28px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1 {
@@ -2888,12 +2902,13 @@ body.menu-open {
 
 @media (max-width: 767px) {
     .armed-response-hero {
-        min-height: 660px !important;
-        padding: 0 0 22px !important;
+        min-height: auto !important;
+        padding: 14px 0 22px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1 {
-        font-size: clamp(2.05rem, 10vw, 3.35rem) !important;
+        font-size: 2rem !important;
         margin-bottom: 18px !important;
     }
 
@@ -2906,11 +2921,66 @@ body.menu-open {
 
 @media (max-width: 424px) {
     .armed-response-hero {
-        min-height: 660px !important;
-        padding: 0 0 20px !important;
+        min-height: auto !important;
+        padding: 10px 0 20px !important;
+        align-items: flex-start !important;
     }
 
     .armed-response-hero h1 {
         font-size: clamp(1.9rem, 10.5vw, 2.75rem) !important;
+    }
+}
+
+/* ===== FINAL MOBILE HERO OVERRIDES ===== */
+@media (max-width: 767px) {
+    .armed-response-hero {
+        padding: 40px 0 30px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 2rem !important;
+    }
+}
+@media (max-width: 599px) and (min-width: 425px) {
+    .armed-response-hero {
+        padding: 32px 0 28px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.8rem !important;
+    }
+}
+@media (max-width: 424px) and (min-width: 375px) {
+    .armed-response-hero {
+        padding: 28px 0 24px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.6rem !important;
+    }
+}
+@media (max-width: 374px) {
+    .armed-response-hero {
+        padding: 24px 0 22px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* ===== ABSOLUTE FINAL OFF-SITE HERO OVERRIDE ===== */
+@media (max-width: 767px) {
+    .armed-response-hero {
+        padding-top: 60px !important;
+        padding-right: 0 !important;
+        padding-bottom: 30px !important;
+        padding-left: 0 !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
     }
 }

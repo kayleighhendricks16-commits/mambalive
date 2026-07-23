@@ -1612,14 +1612,11 @@ img {
     }
 
     .armed-response-hero {
-        padding: 24px 0 40px;
+        padding: 14px 0 30px;
         min-height: auto;
+        align-items: flex-start;
     }
     
-    .armed-response-hero h1 {
-        font-size: clamp(2.45rem, 12vw, 3.7rem);
-    }
-
     .armed-response-hero h1 {
         font-size: 2rem;
     }
@@ -1803,8 +1800,9 @@ img {
     }
 
     .armed-response-hero {
-        padding: 70px 0 30px;
-        min-height: 55vh;
+        padding: 14px 0 26px;
+        min-height: auto;
+        align-items: flex-start;
     }
 
     .armed-response-hero h1 {
@@ -1936,7 +1934,9 @@ img {
     }
 
     .armed-response-hero {
-        min-height: 50vh;
+        padding: 12px 0 24px;
+        align-items: flex-start;
+        min-height: auto;
     }
 
     .armed-response-hero h1 {
@@ -2053,7 +2053,9 @@ img {
     }
 
     .armed-response-hero {
-        min-height: 45vh;
+        padding: 10px 0 20px;
+        align-items: flex-start;
+        min-height: auto;
     }
 
     .armed-response-hero h1 {
@@ -3325,3 +3327,45 @@ body.menu-open {
     .service-section-ar:hover .service-image-ar img { transform: none; }
 }
 
+
+/* ===== FINAL MOBILE HERO OVERRIDES ===== */
+@media (max-width: 767px) {
+    .armed-response-hero {
+        padding: 40px 0 30px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 2rem !important;
+    }
+}
+@media (max-width: 599px) and (min-width: 425px) {
+    .armed-response-hero {
+        padding: 32px 0 28px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.8rem !important;
+    }
+}
+@media (max-width: 424px) and (min-width: 375px) {
+    .armed-response-hero {
+        padding: 28px 0 24px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.6rem !important;
+    }
+}
+@media (max-width: 374px) {
+    .armed-response-hero {
+        padding: 24px 0 22px !important;
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+    .armed-response-hero h1 {
+        font-size: 1.4rem !important;
+    }
+}
