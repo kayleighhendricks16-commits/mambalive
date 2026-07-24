@@ -49,7 +49,7 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: brightness(1) drop-shadow(0 0 6px rgba(153, 255, 0, 0.35));
+    filter: brightness(1) drop-shadow(0 0 2px rgba(153, 255, 0, 0.35)) drop-shadow(0 0 8px rgba(153, 255, 0, 0.1));
     animation: none !important;
 }
 
@@ -72,7 +72,7 @@
     .footer-logo-image {
         margin-left: auto !important;
         margin-right: auto !important;
-        filter: brightness(1) drop-shadow(0 0 5px rgba(153, 255, 0, 0.32)) !important;
+        filter: brightness(1) drop-shadow(0 0 2px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 6px rgba(153, 255, 0, 0.08)) !important;
         animation: none !important;
     }
 }
@@ -105,7 +105,7 @@
     .navbar .logo-image {
         height: 82px !important;
         max-width: 235px !important;
-        filter: brightness(1) drop-shadow(0 0 6px rgba(153, 255, 0, 0.35)) !important;
+        filter: brightness(1) drop-shadow(0 0 2px rgba(153, 255, 0, 0.35)) drop-shadow(0 0 8px rgba(153, 255, 0, 0.1)) !important;
         animation: none !important;
     }
 }
