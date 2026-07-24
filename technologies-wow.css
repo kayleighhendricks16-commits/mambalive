@@ -1389,6 +1389,90 @@
     }
 }
 
+/* Match the site-wide index logo sizing on the Technologies page. */
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)); }
+    50% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55)); }
+}
+
+.navbar .logo-image {
+    display: block !important;
+    width: auto !important;
+    height: clamp(85px, 12vw, 115px) !important;
+    max-width: min(340px, 48vw) !important;
+    aspect-ratio: 1000 / 647 !important;
+    object-fit: contain !important;
+    image-rendering: auto !important;
+    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)) !important;
+    transition: all 0.3s ease !important;
+    animation: logoGlow 3s ease-in-out infinite !important;
+    will-change: filter !important;
+}
+
+.mobile-logo-image {
+    display: block !important;
+    width: auto !important;
+    height: 100px !important;
+    max-width: 280px !important;
+    aspect-ratio: 1000 / 647 !important;
+    object-fit: contain !important;
+    image-rendering: auto !important;
+    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)) !important;
+    transition: all 0.3s ease !important;
+    animation: logoGlow 3s ease-in-out infinite !important;
+    will-change: filter !important;
+}
+
+.footer-logo-image {
+    display: block !important;
+    width: auto !important;
+    height: clamp(95px, 14vw, 130px) !important;
+    max-width: min(360px, 50vw) !important;
+    aspect-ratio: 1000 / 647 !important;
+    object-fit: contain !important;
+    image-rendering: auto !important;
+    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)) !important;
+    transition: all 0.3s ease !important;
+    animation: logoGlow 3s ease-in-out infinite !important;
+    will-change: filter !important;
+}
+
+@media (hover: hover) {
+    .navbar .logo-image:hover,
+    .mobile-logo-image:hover,
+    .footer-logo-image:hover {
+        filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55)) !important;
+        transform: scale(1.02);
+        animation: logoGlow 1.6s ease-in-out infinite !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .navbar .logo {
+        order: 2;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar .logo-image {
+        height: 82px !important;
+        max-width: 235px !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1400px) {
+    .navbar .logo-image {
+        height: 78px !important;
+        max-width: 165px !important;
+    }
+
+    .navbar .logo {
+        margin-inline: 2px 8px !important;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .network-lines line {
         stroke-dasharray: none;
