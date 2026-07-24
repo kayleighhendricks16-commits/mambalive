@@ -1390,9 +1390,13 @@
 }
 
 /* Match the site-wide index logo sizing on the Technologies page. */
-@keyframes logoGlow {
-    0%, 100% { filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)); }
-    50% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55)); }
+@keyframes logoGlowPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6));
+    }
+    50% {
+        filter: drop-shadow(0 0 28px rgba(153, 255, 0, 0.8));
+    }
 }
 
 .navbar .logo-image {
@@ -1403,10 +1407,8 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)) !important;
-    transition: all 0.3s ease !important;
-    animation: logoGlow 3s ease-in-out infinite !important;
-    will-change: filter !important;
+    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6)) !important;
+    animation: logoGlowPulse 2.5s ease-in-out infinite !important;
 }
 
 .mobile-logo-image {
@@ -1419,10 +1421,8 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)) !important;
-    transition: all 0.3s ease !important;
-    animation: logoGlow 3s ease-in-out infinite !important;
-    will-change: filter !important;
+    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6)) !important;
+    animation: logoGlowPulse 2.5s ease-in-out infinite !important;
 }
 
 .footer-logo-image {
@@ -1433,10 +1433,8 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)) !important;
-    transition: all 0.3s ease !important;
-    animation: logoGlow 3s ease-in-out infinite !important;
-    will-change: filter !important;
+    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6)) !important;
+    animation: logoGlowPulse 2.5s ease-in-out infinite !important;
 }
 
 .mobile-header-center {
@@ -1449,14 +1447,10 @@
     pointer-events: none !important;
 }
 
-@media (hover: hover) {
-    .navbar .logo-image:hover,
-    .mobile-logo-image:hover,
-    .footer-logo-image:hover {
-        filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55)) !important;
-        transform: scale(1.02);
-        animation: logoGlow 1.6s ease-in-out infinite !important;
-    }
+/* Logo hover effects disabled */
+
+@media (prefers-reduced-motion: reduce) {
+    /* Logo effects already subtle */
 }
 
 @media (max-width: 1024px) {

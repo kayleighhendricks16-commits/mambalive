@@ -368,8 +368,8 @@ strong {
 }
 
 @keyframes logoGlow {
-    0%, 100% { filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35)); }
-    50% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55)); }
+    0%, 100% { filter: drop-shadow(0 0 12px rgba(153, 255, 0, 0.28)); }
+    50% { filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.42)); }
 }
 
 .whatsapp-float {
@@ -646,25 +646,17 @@ body.popup-open {
     border-bottom: 2px solid var(--mamba-green);
     background: rgba(0, 0, 0, 0.9);
 }
+
 .mobile-logo-image {
     height: 100px;
     width: auto;
     max-width: 280px;
     object-fit: contain;
-    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35));
-    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 15px rgba(153, 255, 0, 0.3));
     animation: logoGlow 3s ease-in-out infinite;
-    will-change: filter;
+    transition: all 0.3s ease;
     display: block;
     margin: 0 auto;
-}
-
-@media (hover: hover) {
-    .mobile-logo-image:hover {
-        filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55));
-        transform: scale(1.03);
-        animation: logoGlow 1.6s ease-in-out infinite;
-    }
 }
 .mobile-nav {
     list-style: none;
@@ -715,29 +707,22 @@ body.menu-open {
     margin-right: 18px;
     margin-left: 6px;
 }
+
 .logo a {
     display: flex;
     align-items: center;
     text-decoration: none;
     height: 100%;
 }
+
 .logo-image {
     height: clamp(85px, 12vw, 115px);
     width: auto;
     max-width: min(340px, 48vw);
     object-fit: contain;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35));
+    filter: drop-shadow(0 0 15px rgba(153, 255, 0, 0.3));
     animation: logoGlow 3s ease-in-out infinite;
-    will-change: filter;
-}
-
-@media (hover: hover) {
-    .logo-image:hover {
-        filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55));
-        transform: scale(1.02);
-        animation: logoGlow 1.6s ease-in-out infinite;
-    }
+    transition: all 0.3s ease;
 }
 
 @media (max-width: 767px) {
@@ -1717,24 +1702,17 @@ body.menu-open {
 .footer-brand {
     text-align: left;
 }
+
 .footer-logo-image {
     height: clamp(95px, 14vw, 130px);
     width: auto;
     max-width: min(360px, 50vw);
     object-fit: contain;
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35));
-    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 15px rgba(153, 255, 0, 0.3));
     animation: logoGlow 3s ease-in-out infinite;
-    will-change: filter;
-}
-
-@media (hover: hover) {
-    .footer-logo-image:hover {
-        filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55));
-        transform: scale(1.02);
-        animation: logoGlow 1.6s ease-in-out infinite;
-    }
+    transition: all 0.3s ease;
+    display: block;
 }
 .social-media h4 {
     color: var(--mamba-green);
@@ -2512,6 +2490,15 @@ body.page-ready .hero-buttons {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
+    }
+
+    .logo a::after,
+    .mobile-logo::after,
+    .footer-logo::after,
+    .logo-image,
+    .mobile-logo-image,
+    .footer-logo-image {
+        animation: none !important;
     }
 }
 
