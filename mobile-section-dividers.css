@@ -12,8 +12,8 @@
 /* Logo effects disabled */
 
 @keyframes logoGlowFooter {
-    0%, 100% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.2)) drop-shadow(0 0 15px rgba(153, 255, 0, 0.08)); }
-    50% { filter: drop-shadow(0 0 8px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 25px rgba(153, 255, 0, 0.12)); }
+    0%, 100% { filter: brightness(1.06) drop-shadow(0 0 3px rgba(153, 255, 0, 0.35)); }
+    50% { filter: brightness(1.15) drop-shadow(0 0 6px rgba(153, 255, 0, 0.55)); }
 }
 
 .navbar .logo-image {
@@ -24,12 +24,11 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 0 7px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 20px rgba(153, 255, 0, 0.12));
-    animation: logoGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(153, 255, 0, 0.55));
+    animation: none;
 }
 
 .mobile-logo-image {
@@ -42,12 +41,11 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 0 7px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 20px rgba(153, 255, 0, 0.12));
-    animation: logoGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(153, 255, 0, 0.55));
+    animation: none;
 }
 
 .footer-logo-image {
@@ -58,12 +56,18 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.2)) drop-shadow(0 0 15px rgba(153, 255, 0, 0.08));
-    animation: logoGlowFooter 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px rgba(153, 255, 0, 0.35));
+    animation: none;
+}
+
+@media (max-width: 768px) {
+    .footer-logo-image {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
 }
 
 .mobile-header-center {
