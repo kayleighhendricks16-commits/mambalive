@@ -26,8 +26,8 @@ html {
 }
 
 @keyframes logoGlow {
-    0%, 100% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.06)); }
-    50% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.10)); }
+    0%, 100% { filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.03)); }
+    50% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.05)); }
 }
 
 body {
