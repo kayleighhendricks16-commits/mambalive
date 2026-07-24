@@ -11,13 +11,9 @@
 /* Keep the brand mark the same size on every page. */
 /* Logo effects disabled */
 
-@keyframes logoGlowPulse {
-    0%, 100% {
-        filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.03));
-    }
-    50% {
-        filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.05));
-    }
+@keyframes logoGlowFooter {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.2)) drop-shadow(0 0 15px rgba(153, 255, 0, 0.08)); }
+    50% { filter: drop-shadow(0 0 8px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 25px rgba(153, 255, 0, 0.12)); }
 }
 
 .navbar .logo-image {
@@ -32,8 +28,8 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 0 4px rgba(153, 255, 0, 0.08)) !important;
-    animation: logoGlow 3s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 7px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 20px rgba(153, 255, 0, 0.12));
+    animation: logoGlow 3s ease-in-out infinite;
 }
 
 .mobile-logo-image {
@@ -50,8 +46,8 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6)) !important;
-    animation: logoGlowPulse 2.5s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 7px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 20px rgba(153, 255, 0, 0.12));
+    animation: logoGlow 3s ease-in-out infinite;
 }
 
 .footer-logo-image {
@@ -66,8 +62,8 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6)) !important;
-    animation: logoGlowPulse 2.5s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.2)) drop-shadow(0 0 15px rgba(153, 255, 0, 0.08));
+    animation: logoGlowFooter 3s ease-in-out infinite;
 }
 
 .mobile-header-center {

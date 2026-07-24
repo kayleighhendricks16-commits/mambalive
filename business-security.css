@@ -23,19 +23,8 @@ html {
 }
 
 @keyframes logoGlow {
-    0%, 100% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.05)); }
-    50% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.09)); }
-}
-
-/* Reduce glow for footer logos */
-.footer-logo-image {
-    filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.03)) !important;
-    animation: logoGlowFooter 3s ease-in-out infinite !important;
-}
-
-@keyframes logoGlowFooter {
-    0%, 100% { filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.03)); }
-    50% { filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.05)); }
+    0%, 100% { filter: drop-shadow(0 0 7px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 20px rgba(153, 255, 0, 0.12)); }
+    50% { filter: drop-shadow(0 0 12px rgba(153, 255, 0, 0.45)) drop-shadow(0 0 33px rgba(153, 255, 0, 0.2)); }
 }
 
 body {
@@ -727,9 +716,9 @@ body.menu-open {
 }
 
 .footer-logo-image {
-    height: clamp(60px, 10vw, 90px);
+    height: clamp(95px, 14vw, 130px);
     width: auto;
-    max-width: min(280px, 40vw);
+    max-width: min(360px, 50vw);
     object-fit: contain;
     margin-bottom: 20px;
 }

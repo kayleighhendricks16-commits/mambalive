@@ -1390,13 +1390,9 @@
 }
 
 /* Match the site-wide index logo sizing on the Technologies page. */
-@keyframes logoGlowPulse {
-    0%, 100% {
-        filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6));
-    }
-    50% {
-        filter: drop-shadow(0 0 28px rgba(153, 255, 0, 0.8));
-    }
+@keyframes logoGlowFooter {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.2)) drop-shadow(0 0 15px rgba(153, 255, 0, 0.08)); }
+    50% { filter: drop-shadow(0 0 8px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 25px rgba(153, 255, 0, 0.12)); }
 }
 
 .navbar .logo-image {
@@ -1407,8 +1403,8 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6)) !important;
-    animation: logoGlowPulse 2.5s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 7px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 20px rgba(153, 255, 0, 0.12));
+    animation: logoGlow 3s ease-in-out infinite;
 }
 
 .mobile-logo-image {
@@ -1421,8 +1417,8 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6)) !important;
-    animation: logoGlowPulse 2.5s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 7px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 20px rgba(153, 255, 0, 0.12));
+    animation: logoGlow 3s ease-in-out infinite;
 }
 
 .footer-logo-image {
@@ -1433,8 +1429,8 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6)) !important;
-    animation: logoGlowPulse 2.5s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.2)) drop-shadow(0 0 15px rgba(153, 255, 0, 0.08));
+    animation: logoGlowFooter 3s ease-in-out infinite;
 }
 
 .mobile-header-center {

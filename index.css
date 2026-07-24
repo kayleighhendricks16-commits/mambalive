@@ -368,19 +368,8 @@ strong {
 }
 
 @keyframes logoGlow {
-    0%, 100% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.05)); }
-    50% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.09)); }
-}
-
-/* Reduce glow for footer logos */
-.footer-logo-image {
-    filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.03)) !important;
-    animation: logoGlowFooter 3s ease-in-out infinite !important;
-}
-
-@keyframes logoGlowFooter {
-    0%, 100% { filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.03)); }
-    50% { filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.05)); }
+    0%, 100% { filter: drop-shadow(0 0 7px rgba(153, 255, 0, 0.3)) drop-shadow(0 0 20px rgba(153, 255, 0, 0.12)); }
+    50% { filter: drop-shadow(0 0 12px rgba(153, 255, 0, 0.45)) drop-shadow(0 0 33px rgba(153, 255, 0, 0.2)); }
 }
 
 .whatsapp-float {
@@ -1720,8 +1709,8 @@ body.menu-open {
     max-width: min(360px, 50vw);
     object-fit: contain;
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 4px rgba(153, 255, 0, 0.08));
-    animation: logoGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.2)) drop-shadow(0 0 15px rgba(153, 255, 0, 0.08));
+    animation: logoGlowFooter 3s ease-in-out infinite;
     transition: all 0.3s ease;
     display: block;
 }
