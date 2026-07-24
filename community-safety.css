@@ -784,13 +784,7 @@ body.menu-open {
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
-.social-icon.tiktok {
-    background: #000000;
-}
 
-.social-icon.tiktok:hover {
-    background: #333333;
-}
 
 .social-icon.x-logo {
     background: #000000;
