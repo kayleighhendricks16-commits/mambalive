@@ -647,9 +647,9 @@ body.popup-open {
     background: rgba(0, 0, 0, 0.9);
 }
 .mobile-logo-image {
-    height: 110px;
+    height: 100px;
     width: auto;
-    max-width: 300px;
+    max-width: 280px;
     object-fit: contain;
     filter: drop-shadow(0 0 1.5px rgba(153, 255, 0, 0.35));
     transition: all 0.3s ease;
@@ -735,6 +735,13 @@ body.menu-open {
         filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.55));
         transform: scale(1.02);
         animation: logoGlow 1.6s ease-in-out infinite;
+    }
+}
+
+@media (max-width: 767px) {
+    .logo-image {
+        height: clamp(90px, 20vw, 108px);
+        max-width: min(300px, 58vw);
     }
 }
 .nav-menu-container {
