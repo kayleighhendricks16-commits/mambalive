@@ -26,8 +26,19 @@ html {
 }
 
 @keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.05)); }
+    50% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.09)); }
+}
+
+/* Reduce glow for footer logos */
+.footer-logo-image {
+    filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.03)) !important;
+    animation: logoGlowFooter 3s ease-in-out infinite !important;
+}
+
+@keyframes logoGlowFooter {
     0%, 100% { filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.03)); }
-    50% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.05)); }
+    50% { filter: drop-shadow(0 0 2px rgba(153, 255, 0, 0.05)); }
 }
 
 body {
@@ -2225,7 +2236,7 @@ body.menu-open {
         padding-top: 10px !important;
         padding-bottom: 30px !important;
         align-items: flex-start !important;
-    }    }
+    }
 }
 
 .armed-response-hero .hero-copy,
