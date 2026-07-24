@@ -1403,7 +1403,7 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 6px rgba(153, 255, 0, 0.55));
+    filter: drop-shadow(0 0 4px rgba(153, 255, 0, 0.4));
     animation: none;
 }
 
@@ -1417,7 +1417,7 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 6px rgba(153, 255, 0, 0.55));
+    filter: drop-shadow(0 0 4px rgba(153, 255, 0, 0.4));
     animation: none;
 }
 
@@ -1429,7 +1429,7 @@
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
-    filter: drop-shadow(0 0 4px rgba(153, 255, 0, 0.35));
+    filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.25));
     animation: none;
 }
 
