@@ -17,13 +17,9 @@
     --linkedin-blue: #0077B5;  /* Added for LinkedIn */
 }
 
-@keyframes logoGlowPulse {
-    0%, 100% {
-        filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6));
-    }
-    50% {
-        filter: drop-shadow(0 0 28px rgba(153, 255, 0, 0.8));
-    }
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.06)); }
+    50% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.10)); }
 }
 
 html {
@@ -355,8 +351,9 @@ body.menu-open {
     width: auto;
     max-width: min(320px, 45vw);
     object-fit: contain;
-    filter: drop-shadow(0 0 18px rgba(153, 255, 0, 0.6));
-    animation: logoGlowPulse 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px rgba(153, 255, 0, 0.08));
+    animation: logoGlow 3s ease-in-out infinite;
+    transition: all 0.3s ease;
 }
 
 /* Navigation Container - Optimized for desktop */

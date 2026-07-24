@@ -28,6 +28,11 @@ html {
     font-size: 16px;
 }
 
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(153, 255, 0, 0.06)); }
+    50% { filter: drop-shadow(0 0 5px rgba(153, 255, 0, 0.10)); }
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
@@ -172,6 +177,8 @@ strong {
     width: auto;
     max-width: min(320px, 45vw);
     object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(153, 255, 0, 0.08));
+    animation: logoGlow 3s ease-in-out infinite;
     transition: all 0.3s ease;
 }
 
