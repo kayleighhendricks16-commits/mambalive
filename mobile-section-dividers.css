@@ -12,13 +12,13 @@
 /* Logo effects disabled */
 
 @keyframes logoGlow {
-    0%, 100% { filter: brightness(1) drop-shadow(0 0 12px rgba(153, 255, 0, 0.5)); }
-    50% { filter: brightness(1.04) drop-shadow(0 0 13px rgba(153, 255, 0, 0.55)); }
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 6px rgba(153, 255, 0, 0.35)); }
+    50% { filter: brightness(1.03) drop-shadow(0 0 8px rgba(153, 255, 0, 0.4)); }
 }
 
 @keyframes logoGlowFooter {
-    0%, 100% { filter: brightness(1) drop-shadow(0 0 8px rgba(153, 255, 0, 0.5)); }
-    50% { filter: brightness(1.03) drop-shadow(0 0 9px rgba(153, 255, 0, 0.55)); }
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 4px rgba(153, 255, 0, 0.3)); }
+    50% { filter: brightness(1.02) drop-shadow(0 0 5px rgba(153, 255, 0, 0.35)); }
 }
 
 .navbar .logo-image {
@@ -32,7 +32,7 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: brightness(1) drop-shadow(0 0 12px rgba(153, 255, 0, 0.5));
+    filter: brightness(1) drop-shadow(0 0 6px rgba(153, 255, 0, 0.35));
     animation: logoGlow 7s ease-in-out infinite;
 }
 
@@ -49,7 +49,7 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: brightness(1) drop-shadow(0 0 8px rgba(153, 255, 0, 0.35));
+    filter: brightness(1) drop-shadow(0 0 6px rgba(153, 255, 0, 0.35));
     animation: none !important;
 }
 
@@ -64,7 +64,7 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    filter: brightness(1) drop-shadow(0 0 8px rgba(153, 255, 0, 0.5));
+    filter: brightness(1) drop-shadow(0 0 4px rgba(153, 255, 0, 0.3));
     animation: logoGlowFooter 7s ease-in-out infinite;
 }
 
@@ -72,7 +72,7 @@
     .footer-logo-image {
         margin-left: auto !important;
         margin-right: auto !important;
-        filter: brightness(1) drop-shadow(0 0 5px rgba(153, 255, 0, 0.3)) !important;
+        filter: brightness(1) drop-shadow(0 0 5px rgba(153, 255, 0, 0.32)) !important;
         animation: none !important;
     }
 }
@@ -105,7 +105,7 @@
     .navbar .logo-image {
         height: 82px !important;
         max-width: 235px !important;
-        filter: brightness(1) drop-shadow(0 0 8px rgba(153, 255, 0, 0.35)) !important;
+        filter: brightness(1) drop-shadow(0 0 6px rgba(153, 255, 0, 0.35)) !important;
         animation: none !important;
     }
 }
