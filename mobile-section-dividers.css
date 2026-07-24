@@ -33,6 +33,8 @@
     width: auto !important;
     height: 100px !important;
     max-width: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     aspect-ratio: 1000 / 647 !important;
     object-fit: contain !important;
     image-rendering: auto !important;
@@ -54,6 +56,16 @@
     transition: all 0.3s ease !important;
     animation: logoGlow 3s ease-in-out infinite !important;
     will-change: filter !important;
+}
+
+.mobile-header-center {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
 }
 
 @media (hover: hover) {

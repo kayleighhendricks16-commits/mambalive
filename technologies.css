@@ -262,6 +262,8 @@ strong {
     width: auto;
     max-width: 260px;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 .mobile-nav {
