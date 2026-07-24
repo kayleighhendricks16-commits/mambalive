@@ -645,6 +645,7 @@ body.popup-open {
     width: auto;
     max-width: 260px;
     object-fit: contain;
+    filter: drop-shadow(0 0 14px rgba(153, 255, 0, 0.6));
 }
 .mobile-nav {
     list-style: none;
@@ -707,6 +708,7 @@ body.menu-open {
     max-width: min(320px, 45vw);
     object-fit: contain;
     transition: all 0.3s ease;
+    filter: drop-shadow(0 0 12px rgba(153, 255, 0, 0.5));
 }
 .nav-menu-container {
     flex: 1;
@@ -1685,6 +1687,7 @@ body.menu-open {
     max-width: min(280px, 40vw);
     object-fit: contain;
     margin-bottom: 20px;
+    filter: drop-shadow(0 0 12px rgba(153, 255, 0, 0.5));
 }
 .social-media h4 {
     color: var(--mamba-green);
