@@ -64,10 +64,22 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="sitemap.css">
-    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260724">
+    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260725">
 </head>
 <body>
     <!-- ===== HEADER ===== -->
+    <!-- ===== SEARCH BAR ===== -->
+    <div class="site-search-bar">
+        <div class="container">
+            <form class="site-search-form" id="siteSearchForm" role="search">
+                <i class="fas fa-search site-search-icon"></i>
+                <input type="text" class="site-search-input" id="siteSearchInput" placeholder="Search services, pages &amp; resources..." autocomplete="off" />
+                <button type="button" class="site-search-clear" id="siteSearchClear" aria-label="Clear"><i class="fas fa-times"></i></button>
+            </form>
+            <div class="site-search-results" id="siteSearchResults"></div>
+        </div>
+    </div>
+
     <header class="header">
         <div class="container">
             <nav class="navbar">
@@ -103,8 +115,9 @@
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                         <li><a href="sitemap.html" class="nav-link active">Sitemap</a></li>
                     </ul>
+
                 </div>
-            </nav>
+                            </nav>
         </div>
 
         <!-- Mobile Menu (Updated order) -->
@@ -949,5 +962,6 @@
             display: none !important;
         }
     </style>
+<script src="search.js" defer></script>
 </body>
 </html>
