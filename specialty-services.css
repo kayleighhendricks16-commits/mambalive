@@ -233,6 +233,7 @@ strong {
     height: 35px;
     position: relative;
     z-index: 1002;
+    padding-bottom: 2px;
 }
 
 .hamburger span {
