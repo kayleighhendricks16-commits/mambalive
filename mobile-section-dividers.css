@@ -1,13 +1,3 @@
-/* Show hamburger menu on mobile, hide desktop nav */
-@media (max-width: 767px) {
-    .hamburger {
-        display: flex !important;
-    }
-    .nav-menu-container {
-        display: none !important;
-    }
-}
-
 /* Consistent section separation across the Mamba site on mobile. */
 @media (max-width: 768px) {
     body > section + section,
@@ -188,4 +178,3 @@
     }
     .global-store-cart span { display: none; }
 }
-
