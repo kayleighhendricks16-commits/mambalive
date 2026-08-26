@@ -55,8 +55,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Main Styles -->
-    <link rel="stylesheet" href="index.css?v=4">
-    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260724">
+    <link rel="stylesheet" href="index.css?v=5">
+    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260826">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -207,19 +207,19 @@
 </head>
 <body>
     <!-- ===== HEADER (EXACTLY LIKE AR PAGE) ===== -->
-    <header class="header">
-        <!-- ===== SEARCH BAR ===== -->
-        <div class="site-search-bar">
-            <div class="container">
-                <form class="site-search-form" id="siteSearchForm" role="search">
-                    <i class="fas fa-search site-search-icon"></i>
-                    <input type="text" class="site-search-input" id="siteSearchInput" placeholder="Search services, pages &amp; resources..." autocomplete="off" />
-                    <button type="button" class="site-search-clear" id="siteSearchClear" aria-label="Clear"><i class="fas fa-times"></i></button>
-                </form>
-                <div class="site-search-results" id="siteSearchResults"></div>
-            </div>
+    <!-- ===== SEARCH BAR ===== -->
+    <div class="site-search-bar">
+        <div class="container">
+            <form class="site-search-form" id="siteSearchForm" role="search">
+                <i class="fas fa-search site-search-icon"></i>
+                <input type="text" class="site-search-input" id="siteSearchInput" placeholder="Search services, pages &amp; resources..." autocomplete="off" />
+                <button type="button" class="site-search-clear" id="siteSearchClear" aria-label="Clear"><i class="fas fa-times"></i></button>
+            </form>
+            <div class="site-search-results" id="siteSearchResults"></div>
         </div>
+    </div>
 
+    <header class="header">
         <div class="container">
             <nav class="navbar">
                 <!-- Hamburger Menu (Mobile Only) -->
@@ -248,8 +248,9 @@
                         <li><a href="training-academy.html" class="nav-link">Training Academy</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
+
                 </div>
-            </nav>
+                            </nav>
         </div>
 
         <!-- Mobile Menu -->
@@ -371,7 +372,6 @@
                     <span class="hero-dot" data-index="4"></span>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -519,53 +519,6 @@
         </div>
     </section>
 
-
-    <!-- ===== INSTAGRAM FEED ===== -->
-    <section class="instagram-feed-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="float-up"><i class="fab fa-instagram"></i> Follow Us on Instagram</h2>
-                <p class="section-subtitle float-up">See what we're up to — latest posts from @mamba_security</p>
-            </div>
-            <div class="instagram-grid">
-                <a href="https://www.instagram.com/p/DcaXpsCD2Iy/" class="ig-card" target="_blank" rel="noopener">
-                    <div class="ig-card-header">
-                        <span class="ig-card-avatar"><i class="fab fa-instagram"></i></span>
-                        <span class="ig-card-username">mamba_security</span>
-                    </div>
-                    <img src="post1.png" alt="Instagram post" class="ig-card-image" loading="lazy" />
-                    <div class="ig-card-link">
-                        <i class="fab fa-instagram"></i> View on Instagram
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/p/DceEhpjkWv6/" class="ig-card" target="_blank" rel="noopener">
-                    <div class="ig-card-header">
-                        <span class="ig-card-avatar"><i class="fab fa-instagram"></i></span>
-                        <span class="ig-card-username">mamba_security</span>
-                    </div>
-                    <img src="post2.png" alt="Instagram post" class="ig-card-image" loading="lazy" />
-                    <div class="ig-card-link">
-                        <i class="fab fa-instagram"></i> View on Instagram
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/p/DcTxJ7llYK-/" class="ig-card" target="_blank" rel="noopener">
-                    <div class="ig-card-header">
-                        <span class="ig-card-avatar"><i class="fab fa-instagram"></i></span>
-                        <span class="ig-card-username">mamba_security</span>
-                    </div>
-                    <img src="post3.png" alt="Instagram post" class="ig-card-image" loading="lazy" />
-                    <div class="ig-card-link">
-                        <i class="fab fa-instagram"></i> View on Instagram
-                    </div>
-                </a>
-            </div>
-
-            <div class="instagram-cta">
-                <a href="https://www.instagram.com/mamba_security/" class="btn btn-primary" target="_blank"><i class="fab fa-instagram"></i> Follow @mamba_security</a>
-            </div>
-        </div>
-    </section>
-
     <!-- ===== SNAKE GAME SECTION ===== -->
     <section class="snake-game-section" id="snake-game">
         <div class="container">
@@ -578,15 +531,11 @@
                         <div class="canvas-overlay" id="canvasOverlay">
                             <div class="overlay-content" id="overlayContent"></div>
                         </div>
-                        <div class="start-game-saved" id="savedStartButton" >
+                        <div class="start-game-saved" id="savedStartButton" style="display: none;">
                             <button id="savedStartGameBtn" class="btn btn-primary">Play Game</button>
                         </div>
                     </div>
 
-                    <div class="winner-block" id="winnerBlock">
-                        <img src="winner.png" alt="Mamba Chase Winner" class="winner-image">
-                        <p class="winner-caption">Our Mamba Chase Champion</p>
-                    </div>
                 </div>
                 <div class="game-info-panel">
                     <div class="stats">
@@ -617,7 +566,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     <!-- ===== FAQ SECTION ===== -->
@@ -755,7 +703,7 @@
                 </div>
 
                 <!-- Risk Score Display -->
-                <div class="risk-score-panel" id="riskScorePanel" >
+                <div class="risk-score-panel" id="riskScorePanel" style="display: none;">
                     <div class="risk-header">
                         <h4 id="riskTitle">Your Security Risk Score</h4>
                         <span class="risk-badge" id="riskBadge">Calculating...</span>
@@ -768,7 +716,7 @@
 
                 <!-- Input Area -->
                 <div class="security-popup-input-area">
-                    <div class="typing-indicator" id="typingIndicator" >
+                    <div class="typing-indicator" id="typingIndicator" style="display: none;">
                         <span></span><span></span><span></span>
                     </div>
                     <form class="security-popup-form" id="chatbotForm">
@@ -776,7 +724,7 @@
                         <button type="submit" class="security-popup-send"><i class="fas fa-paper-plane"></i></button>
                     </form>
                     <div class="security-popup-actions">
-                        <button class="action-btn" id="bookAssessmentBtn" >
+                        <button class="action-btn" id="bookAssessmentBtn" style="display: none;">
                             <span id="bookBtnText">Talk to Sales coordinator</span>
                         </button>
                         <button class="action-btn secondary" id="restartChatBtn">
@@ -846,6 +794,6 @@
     </a>
 
   <script src="index.js?v=2" defer></script>
-    <script src="search.js" defer></script>
+<script src="search.js" defer></script>
 </body>
 </html>
