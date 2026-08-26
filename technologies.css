@@ -573,7 +573,7 @@ body.menu-open {
 }
 @media (max-width: 767px) {
     .header {
-        padding-bottom: 24px;
+        padding-bottom: 14px;
     }
     .site-search-bar {
         padding: 8px 0;
