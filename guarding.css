@@ -21,6 +21,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 140px;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 @keyframes logoGlow {
