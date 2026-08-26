@@ -165,9 +165,22 @@
         });
     }
 
+    function updateFixedHeaderSpace() {
+        var header = document.querySelector('.header');
+        if (!header) return;
+        document.documentElement.style.setProperty('--fixed-header-space', header.offsetHeight + 'px');
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', function () {
+            updateFixedHeaderSpace();
+            init();
+        });
     } else {
+        updateFixedHeaderSpace();
         init();
     }
+
+    window.addEventListener('load', updateFixedHeaderSpace);
+    window.addEventListener('resize', updateFixedHeaderSpace);
 })();
