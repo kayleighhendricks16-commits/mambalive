@@ -94,19 +94,19 @@
 </head>
 <body>
     <!-- ===== HEADER ===== -->
+    <header class="header">
         <!-- ===== SEARCH BAR ===== -->
-    <div class="site-search-bar">
-        <div class="container">
-            <form class="site-search-form" id="siteSearchForm" role="search">
-                <i class="fas fa-search site-search-icon"></i>
-                <input type="text" class="site-search-input" id="siteSearchInput" placeholder="Search services, pages &amp; resources..." autocomplete="off" />
-                <button type="button" class="site-search-clear" id="siteSearchClear" aria-label="Clear"><i class="fas fa-times"></i></button>
-            </form>
-            <div class="site-search-results" id="siteSearchResults"></div>
+        <div class="site-search-bar">
+            <div class="container">
+                <form class="site-search-form" id="siteSearchForm" role="search">
+                    <i class="fas fa-search site-search-icon"></i>
+                    <input type="text" class="site-search-input" id="siteSearchInput" placeholder="Search services, pages &amp; resources..." autocomplete="off" />
+                    <button type="button" class="site-search-clear" id="siteSearchClear" aria-label="Clear"><i class="fas fa-times"></i></button>
+                </form>
+                <div class="site-search-results" id="siteSearchResults"></div>
+            </div>
         </div>
-    </div>
 
-<header class="header">
         <div class="container">
             <nav class="navbar">
                 <!-- Hamburger Menu (Mobile Only) -->
@@ -177,7 +177,7 @@
                     <p>This policy works alongside our <a href="privacypolicy.html">Privacy Policy</a> to explain how we handle your data.</p>
                 </div>
             </div>
-        </div>
+</div>
     </section>
 
     <!-- ===== COOKIE POLICY CONTENT ===== -->
@@ -888,7 +888,9 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="footer">
+
+    <!-- ===== INSTAGRAM FEED ===== -->
+<footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
@@ -1343,6 +1345,6 @@
             display: none !important;
         }
     </style>
-    <script src="search.js"></script>
+    <script src="search.js" defer></script>
 </body>
 </html>
