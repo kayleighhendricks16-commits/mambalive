@@ -37,14 +37,14 @@
     <meta property="og:description" content="Professional off-site CCTV and alarm monitoring with rapid armed dispatch for Edenvale, Primrose, Benoni, Kempton Park and surrounding East Rand areas.">
     <meta property="og:site_name" content="Mamba Security">
     <meta property="og:locale" content="en_ZA">
-    <meta property="og:image" content="https://www.mambasecurity.co.za/mambalogo1.png">
+    <meta property="og:image" content="https://www.mambasecurity.co.za/offsite.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.mambasecurity.co.za/off-site-monitoring.html">
     <meta property="twitter:title" content="Off-Site Monitoring East Rand | CCTV & Alarm Monitoring | Mamba Security">
     <meta property="twitter:description" content="Professional off-site CCTV and alarm monitoring with rapid armed dispatch for Edenvale, Primrose, Benoni, Kempton Park and surrounding areas.">
-    <meta property="twitter:image" content="https://www.mambasecurity.co.za/mambalogo1.png">
+    <meta property="twitter:image" content="https://www.mambasecurity.co.za/offsite.jpg">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://www.mambasecurity.co.za/off-site-monitoring.html">
@@ -65,7 +65,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="off-site-monitoring.css?v=20260723-ultimate">
-    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260826-sticky">
+    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260724">
     <!-- Structured Data with locations -->
     <script type="application/ld+json">
     {
@@ -76,7 +76,7 @@
       "provider": {
         "@type": "LocalBusiness",
         "name": "Mamba Security",
-        "image": "https://www.mambasecurity.co.za/mambalogo1.png",
+        "image": "https://www.mambasecurity.co.za/mambalogo.png",
         "description": "Premier Security Services & Professional Monitoring",
         "areaServed": [
           "Edenvale",
@@ -130,19 +130,19 @@
 </head>
 <body>
     <!-- ===== HEADER ===== -->
-    <header class="header">
         <!-- ===== SEARCH BAR ===== -->
-        <div class="site-search-bar">
-            <div class="container">
-                <form class="site-search-form" id="siteSearchForm" role="search">
-                    <i class="fas fa-search site-search-icon"></i>
-                    <input type="text" class="site-search-input" id="siteSearchInput" placeholder="Search services, pages &amp; resources..." autocomplete="off" />
-                    <button type="button" class="site-search-clear" id="siteSearchClear" aria-label="Clear"><i class="fas fa-times"></i></button>
-                </form>
-                <div class="site-search-results" id="siteSearchResults"></div>
-            </div>
+    <div class="site-search-bar">
+        <div class="container">
+            <form class="site-search-form" id="siteSearchForm" role="search">
+                <i class="fas fa-search site-search-icon"></i>
+                <input type="text" class="site-search-input" id="siteSearchInput" placeholder="Search services, pages &amp; resources..." autocomplete="off" />
+                <button type="button" class="site-search-clear" id="siteSearchClear" aria-label="Clear"><i class="fas fa-times"></i></button>
+            </form>
+            <div class="site-search-results" id="siteSearchResults"></div>
         </div>
+    </div>
 
+<header class="header">
         <div class="container">
             <nav class="navbar">
                 <!-- Hamburger Menu (Mobile Only) -->
@@ -210,7 +210,19 @@
                     <a href="contact.html#quote" class="btn btn-secondary">Book a Site Assessment</a>
                 </div>
             </div>
-</div>
+        </div>
+    </section>
+
+    <!-- ===== MONITORING VIDEO ===== -->
+    <section class="monitoring-video" aria-label="Video demonstration">
+        <div class="container">
+            <div class="video-wrapper float-on-scroll">
+                <video controls preload="metadata" poster="offsite.jpg" playsinline class="monitoring-demo-video">
+                    <source src="vid1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
     </section>
 
     <!-- ===== INTRODUCTION SECTION ===== -->
@@ -581,9 +593,7 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-
-    <!-- ===== INSTAGRAM FEED ===== -->
-<footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
@@ -876,6 +886,6 @@
 
         console.log('Mamba Security Off-Site Monitoring page loaded successfully');
     </script>
-    <script src="search.js" defer></script>
+    <script src="search.js"></script>
 </body>
 </html>
