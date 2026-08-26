@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GT895LG1ZK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GT895LG1ZK');
+  gtag('event', 'form_conversion', { 'send_to': 'G-GT895LG1ZK' });
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Mamba Security – Serving Edenvale, Kempton Park, Benoni & Primrose</title>
+
+    <!-- SAMSUNG FIX: Prevent any scaling issues -->
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="description" content="Thank you for contacting Mamba Security. Your submission has been received and one of our team members will be in touch with you shortly.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mambasecurity.co.za/thank-you.html">
+    <meta property="og:title" content="Thank You | Mamba Security">
+    <meta property="og:description" content="Thank you for contacting Mamba Security. Your submission has been received and our team will be in touch shortly.">
+    <meta property="og:site_name" content="Mamba Security">
+    <meta property="og:locale" content="en_ZA">
+    <meta property="og:image" content="https://www.mambasecurity.co.za/mambalogo1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.mambasecurity.co.za/thank-you.html">
+    <meta property="twitter:title" content="Thank You | Mamba Security">
+    <meta property="twitter:description" content="Thank you for contacting Mamba Security. Your submission has been received.">
+    <meta property="twitter:image" content="https://www.mambasecurity.co.za/mambalogo1.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.mambasecurity.co.za/thank-you.html">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Mamba Security" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles (external CSS – reuse contact page base styles) -->
+    <link rel="stylesheet" href="contact.css?v=20260722">
+    <link rel="stylesheet" href="mobile-section-dividers.css?v=20260724">
+
+    <style>
+        /* ===== THANK YOU HERO ===== */
+        .thankyou-hero {
+            min-height: calc(100vh - 110px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(50px, 8vw, 90px) 0;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 18%, rgba(153, 255, 0, 0.07) 0%, transparent 55%),
+                linear-gradient(180deg, #0a0a0a 0%, var(--mamba-dark) 100%);
+            border-bottom: 2px solid rgba(153, 255, 0, 0.15);
+        }
+
+        .thankyou-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -15%;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle, rgba(153, 255, 0, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .thankyou-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            right: -15%;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle, rgba(153, 255, 0, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .thankyou-card {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: clamp(30px, 5vw, 55px);
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 32px;
+            background: rgba(153, 255, 0, 0.12);
+            border: 3px solid var(--mamba-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 45px rgba(153, 255, 0, 0.35);
+            position: relative;
+            animation: successPulse 2.2s ease-in-out infinite;
+        }
+
+        .success-icon::after {
+            content: '';
+            position: absolute;
+            inset: -14px;
+            border: 2px solid rgba(153, 255, 0, 0.35);
+            border-radius: 50%;
+            animation: successRing 2.2s ease-out infinite;
+        }
+
+        .success-icon i {
+            font-size: 3rem;
+            color: var(--mamba-green);
+            filter: drop-shadow(0 0 8px rgba(153, 255, 0, 0.5));
+        }
+
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes successRing {
+            0% { transform: scale(0.85); opacity: 1; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        .thankyou-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            margin: 0 auto 18px;
+            color: var(--mamba-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            border: 1px solid rgba(153, 255, 0, 0.38);
+            background: rgba(153, 255, 0, 0.09);
+            border-radius: 999px;
+            box-shadow: 0 0 25px rgba(153, 255, 0, 0.12);
+        }
+
+        .thankyou-kicker i {
+            font-size: 0.9rem;
+        }
+
+        .thankyou-card h1 {
+            color: var(--mamba-green);
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            text-shadow: 0 0 25px rgba(153, 255, 0, 0.25);
+        }
+
+        .thankyou-card .thankyou-lead {
+            color: var(--mamba-text-secondary);
+            max-width: 560px;
+            margin: 0 auto 32px;
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            line-height: 1.75;
+        }
+
+        .thankyou-card .thankyou-lead strong {
+            color: var(--mamba-green);
+        }
+
+        .thankyou-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .thankyou-buttons .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: clamp(14px, 3vw, 16px) clamp(28px, 6vw, 42px);
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+        }
+
+        .thankyou-buttons .btn i {
+            font-size: 1.05rem;
+            margin: 0;
+        }
+
+        .thankyou-contact {
+            display: flex;
+            gap: clamp(16px, 4vw, 32px);
+            justify-content: center;
+            flex-wrap: wrap;
+            padding-top: 26px;
+            border-top: 1px solid rgba(153, 255, 0, 0.15);
+        }
+
+        .thankyou-contact p {
+            margin: 0;
+            color: var(--mamba-text);
+            font-size: clamp(0.88rem, 1.6vw, 0.98rem);
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            line-height: 1.5;
+        }
+
+        .thankyou-contact i {
+            color: var(--mamba-green);
+        }
+
+        .thankyou-contact a {
+            color: var(--mamba-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .thankyou-contact a:hover {
+            color: var(--mamba-green);
+            text-decoration: underline;
+        }
+
+        /* Entrance animation */
+        .thankyou-card > * {
+            animation: thankyouFloatUp 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .thankyou-card .success-icon { animation: successPulse 2.2s ease-in-out infinite, thankyouFloatUp 900ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+        .thankyou-card .thankyou-kicker { animation-delay: 120ms; }
+        .thankyou-card h1 { animation-delay: 200ms; }
+        .thankyou-card .thankyou-lead { animation-delay: 300ms; }
+        .thankyou-card .thankyou-buttons { animation-delay: 400ms; }
+        .thankyou-card .thankyou-contact { animation-delay: 500ms; }
+
+        @keyframes thankyouFloatUp {
+            from { opacity: 0; transform: translateY(26px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 767px) {
+            .thankyou-hero {
+                min-height: auto;
+                padding: 56px 0 64px;
+            }
+
+            .success-icon {
+                width: 88px;
+                height: 88px;
+            }
+
+            .success-icon i {
+                font-size: 2.3rem;
+            }
+
+            .thankyou-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .thankyou-contact {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .success-icon,
+            .success-icon::after,
+            .thankyou-card > * {
+                animation: none;
+            }
+        }
+
+        /* HIDE "here for you" IN MOBILE HEADER */
+        .mobile-header-center {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Hamburger Menu (Mobile Only) -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Centered text for mobile/tablet: "here for you" (hidden by CSS) -->
+                <div class="mobile-header-center">
+                    <span class="here-green">Here</span> <span class="for-white">For</span> <span class="you-green">You</span>
+                </div>
+
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="mambalogo.png" alt="Mamba Security Logo - Premier Security Services" class="logo-image" width="1000" height="647" decoding="async" fetchpriority="high">
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="off-site-monitoring.html" class="nav-link">Off-Site Monitoring</a></li>
+                        <li><a href="guarding.html" class="nav-link">Guarding</a></li>
+                        <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+                        <li><a href="ar.html" class="nav-link">Armed Response</a></li>
+                        <li><a href="specialty-services.html" class="nav-link">Specialty Services</a></li>
+                        <li><a href="training-academy.html" class="nav-link">Training Academy</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-logo">
+                <img src="mambalogo.png" alt="Mamba Security Logo" class="mobile-logo-image" width="1000" height="647" decoding="async">
+            </div>
+            <ul class="mobile-nav">
+                <li><a href="index.html" class="mobile-link">Home</a></li>
+                <li><a href="off-site-monitoring.html" class="mobile-link">Off-Site Monitoring</a></li>
+                <li><a href="guarding.html" class="mobile-link">Guarding</a></li>
+                <li><a href="technologies.html" class="mobile-link">Technologies</a></li>
+                <li><a href="ar.html" class="mobile-link">Armed Response</a></li>
+                <li><a href="specialty-services.html" class="mobile-link">Specialty Services</a></li>
+                <li><a href="training-academy.html" class="mobile-link">Training Academy</a></li>
+                <li><a href="contact.html" class="mobile-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ===== THANK YOU HERO ===== -->
+    <section class="thankyou-hero">
+        <div class="container">
+            <div class="thankyou-card">
+                <div class="success-icon">
+                    <i class="fas fa-check" aria-hidden="true"></i>
+                </div>
+
+                <span class="thankyou-kicker"><i class="fas fa-paper-plane"></i> Submission Received</span>
+
+                <h1>Thank You!</h1>
+
+                <p class="thankyou-lead">Your message has been sent successfully. A member of the <strong>Mamba Security</strong> team will be in touch with you as soon as possible.</p>
+
+                <div class="thankyou-buttons">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        <i class="fas fa-phone-alt"></i> Contact Us
+                    </a>
+                </div>
+
+                <div class="thankyou-contact">
+                    <p><i class="fas fa-phone-alt"></i> Contact: <a href="tel:0116090237">011 609 0237</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:mamba@mambagroup.co.za">mamba@mambagroup.co.za</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="mambalogo.png" alt="Mamba Security Logo - Security Services" class="footer-logo-image" width="1000" height="647" decoding="async" loading="lazy">
+                    </div>
+                    <p>Your trusted security partner.</p>
+
+                    <div class="social-media">
+                        <h4>Follow Our Security Updates</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/mambastrike.force" class="social-icon facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/mamba_security/" class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://x.com/Mamba_Group" class="social-icon x-logo" aria-label="Twitter/X">
+                                <img src="x.png" alt="Twitter/X" class="x-logo-img">
+                            </a>
+                            <a href="https://www.youtube.com/@MambaSecurity" class="social-icon youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/company/mamba-strike-force-pty-ltd/posts/?feedView=all" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="tribe-footer">
+                        <div class="tribe-badge">
+                            <i class="fab fa-whatsapp"></i><span class="hash-white">#</span><span class="join-green">JOIN</span><span class="the-white">THE</span><span class="tribe-green">TRIBE</span>
+                        </div>
+                        <p>WhatsApp "Mamba" to <a href="tel:0833002975" class="footer-phone">083 300 2975</a></p>
+                    </div>
+                </div>
+
+                <div class="footer-services">
+                    <h4>Our Security Services</h4>
+                    <ul>
+                        <li><a href="ar.html">Armed Response</a></li>
+                        <li><a href="guarding.html">Security Guarding</a></li>
+                        <li><a href="technologies.html">Security Technology</a></li>
+                        <li><a href="off-site-monitoring.html">Off-Site Monitoring</a></li>
+                        <li><a href="specialty-services.html">Specialty Services</a></li>
+                        <li><a href="training-academy.html">Training Academy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Our Security Team</h4>
+                    <div class="footer-contact-info">
+                        <p><i class="fas fa-phone"></i> Contact: <a href="tel:0116090237" class="footer-phone">011 609 0237</a></p>
+                        <p><i class="fas fa-envelope"></i> mamba@mambagroup.co.za</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 12 President Road, Eastleigh, Edenvale</p>
+                        <p><i class="fas fa-clock"></i> Rapid Emergency Response</p>
+                    </div>
+                </div>
+
+                <div class="footer-resources">
+                    <h4>Security Resources</h4>
+                    <ul>
+                        <li><a href="securitytips.html">Security Tips</a></li>
+                        <li><a href="home-security-guide.html">Home Security Guide</a></li>
+                        <li><a href="business-security.html">Business Security</a></li>
+                        <li><a href="community-safety.html">Community Safety</a></li>
+                        <li><a href="security-assessment.html">Security Assessment</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Mamba Security. All rights reserved. | Security Services Provider</p>
+                <div class="footer-links">
+                    <a href="privacypolicy.html">Privacy Policy</a> |
+                    <a href="terms-of-service.html">Terms of Service</a> |
+                    <a href="sitemap.html">Sitemap</a> |
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+    <a href="https://wa.me/27833002975" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
+        <div class="whatsapp-desktop">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chat with us</span>
+        </div>
+        <div class="whatsapp-mobile">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </a>
+
+    <script>
+        // ===== MOBILE MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const body = document.body;
+        const whatsappFloat = document.querySelector('.whatsapp-float');
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                body.classList.toggle('menu-open');
+                hamburger.classList.toggle('active');
+
+                if (mobileMenu.classList.contains('active')) {
+                    if (whatsappFloat) whatsappFloat.style.display = 'none';
+                } else {
+                    if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                }
+            });
+
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    hamburger.classList.remove('active');
+                    if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) &&
+                    !hamburger.contains(e.target) &&
+                    mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    hamburger.classList.remove('active');
+                    if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    hamburger.classList.remove('active');
+                    if (whatsappFloat) whatsappFloat.style.display = 'flex';
+                }
+            });
+        }
+
+        // Set current year in footer
+        if (document.getElementById('currentYear')) {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        }
+
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (header) {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+
+        // ===== FIX WHATSAPP BUTTON Z-INDEX =====
+        window.addEventListener('load', () => {
+            if (whatsappFloat) {
+                whatsappFloat.style.display = 'flex';
+                whatsappFloat.style.opacity = '1';
+                whatsappFloat.style.visibility = 'visible';
+            }
+        });
+
+        // ===== RESIZE HANDLER =====
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024 && mobileMenu && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                body.classList.remove('menu-open');
+                if (hamburger) hamburger.classList.remove('active');
+                if (whatsappFloat) whatsappFloat.style.display = 'flex';
+            }
+        });
+
+        // ===== REDUCED MOTION PREFERENCE =====
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('*').forEach(element => {
+                element.style.animationDuration = '0.01ms !important';
+                element.style.animationIterationCount = '1 !important';
+                element.style.transitionDuration = '0.01ms !important';
+            });
+        }
+
+        console.log('Mamba Security Thank You page loaded successfully');
+    </script>
+</body>
+</html>

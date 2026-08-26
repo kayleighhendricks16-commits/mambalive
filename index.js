@@ -835,6 +835,8 @@ try {
         gameOverFlag=true; gameActive=false;
         clearInterval(gameLoopInterval); clearInterval(timerInterval);
 
+
+
         // Restore body scroll when game ends
         document.body.style.overflow = '';
         document.body.classList.remove('menu-open');
@@ -1634,3 +1636,312 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// ==================== SECURITY QUIZ ====================
+(function initSecurityQuiz() {
+    const quizStartBtn = document.getElementById('quizStartBtn');
+    const quizIntro = document.getElementById('quizIntro');
+    const quizQuestions = document.getElementById('quizQuestions');
+    const quizResult = document.getElementById('quizResult');
+    const quizQuestion = document.getElementById('quizQuestion');
+    const quizOptions = document.getElementById('quizOptions');
+    const quizProgressBar = document.getElementById('quizProgressBar');
+    const quizProgressText = document.getElementById('quizProgressText');
+    const quizPrevBtn = document.getElementById('quizPrevBtn');
+    const quizNextBtn = document.getElementById('quizNextBtn');
+    const quizSubmitBtn = document.getElementById('quizSubmitBtn');
+    const quizRetakeBtn = document.getElementById('quizRetakeBtn');
+    const quizScoreNumber = document.getElementById('quizScoreNumber');
+    const quizScoreCircle = document.getElementById('quizScoreCircle');
+    const quizResultTitle = document.getElementById('quizResultTitle');
+    const quizResultDescription = document.getElementById('quizResultDescription');
+    const quizRecommendations = document.getElementById('quizRecommendations');
+
+    if (!quizStartBtn) return;
+
+    const questions = [
+        {
+            question: "Do you currently have an alarm system installed?",
+            options: [
+                { text: "Yes, with professional monitoring", points: 2 },
+                { text: "Yes, but no monitoring", points: 1 },
+                { text: "No alarm system", points: 0 }
+            ]
+        },
+        {
+            question: "Do you have CCTV / security cameras on your property?",
+            options: [
+                { text: "Yes, with remote viewing", points: 2 },
+                { text: "Yes, but not monitored", points: 1 },
+                { text: "No cameras", points: 0 }
+            ]
+        },
+        {
+            question: "How is your perimeter secured?",
+            options: [
+                { text: "Electric fence + security gate + walls", points: 2 },
+                { text: "Basic walls/fence with gate", points: 1 },
+                { text: "Minimal or no perimeter security", points: 0 }
+            ]
+        },
+        {
+            question: "Do you have armed response / rapid emergency backup?",
+            options: [
+                { text: "Yes, with rapid armed response", points: 2 },
+                { text: "No armed response coverage", points: 0 }
+            ]
+        },
+        {
+            question: "Are you part of a neighbourhood watch or community safety network?",
+            options: [
+                { text: "Yes, active and connected", points: 2 },
+                { text: "There is one but I'm not active", points: 1 },
+                { text: "No community safety network", points: 0 }
+            ]
+        }
+    ];
+
+    let currentQuestion = 0;
+    let answers = [];
+
+    function showScreen(screen) {
+        [quizIntro, quizQuestions, quizResult].forEach(s => {
+            if (s) s.style.display = 'none';
+        });
+        if (screen) screen.style.display = 'flex';
+    }
+
+    function renderQuestion() {
+        const q = questions[currentQuestion];
+        quizQuestion.textContent = q.question;
+        quizOptions.innerHTML = '';
+
+        q.options.forEach((opt, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option';
+            btn.innerHTML = `<span class="quiz-option-marker"></span><span>${opt.text}</span>`;
+            btn.addEventListener('click', () => selectOption(i));
+            if (answers[currentQuestion] === i) btn.classList.add('selected');
+            quizOptions.appendChild(btn);
+        });
+
+        // Update progress
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        quizProgressBar.style.setProperty('--progress', progress + '%');
+        quizProgressBar.querySelector('.quiz-progress-bar-fill')?.remove();
+        const fill = document.createElement('div');
+        fill.className = 'quiz-progress-bar-fill';
+        fill.style.width = progress + '%';
+        quizProgressBar.appendChild(fill);
+        quizProgressText.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+
+        // Navigation buttons
+        quizPrevBtn.style.display = currentQuestion === 0 ? 'none' : 'inline-flex';
+        quizNextBtn.style.display = currentQuestion < questions.length - 1 ? 'inline-flex' : 'none';
+        quizSubmitBtn.style.display = currentQuestion === questions.length - 1 ? 'inline-flex' : 'none';
+        quizNextBtn.disabled = answers[currentQuestion] === undefined;
+        quizSubmitBtn.disabled = answers[currentQuestion] === undefined;
+    }
+
+    function selectOption(index) {
+        answers[currentQuestion] = index;
+        const options = document.querySelectorAll('.quiz-option');
+        options.forEach((opt, i) => opt.classList.toggle('selected', i === index));
+        quizNextBtn.disabled = false;
+        quizSubmitBtn.disabled = false;
+    }
+
+    function showResult() {
+        const totalPoints = answers.reduce((sum, answerIndex, qIndex) => {
+            return sum + (questions[qIndex].options[answerIndex]?.points || 0);
+        }, 0);
+
+        const maxPoints = questions.reduce((sum, q) => sum + Math.max(...q.options.map(o => o.points)), 0);
+        const score = Math.round((totalPoints / maxPoints) * 10);
+
+        quizScoreNumber.textContent = score;
+        quizScoreCircle.style.setProperty('--score', score * 10 + '%');
+
+        // Service funnel map: quiz gap -> recommended Mamba service + deep link
+        const serviceFunnel = {
+            alarm: {
+                title: 'Off-Site Monitoring',
+                url: 'off-site-monitoring.html',
+                icon: 'fas fa-bell',
+                headline: 'Your score says you need Off-Site Monitoring.',
+                text: 'Your biggest security gap is an alarm with no eyes on it. Mamba monitors your system 24/7 from our Control Centre and dispatches help the moment it triggers.'
+            },
+            camera: {
+                title: 'CCTV & Security Technology',
+                url: 'technologies.html',
+                icon: 'fas fa-video',
+                headline: 'Your score says you need CCTV & Security Technology.',
+                text: "Cameras you can't watch are just recordings. Mamba installs smart CCTV with remote viewing and AI alerts, so you see threats before they reach your door."
+            },
+            perimeter: {
+                title: 'Perimeter Security',
+                url: 'technologies.html',
+                icon: 'fas fa-fence',
+                headline: 'Your score says you need Perimeter Security.',
+                text: 'Your first line of defence is your boundary. Mamba upgrades electric fencing, gates and access control to keep intruders out before they get close.'
+            },
+            armed: {
+                title: 'Armed Response',
+                url: 'ar.html',
+                icon: 'fas fa-shield-alt',
+                headline: 'Your score says you need Armed Response.',
+                text: 'An alarm without rapid backup leaves you exposed. Mamba armed reaction teams are GPS-dispatched and on standby around the clock.'
+            },
+            community: {
+                title: 'Community Safety Network',
+                url: 'community-safety.html',
+                icon: 'fas fa-users',
+                headline: 'Your score says you need the Community Safety Network.',
+                text: "Criminals avoid connected neighbourhoods. Join Mamba's monitored WhatsApp alert groups and community watch network to stay one step ahead."
+            },
+            assessment: {
+                title: 'Free Security Assessment',
+                url: 'security-assessment.html',
+                icon: 'fas fa-check-double',
+                headline: "You're in great shape — let's keep it that way.",
+                text: 'Your security is already strong. Book a free Mamba Security Assessment to review your setup and optimise your protection.'
+            }
+        };
+
+        // Determine the top-priority gap (first weak answer wins)
+        let topKey = 'assessment';
+        if (answers[3] === 1) topKey = 'armed';
+        else if (answers[0] === 1 || answers[0] === 2) topKey = 'alarm';
+        else if (answers[1] === 1 || answers[1] === 2) topKey = 'camera';
+        else if (answers[2] === 1 || answers[2] === 2) topKey = 'perimeter';
+        else if (answers[4] === 1 || answers[4] === 2) topKey = 'community';
+
+        const top = serviceFunnel[topKey];
+
+        // Personalized result title + description tied to the top gap
+        let title, description;
+        if (score >= 8) {
+            title = "Excellent Security! 🏆";
+            description = "Your property has strong security measures in place. Mamba Security can help you maintain and enhance your protection with advanced solutions.";
+        } else if (score >= 5) {
+            title = "Good, But Could Be Better! ⚠️";
+            description = "You have some security in place, but there are gaps that criminals could exploit. " + top.text;
+        } else {
+            title = "Security Risk Detected! 🚨";
+            description = "Your property has significant security gaps. Don't wait until it's too late — " + top.text;
+        }
+        quizResultTitle.textContent = title;
+        quizResultDescription.textContent = description;
+
+        // Populate the personalized priority funnel card
+        const priorityCard = document.getElementById('quizPriorityCard');
+        const priorityIcon = document.getElementById('quizPriorityIcon');
+        const priorityTitle = document.getElementById('quizPriorityTitle');
+        const priorityText = document.getElementById('quizPriorityText');
+        const priorityLink = document.getElementById('quizPriorityLink');
+        const priorityQuote = document.getElementById('quizPriorityQuote');
+        if (priorityCard && priorityIcon && priorityTitle && priorityText && priorityLink) {
+            priorityIcon.innerHTML = `<i class="${top.icon}"></i>`;
+            // Score-aware headline: high scorers keep their edge, low scorers get the wake-up call
+            if (score >= 8) {
+                priorityTitle.textContent = 'Your one remaining gap: ' + top.title + '.';
+            } else {
+                priorityTitle.textContent = top.headline;
+            }
+            priorityText.textContent = top.text;
+            priorityLink.href = top.url;
+            priorityLink.innerHTML = `<i class="fas fa-arrow-right"></i> Explore ${top.title}`;
+            priorityQuote.href = 'contact.html#quote';
+            priorityCard.style.display = 'flex';
+        }
+
+        // Recommendation list (each item links to its service page)
+        const recs = [];
+        const recIcons = {
+            alarm: 'fas fa-bell',
+            camera: 'fas fa-video',
+            perimeter: 'fas fa-fence',
+            armed: 'fas fa-shield-alt',
+            community: 'fas fa-users'
+        };
+
+        if (answers[0] === 1 || answers[0] === 2) {
+            recs.push({ icon: recIcons.alarm, text: 'Professional Alarm System Installation with Control Room Monitoring', url: serviceFunnel.alarm.url });
+        }
+        if (answers[1] === 1 || answers[1] === 2) {
+            recs.push({ icon: recIcons.camera, text: 'CCTV Camera Installation with Remote Viewing', url: serviceFunnel.camera.url });
+        }
+        if (answers[2] === 1 || answers[2] === 2) {
+            recs.push({ icon: recIcons.perimeter, text: 'Perimeter Security Upgrade — Electric Fencing & Access Control', url: serviceFunnel.perimeter.url });
+        }
+        if (answers[3] === 1) {
+            recs.push({ icon: recIcons.armed, text: 'Armed Response Coverage with Rapid Emergency Teams', url: serviceFunnel.armed.url });
+        }
+        if (answers[4] === 1 || answers[4] === 2) {
+            recs.push({ icon: recIcons.community, text: 'Join Mamba Security Community Safety Network & WhatsApp Alerts', url: serviceFunnel.community.url });
+        }
+        if (recs.length === 0) {
+            recs.push({ icon: 'fas fa-check-double', text: 'Comprehensive Security Assessment to Optimise Your Current Setup', url: serviceFunnel.assessment.url });
+        }
+
+        quizRecommendations.innerHTML = '';
+        recs.forEach(rec => {
+            const item = document.createElement('a');
+            item.className = 'quiz-recommendation-item';
+            item.href = rec.url;
+            item.innerHTML = `<i class="${rec.icon}"></i><span>${rec.text}</span><i class="fas fa-chevron-right quiz-rec-arrow"></i>`;
+            quizRecommendations.appendChild(item);
+        });
+
+        showScreen(quizResult);
+    }
+
+    quizStartBtn.addEventListener('click', () => {
+        currentQuestion = 0;
+        answers = [];
+        showScreen(quizQuestions);
+        renderQuestion();
+    });
+
+    quizNextBtn.addEventListener('click', () => {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            renderQuestion();
+        }
+    });
+
+    quizPrevBtn.addEventListener('click', () => {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            renderQuestion();
+        }
+    });
+
+    quizSubmitBtn.addEventListener('click', showResult);
+
+    quizRetakeBtn.addEventListener('click', () => {
+        currentQuestion = 0;
+        answers = [];
+        showScreen(quizQuestions);
+        renderQuestion();
+    });
+})();
+
+// Progress bar fill style fix
+document.addEventListener('DOMContentLoaded', () => {
+    const style = document.createElement('style');
+    style.textContent = `
+        .quiz-progress-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--mamba-green) 0%, #88dd00 100%);
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 10px rgba(153, 255, 0, 0.4);
+        }
+    `;
+    document.head.appendChild(style);
+});
+
