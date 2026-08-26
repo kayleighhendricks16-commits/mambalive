@@ -598,7 +598,6 @@ body.popup-open {
     height: 35px;
     position: relative;
     z-index: 1002;
-    padding-bottom: 8px;
 }
 .hamburger span {
     width: 100%;
@@ -608,13 +607,13 @@ body.popup-open {
     border-radius: 2px;
 }
 .hamburger.active span:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
 .mobile-menu {
     position: fixed;
@@ -726,6 +725,9 @@ body.menu-open {
 }
 
 @media (max-width: 767px) {
+    .header {
+        padding-bottom: 24px;
+    }
     .logo-image {
         height: clamp(90px, 20vw, 108px);
         max-width: min(300px, 58vw);
