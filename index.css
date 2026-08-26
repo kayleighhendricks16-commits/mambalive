@@ -599,7 +599,7 @@ body.popup-open {
     height: 35px;
     position: relative;
     z-index: 1002;
-    padding-bottom: 2px;
+    padding-bottom: 8px;
 }
 .hamburger span {
     width: 100%;
